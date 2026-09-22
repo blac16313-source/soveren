@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maison Escape — Travel / Hospitality Concept</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0b0b0a;
+    color:#f2eee6;
+    font-family:Inter,Arial,sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    display:block;
+}
+
+/* LOADER */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#0b0b0a;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    text-align:center;
+}
+
+.loader-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+    letter-spacing:.18em;
+}
+
+.loader-sub{
+    margin-top:7px;
+    font-size:9px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.loader-line{
+    width:90px;
+    height:1px;
+    background:#f2eee6;
+    margin:18px auto 0;
+    transform:scaleX(0);
+    transform-origin:left;
+    animation:loaderLine 1.5s ease forwards;
+}
+
+@keyframes loaderLine{
+    to{
+        transform:scaleX(1);
+    }
+}
+
+
+/* NAV */
+
+.nav{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:20;
+    padding:30px 5vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(242,238,230,.14);
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    letter-spacing:.16em;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    font-size:10px;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+}
+
+.nav-right a{
+    opacity:.65;
+    transition:opacity .3s ease;
+}
+
+.nav-right a:hover{
+    opacity:1;
+}
+
+
+/* HERO */
+
+.hero{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+}
+
+.hero-image{
+    position:absolute;
+    inset:0;
+}
+
+.hero-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.15) 55%,
+            rgba(0,0,0,.25)
+        );
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.72);
+    transform:scale(1.03);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:0 5vw 8vh;
+}
+
+.hero-eyebrow{
+    font-size:10px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    opacity:.65;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(72px,13vw,190px);
+    font-weight:400;
+    line-height:.78;
+    letter-spacing:-.055em;
+    max-width:1050px;
+}
+
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:55px;
+    gap:40px;
+}
+
+.hero-description{
+    max-width:410px;
+    font-size:13px;
+    line-height:1.8;
+    color:rgba(242,238,230,.72);
+}
+
+.hero-location{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.55;
+}
+
+
+/* CONCEPT BAR */
+
+.concept{
+    margin:0 5vw;
+    padding:28px 0;
+    border-bottom:1px solid rgba(242,238,230,.14);
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.concept span{
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    opacity:.45;
+}
+
+.concept p{
+    max-width:650px;
+    font-size:12px;
+    line-height:1.7;
+    color:rgba(242,238,230,.58);
+}
+
+
+/* INTRO */
+
+.intro{
+    padding:150px 5vw;
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:80px;
+}
+
+.intro-label{
+    font-size:10px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.45;
+}
+
+.intro h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(48px,6.5vw,92px);
+    font-weight:400;
+    line-height:.92;
+    letter-spacing:-.04em;
+}
+
+.intro-copy{
+    max-width:570px;
+    padding-top:10px;
+}
+
+.intro-copy p{
+    font-size:15px;
+    line-height:2;
+    color:rgba(242,238,230,.63);
+}
+
+.intro-copy p + p{
+    margin-top:28px;
+}
+
+
+/* IMAGE */
+
+.full-image{
+    padding:0 5vw 150px;
+}
+
+.full-image-wrap{
+    width:100%;
+    height:78vh;
+    overflow:hidden;
+}
+
+.full-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.7);
+    transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.full-image-wrap:hover img{
+    transform:scale(1.035);
+}
+
+
+/* DESTINATIONS */
+
+.destinations{
+    padding:0 5vw 160px;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:60px;
+}
+
+.section-head h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(50px,7vw,95px);
+    font-weight:400;
+    line-height:.85;
+    letter-spacing:-.04em;
+}
+
+.section-head span{
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.destination-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:3px;
+}
+
+.destination{
+    position:relative;
+    overflow:hidden;
+    background:#141413;
+}
+
+.destination-image{
+    height:62vh;
+    overflow:hidden;
+}
+
+.destination-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.65);
+    transition:
+        transform .9s cubic-bezier(.2,.7,.2,1),
+        filter .8s ease;
+}
+
+.destination:hover img{
+    transform:scale(1.055);
+    filter:saturate(.95);
+}
+
+.destination-info{
+    padding:25px 20px 30px;
+}
+
+.destination-number{
+    font-size:9px;
+    letter-spacing:.18em;
+    opacity:.35;
+    margin-bottom:20px;
+}
+
+.destination h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+    font-weight:400;
+}
+
+.destination p{
+    margin-top:10px;
+    font-size:11px;
+    line-height:1.7;
+    color:rgba(242,238,230,.48);
+}
+
+
+/* STATEMENT */
+
+.statement{
+    min-height:70vh;
+    padding:130px 5vw;
+    display:flex;
+    align-items:center;
+    border-top:1px solid rgba(242,238,230,.12);
+    border-bottom:1px solid rgba(242,238,230,.12);
+}
+
+.statement-inner{
+    max-width:1100px;
+}
+
+.statement-label{
+    font-size:9px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    opacity:.4;
+    margin-bottom:35px;
+}
+
+.statement h2{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:400;
+    font-size:clamp(48px,7.5vw,105px);
+    line-height:.9;
+    letter-spacing:-.045em;
+}
+
+.statement h2 em{
+    opacity:.42;
+}
+
+
+/* EXPERIENCE */
+
+.experience{
+    padding:150px 5vw;
+}
+
+.experience-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+}
+
+.experience-image{
+    height:72vh;
+    overflow:hidden;
+}
+
+.experience-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.7);
+}
+
+.experience-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.experience-copy .small{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.4;
+    margin-bottom:28px;
+}
+
+.experience-copy h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(48px,6vw,82px);
+    font-weight:400;
+    line-height:.9;
+    letter-spacing:-.04em;
+}
+
+.experience-copy p{
+    max-width:440px;
+    margin-top:35px;
+    font-size:13px;
+    line-height:1.9;
+    color:rgba(242,238,230,.6);
+}
+
+
+/* JOURNEY */
+
+.journey{
+    padding:0 5vw 160px;
+}
+
+.journey-head{
+    border-top:1px solid rgba(242,238,230,.13);
+    padding-top:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:65px;
+}
+
+.journey-head h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:65px;
+    font-weight:400;
+}
+
+.journey-head span{
+    font-size:9px;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.journey-list{
+    border-top:1px solid rgba(242,238,230,.1);
+}
+
+.journey-row{
+    display:grid;
+    grid-template-columns:100px 1fr 1.2fr 80px;
+    gap:30px;
+    padding:27px 0;
+    border-bottom:1px solid rgba(242,238,230,.1);
+    align-items:center;
+}
+
+.journey-row .number{
+    font-size:9px;
+    letter-spacing:.15em;
+    opacity:.35;
+}
+
+.journey-row h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    font-weight:400;
+}
+
+.journey-row p{
+    font-size:11px;
+    line-height:1.7;
+    color:rgba(242,238,230,.48);
+}
+
+.journey-row .arrow{
+    text-align:right;
+    font-size:18px;
+    opacity:.45;
+}
+
+
+/* RESERVATION */
+
+.reservation{
+    position:relative;
+    min-height:72vh;
+    display:flex;
+    align-items:center;
+    padding:120px 5vw;
+    overflow:hidden;
+}
+
+.reservation-image{
+    position:absolute;
+    inset:0;
+}
+
+.reservation-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.52);
+}
+
+.reservation-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.55);
+}
+
+.reservation-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+}
+
+.reservation-label{
+    font-size:9px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    opacity:.6;
+    margin-bottom:30px;
+}
+
+.reservation h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(58px,8vw,115px);
+    font-weight:400;
+    line-height:.84;
+    letter-spacing:-.045em;
+}
+
+.reservation p{
+    max-width:420px;
+    margin-top:35px;
+    font-size:13px;
+    line-height:1.8;
+    color:rgba(242,238,230,.68);
+}
+
+.reservation-button{
+    display:inline-flex;
+    margin-top:35px;
+    border:1px solid rgba(242,238,230,.55);
+    padding:15px 24px;
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+.reservation-button:hover{
+    background:#f2eee6;
+    color:#0b0b0a;
+}
+
+
+/* FOOTER */
+
+.footer{
+    border-top:1px solid rgba(242,238,230,.13);
+    padding:60px 5vw 35px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.footer-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:45px;
+    letter-spacing:.12em;
+}
+
+.footer-copy{
+    max-width:320px;
+    font-size:11px;
+    line-height:1.8;
+    color:rgba(242,238,230,.48);
+}
+
+.footer-bottom{
+    margin-top:90px;
+    padding-top:20px;
+    border-top:1px solid rgba(242,238,230,.1);
+    display:flex;
+    justify-content:space-between;
+    font-size:9px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    opacity:.35;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .nav{
+        padding:22px 5vw;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .nav-right{
+        gap:15px;
+        font-size:8px;
+    }
+
+    .hero{
+        min-height:88vh;
+    }
+
+    .hero-content{
+        padding-bottom:7vh;
+    }
+
+    .hero h1{
+        font-size:20vw;
+        line-height:.84;
+    }
+
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        margin-top:40px;
+    }
+
+    .hero-description{
+        font-size:12px;
+    }
+
+    .concept{
+        flex-direction:column;
+        gap:16px;
+    }
+
+    .intro{
+        grid-template-columns:1fr;
+        gap:35px;
+        padding:100px 5vw;
+    }
+
+    .intro h2{
+        font-size:58px;
+    }
+
+    .full-image{
+        padding-bottom:100px;
+    }
+
+    .full-image-wrap{
+        height:58vh;
+    }
+
+    .destinations{
+        padding-bottom:100px;
+    }
+
+    .section-head{
+        margin-bottom:35px;
+    }
+
+    .section-head h2{
+        font-size:55px;
+    }
+
+    .section-head span{
+        display:none;
+    }
+
+    .destination-grid{
+        grid-template-columns:1fr;
+    }
+
+    .destination-image{
+        height:65vh;
+    }
+
+    .statement{
+        min-height:65vh;
+        padding:100px 5vw;
+    }
+
+    .statement h2{
+        font-size:56px;
+    }
+
+    .experience{
+        padding:100px 5vw;
+    }
+
+    .experience-grid{
+        grid-template-columns:1fr;
+        gap:55px;
+    }
+
+    .experience-image{
+        height:58vh;
+    }
+
+    .experience-copy h2{
+        font-size:58px;
+    }
+
+    .journey{
+        padding-bottom:100px;
+    }
+
+    .journey-head{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .journey-head h2{
+        font-size:55px;
+    }
+
+    .journey-row{
+        grid-template-columns:45px 1fr 30px;
+        gap:15px;
+    }
+
+    .journey-row p{
+        display:none;
+    }
+
+    .reservation{
+        min-height:68vh;
+        padding:90px 5vw;
+    }
+
+    .reservation h2{
+        font-size:60px;
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:12px;
+        margin-top:60px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- LOADER -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-inner">
+
+        <div class="loader-logo">
+            MAISON ESCAPE
+        </div>
+
+        <div class="loader-sub">
+            A Soveren Concept
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
+
+
+<!-- NAV -->
+
+<nav class="nav">
+
+    <a href="index.html" class="logo">
+        SOVEREN
+    </a>
+
+    <div class="nav-right">
+
+        <a href="index.html">
+            Studio
+        </a>
+
+        <a href="templates.html">
+            Templates
+        </a>
+
+        <a href="#journey">
+            Journal
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2200&q=90"
+            alt="Maison Escape destination"
+        >
+
+    </div>
+
+    <div class="hero-content">
+
+        <div class="hero-eyebrow">
+            Private Hospitality · 2026
+        </div>
+
+        <h1>
+            Escape<br>
+            Slowly.
+        </h1>
+
+        <div class="hero-bottom">
+
+            <p class="hero-description">
+                A fictional hospitality concept for travellers
+                who prefer quiet places, considered spaces and
+                journeys measured in moments rather than miles.
+            </p>
+
+            <div class="hero-location">
+                Remote Places · Worldwide
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONCEPT -->
+
+<section class="concept">
+
+    <span>
+        Fictional Concept
+    </span>
+
+    <p>
+        Maison Escape is a fictional travel and hospitality
+        concept designed and developed by Soveren for
+        showcase purposes only.
+    </p>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <div class="intro-label">
+        The Maison
+    </div>
+
+    <div class="intro-copy">
+
+        <h2>
+            Places worth<br>
+            taking time for.
+        </h2>
+
+        <p>
+            Maison Escape creates stays around a simple idea:
+            the destination should never feel rushed.
+        </p>
+
+        <p>
+            From secluded coastlines to mountain houses,
+            each property is imagined as a place to disconnect,
+            slow down and experience its surroundings.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- LARGE IMAGE -->
+
+<section class="full-image">
+
+    <div class="full-image-wrap">
+
+        <img
+            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90"
+            alt="Mountain landscape"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- DESTINATIONS -->
+
+<section class="destinations" id="destinations">
+
+    <div class="section-head">
+
+        <h2>
+            The<br>
+            Collection
+        </h2>
+
+        <span>
+            Three imagined destinations
+        </span>
+
+    </div>
+
+
+    <div class="destination-grid">
+
+
+        <article class="destination">
+
+            <div class="destination-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85"
+                    alt="Mountain retreat"
+                >
+
+            </div>
+
+            <div class="destination-info">
+
+                <div class="destination-number">
+                    01 — ALTITUDE
+                </div>
+
+                <h3>
+                    The Alpine House
+                </h3>
+
+                <p>
+                    A private retreat surrounded by mountain
+                    air, timber and endless winter horizons.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="destination">
+
+            <div class="destination-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85"
+                    alt="Coastal destination"
+                >
+
+            </div>
+
+            <div class="destination-info">
+
+                <div class="destination-number">
+                    02 — COAST
+                </div>
+
+                <h3>
+                    Casa del Mare
+                </h3>
+
+                <p>
+                    A quiet coastal residence where mornings
+                    begin with salt air and open water.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="destination">
+
+            <div class="destination-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=85"
+                    alt="Forest retreat"
+                >
+
+            </div>
+
+            <div class="destination-info">
+
+                <div class="destination-number">
+                    03 — FOREST
+                </div>
+
+                <h3>
+                    Forest No. 7
+                </h3>
+
+                <p>
+                    A secluded cabin hidden among old trees,
+                    designed for complete quiet.
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- STATEMENT -->
+
+<section class="statement">
+
+    <div class="statement-inner">
+
+        <div class="statement-label">
+            Our Philosophy
+        </div>
+
+        <h2>
+            Travel is not about
+            <em>getting somewhere.</em>
+            It is about noticing
+            where you are.
+        </h2>
+
+    </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section class="experience">
+
+    <div class="experience-grid">
+
+        <div class="experience-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1800&q=90"
+                alt="Quiet luxury cabin"
+            >
+
+        </div>
+
+
+        <div class="experience-copy">
+
+            <div class="small">
+                The Maison Experience
+            </div>
+
+            <h2>
+                Designed for<br>
+                disappearing.
+            </h2>
+
+            <p>
+                No crowded lobbies. No rigid schedules.
+                No unnecessary distractions.
+                Just architecture, landscape and enough
+                time to remember what quiet feels like.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JOURNEY -->
+
+<section class="journey" id="journey">
+
+    <div class="journey-head">
+
+        <h2>
+            A Different Way
+        </h2>
+
+        <span>
+            The Maison Journal
+        </span>
+
+    </div>
+
+
+    <div class="journey-list">
+
+
+        <div class="journey-row">
+
+            <div class="number">
+                01
+            </div>
+
+            <h3>
+                Arrive Slowly
+            </h3>
+
+            <p>
+                The journey begins before the front door.
+                Routes are chosen for the views along the way.
+                        </p>
+        </div>
+
+        <div class="journey-list">
+
+            <div class="journey-item">
+                <div class="journey-number">01</div>
+                <div class="journey-content">
+                    <h3>Arrival</h3>
+                    <p>
+                        No crowded terminals. No unnecessary movement.
+                        Just a quiet arrival, followed by the feeling that
+                        you have already begun to slow down.
+                    </p>
+                </div>
+                <span class="journey-arrow">↗</span>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-number">02</div>
+                <div class="journey-content">
+                    <h3>Stay</h3>
+                    <p>
+                        Rooms designed around their surroundings.
+                        Natural materials, generous windows and spaces
+                        made for doing absolutely nothing.
+                    </p>
+                </div>
+                <span class="journey-arrow">↗</span>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-number">03</div>
+                <div class="journey-content">
+                    <h3>Explore</h3>
+                    <p>
+                        Walk beyond the obvious. Find the small restaurant,
+                        the empty beach, the road that was never meant
+                        to become an attraction.
+                    </p>
+                </div>
+                <span class="journey-arrow">↗</span>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-number">04</div>
+                <div class="journey-content">
+                    <h3>Return</h3>
+                    <p>
+                        Come back different, even if only slightly.
+                        Carry the places with you long after the journey
+                        has ended.
+                    </p>
+                </div>
+                <span class="journey-arrow">↗</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- RESERVATION -->
+    <section class="reservation">
+
+        <div class="reservation-image">
+            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=2200&q=85" alt="Mountain retreat">
+        </div>
+
+        <div class="reservation-overlay"></div>
+
+        <div class="reservation-content">
+            <span class="eyebrow">Your next escape</span>
+
+            <h2>
+                Some places<br>
+                should be experienced<br>
+                slowly.
+            </h2>
+
+            <p>
+                Discover a different way of travelling.
+                One shaped by quiet mornings, long roads
+                and places worth remembering.
+            </p>
+
+            <a href="#" class="reservation-btn">
+                Begin the journey
+                <span>↗</span>
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <h2>SOVEREN</h2>
+                <p>
+                    Digital worlds, carefully made.
+                </p>
+            </div>
+
+            <div class="footer-links">
+
+                <div>
+                    <span>Explore</span>
+                    <a href="index.html">Studio</a>
+                    <a href="templates.html">Templates</a>
+                </div>
+
+                <div>
+                    <span>Maison Escape</span>
+                    <a href="#collection">Destinations</a>
+                    <a href="#journey">The Journey</a>
+                    <a href="#">Reservations</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Soveren</span>
+            <span>Travel / Hospitality Concept</span>
+            <span>Designed by Soveren</span>
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        const loader = document.querySelector(".loader");
+
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                loader.classList.add("hide");
+            }, 700);
+        });
+
+
+        const revealElements = document.querySelectorAll(
+            ".intro-content, .large-image, .collection-card, .statement-content, .experience-content, .journey-item, .reservation-content"
+        );
+
+        const revealObserver = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+
+        document.querySelectorAll("a[href^='#']").forEach(link => {
+
+            link.addEventListener("click", event => {
+
+                const target = document.querySelector(
+                    link.getAttribute("href")
+                );
+
+                if (target) {
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+  
