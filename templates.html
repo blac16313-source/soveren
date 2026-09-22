@@ -8,9 +8,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -24,9 +30,13 @@ html{
 body{
     background:#0b0b0a;
     color:#f2eee6;
-    font-family:Inter,Arial,sans-serif;
+    font-family:"Inter",Arial,sans-serif;
     font-weight:300;
     overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
 }
 
 a{
@@ -34,22 +44,31 @@ a{
     text-decoration:none;
 }
 
-/* LOADER */
+
+/* =========================================================
+   LOADER
+========================================================= */
 
 .loader{
     position:fixed;
     inset:0;
-    background:#0b0b0a;
     z-index:9999;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    transition:opacity .8s ease,visibility .8s ease;
+
+    background:#0b0b0a;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
 }
 
 .loader.hide{
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
 }
 
 .loader-inner{
@@ -59,6 +78,7 @@ a{
 .loader-logo{
     font-family:"Cormorant Garamond",serif;
     font-size:34px;
+    font-weight:500;
     letter-spacing:.22em;
     margin-left:.22em;
 }
@@ -66,10 +86,14 @@ a{
 .loader-line{
     width:90px;
     height:1px;
-    background:#f2eee6;
+
     margin:18px auto 0;
+
+    background:#f2eee6;
+
     transform:scaleX(0);
     transform-origin:left;
+
     animation:loaderLine 1.5s ease forwards;
 }
 
@@ -79,46 +103,121 @@ a{
     }
 }
 
-/* NAV */
+
+/* =========================================================
+   GLOBAL REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .nav{
+    position:relative;
+    z-index:20;
+
     width:100%;
+
     padding:28px 5vw;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     border-bottom:1px solid rgba(242,238,230,.12);
 }
 
 .logo{
     font-family:"Cormorant Garamond",serif;
     font-size:28px;
+    font-weight:500;
     letter-spacing:.18em;
+
+    transition:opacity .3s ease;
+}
+
+.logo:hover{
+    opacity:.7;
 }
 
 .nav-right{
     display:flex;
     align-items:center;
     gap:34px;
+
     font-size:11px;
     letter-spacing:.15em;
     text-transform:uppercase;
 }
 
 .nav-right a{
-    opacity:.65;
+    position:relative;
+    opacity:.55;
     transition:opacity .3s ease;
+}
+
+.nav-right a::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    bottom:-7px;
+
+    width:100%;
+    height:1px;
+
+    background:#f2eee6;
+
+    transform:scaleX(0);
+    transform-origin:right;
+
+    transition:transform .4s cubic-bezier(.2,.7,.2,1);
 }
 
 .nav-right a:hover{
     opacity:1;
 }
 
-/* HERO */
+.nav-right a:hover::after{
+    transform:scaleX(1);
+    transform-origin:left;
+}
+
+.nav-right a.active{
+    opacity:1;
+}
+
+.nav-right a.active::after{
+    transform:scaleX(1);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:72vh;
-    padding:10vh 5vw 8vh;
+
+    padding:
+        10vh
+        5vw
+        8vh;
+
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -128,14 +227,18 @@ a{
     font-size:10px;
     letter-spacing:.22em;
     text-transform:uppercase;
+
     opacity:.5;
 }
 
 .hero h1{
     max-width:1000px;
+
     font-family:"Cormorant Garamond",serif;
     font-weight:400;
+
     font-size:clamp(64px,11vw,170px);
+
     line-height:.83;
     letter-spacing:-.045em;
 }
@@ -144,33 +247,61 @@ a{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
+
     gap:40px;
+
     margin-top:80px;
 }
 
 .hero-bottom p{
     max-width:420px;
+
     font-size:14px;
     line-height:1.8;
+
     color:rgba(242,238,230,.62);
 }
 
 .scroll-note{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
     font-size:10px;
     letter-spacing:.2em;
     text-transform:uppercase;
+
     opacity:.45;
 }
 
-/* NOTICE */
+.scroll-note::before{
+    content:"";
+
+    display:block;
+
+    width:30px;
+    height:1px;
+
+    background:#f2eee6;
+}
+
+
+/* =========================================================
+   NOTICE
+========================================================= */
 
 .notice{
     margin:0 5vw;
+
     padding:32px 0;
+
     border-top:1px solid rgba(242,238,230,.14);
     border-bottom:1px solid rgba(242,238,230,.14);
+
     display:grid;
+
     grid-template-columns:220px 1fr;
+
     gap:40px;
 }
 
@@ -178,17 +309,23 @@ a{
     font-size:10px;
     letter-spacing:.2em;
     text-transform:uppercase;
+
     opacity:.45;
 }
 
 .notice p{
     max-width:720px;
+
     font-size:13px;
     line-height:1.8;
+
     color:rgba(242,238,230,.65);
 }
 
-/* TEMPLATES */
+
+/* =========================================================
+   TEMPLATES
+========================================================= */
 
 .templates{
     padding:140px 5vw 160px;
@@ -198,6 +335,7 @@ a{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
+
     margin-bottom:60px;
 }
 
@@ -205,6 +343,7 @@ a{
     font-family:"Cormorant Garamond",serif;
     font-size:clamp(42px,6vw,80px);
     font-weight:400;
+
     line-height:.9;
 }
 
@@ -212,89 +351,182 @@ a{
     font-size:10px;
     letter-spacing:.18em;
     text-transform:uppercase;
+
     opacity:.4;
 }
 
+
+/* =========================================================
+   TEMPLATE GRID
+========================================================= */
+
 .grid{
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:2px;
 }
 
 .card{
     position:relative;
+
     display:block;
+
     overflow:hidden;
+
     background:#141413;
+
     cursor:pointer;
 }
 
+
+/* IMAGE */
+
 .card-image{
+    position:relative;
+
     width:100%;
+
     aspect-ratio:16/11;
+
     overflow:hidden;
+}
+
+.card-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:rgba(11,11,10,.08);
+
+    pointer-events:none;
+
+    transition:background .6s ease;
 }
 
 .card-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
+
     filter:saturate(.72);
+
     transition:
-        transform .8s cubic-bezier(.2,.7,.2,1),
+        transform .9s cubic-bezier(.2,.7,.2,1),
         filter .8s ease;
 }
 
 .card:hover .card-image img{
-    transform:scale(1.045);
+    transform:scale(1.055);
     filter:saturate(1);
 }
 
+.card:hover .card-image::after{
+    background:rgba(11,11,10,0);
+}
+
+
+/* CARD INFO */
+
 .card-info{
     padding:25px 22px 28px;
+
     display:flex;
     justify-content:space-between;
+    align-items:flex-start;
+
     gap:20px;
+
+    background:#141413;
 }
 
 .card-title{
     font-family:"Cormorant Garamond",serif;
     font-size:29px;
+
+    transition:transform .45s cubic-bezier(.2,.7,.2,1);
 }
 
 .card-meta{
     text-align:right;
+
     font-size:10px;
     line-height:1.7;
+
     letter-spacing:.1em;
     text-transform:uppercase;
+
     opacity:.4;
 }
 
-/* FEATURE */
+.card:hover .card-title{
+    transform:translateX(5px);
+}
+
+
+/* =========================================================
+   FEATURE
+========================================================= */
 
 .feature{
     padding:0 5vw 160px;
 }
 
 .feature-image{
+    position:relative;
+
     width:100%;
     height:72vh;
+
     overflow:hidden;
+}
+
+.feature-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(11,11,10,.05),
+        rgba(11,11,10,.18)
+    );
+
+    pointer-events:none;
 }
 
 .feature-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
+    display:block;
+
     filter:saturate(.7);
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.7,.2,1);
 }
 
-/* FOOTER */
+.feature:hover img{
+    transform:scale(1.02);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .footer{
     border-top:1px solid rgba(242,238,230,.13);
+
     padding:55px 5vw 35px;
 }
 
@@ -302,35 +534,47 @@ a{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
+
     gap:40px;
 }
 
 .footer-logo{
     font-family:"Cormorant Garamond",serif;
     font-size:44px;
+
     letter-spacing:.12em;
 }
 
 .footer-copy{
     max-width:300px;
+
     font-size:12px;
     line-height:1.8;
+
     color:rgba(242,238,230,.5);
 }
 
 .footer-bottom{
     margin-top:90px;
+
     display:flex;
     justify-content:space-between;
+
     padding-top:20px;
+
     border-top:1px solid rgba(242,238,230,.1);
+
     font-size:9px;
     letter-spacing:.15em;
     text-transform:uppercase;
+
     opacity:.35;
 }
 
-/* MOBILE */
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
@@ -351,9 +595,12 @@ a{
         display:none;
     }
 
+
     .hero{
         min-height:67vh;
+
         padding-top:8vh;
+        padding-bottom:7vh;
     }
 
     .hero h1{
@@ -364,6 +611,7 @@ a{
     .hero-bottom{
         flex-direction:column;
         align-items:flex-start;
+
         margin-top:60px;
     }
 
@@ -371,11 +619,15 @@ a{
         font-size:13px;
     }
 
+
     .notice{
         grid-template-columns:1fr;
+
         gap:16px;
+
         margin:0 5vw;
     }
+
 
     .templates{
         padding:90px 5vw 100px;
@@ -393,8 +645,13 @@ a{
         display:none;
     }
 
+
     .grid{
         grid-template-columns:1fr;
+    }
+
+    .card-image{
+        aspect-ratio:16/12;
     }
 
     .card-info{
@@ -405,6 +662,7 @@ a{
         font-size:25px;
     }
 
+
     .feature{
         padding:0 5vw 100px;
     }
@@ -413,22 +671,52 @@ a{
         height:55vh;
     }
 
+
     .footer-top{
         flex-direction:column;
     }
 
     .footer-bottom{
         margin-top:60px;
+
         flex-direction:column;
+
         gap:10px;
     }
+
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- LOADER -->
+
+<!-- =======================================================
+     LOADER
+======================================================= -->
 
 <div class="loader" id="loader">
 
@@ -445,7 +733,9 @@ a{
 </div>
 
 
-<!-- NAV -->
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
 
 <nav class="nav">
 
@@ -459,7 +749,7 @@ a{
             Studio
         </a>
 
-        <a href="templates.html">
+        <a href="templates.html" class="active">
             Templates
         </a>
 
@@ -468,9 +758,11 @@ a{
 </nav>
 
 
-<!-- HERO -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-<section class="hero">
+<section class="hero reveal">
 
     <div class="eyebrow">
         Soveren · Selected Templates
@@ -499,9 +791,11 @@ a{
 </section>
 
 
-<!-- NOTICE -->
+<!-- =======================================================
+     NOTICE
+======================================================= -->
 
-<section class="notice">
+<section class="notice reveal">
 
     <div class="notice-label">
         Concept Collection
@@ -518,11 +812,13 @@ a{
 </section>
 
 
-<!-- TEMPLATES -->
+<!-- =======================================================
+     TEMPLATES
+======================================================= -->
 
 <section class="templates">
 
-    <div class="section-head">
+    <div class="section-head reveal">
 
         <h2>
             Selected<br>
@@ -541,13 +837,14 @@ a{
 
         <!-- NOIR ATELIER -->
 
-        <a href="noir-atelier.html" class="card">
+        <a href="noir-atelier.html" class="card reveal">
 
             <div class="card-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85"
                     alt="Noir Atelier fashion concept"
+                    loading="lazy"
                 >
 
             </div>
@@ -570,13 +867,14 @@ a{
 
         <!-- MAISON HORLOGERIE -->
 
-        <a href="maison-horlogerie.html" class="card">
+        <a href="maison-horlogerie.html" class="card reveal">
 
             <div class="card-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1800&q=85"
                     alt="Maison Horlogerie luxury watch concept"
+                    loading="lazy"
                 >
 
             </div>
@@ -599,13 +897,14 @@ a{
 
         <!-- MAISON ESCAPE -->
 
-        <a href="maison-escape.html" class="card">
+        <a href="maison-escape.html" class="card reveal">
 
             <div class="card-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85"
                     alt="Maison Escape travel concept"
+                    loading="lazy"
                 >
 
             </div>
@@ -628,13 +927,14 @@ a{
 
         <!-- FORM OBJECTS -->
 
-        <a href="form-objects.html" class="card">
+        <a href="form-objects.html" class="card reveal">
 
             <div class="card-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1800&q=85"
                     alt="Form Objects luxury product concept"
+                    loading="lazy"
                 >
 
             </div>
@@ -660,7 +960,9 @@ a{
 </section>
 
 
-<!-- FEATURE IMAGE -->
+<!-- =======================================================
+     FEATURE IMAGE
+======================================================= -->
 
 <section class="feature">
 
@@ -669,6 +971,7 @@ a{
         <img
             src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=85"
             alt="Soveren editorial"
+            loading="lazy"
         >
 
     </div>
@@ -676,7 +979,9 @@ a{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer class="footer">
 
@@ -693,6 +998,7 @@ a{
 
     </div>
 
+
     <div class="footer-bottom">
 
         <span>
@@ -708,18 +1014,62 @@ a{
 </footer>
 
 
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
 <script>
+
+/* ---------------------------------------------------------
+   LOADER
+--------------------------------------------------------- */
 
 window.addEventListener("load", function(){
 
     setTimeout(function(){
 
-        document
-            .getElementById("loader")
-            .classList
-            .add("hide");
+        const loader = document.getElementById("loader");
 
-    }, 1800);
+        if(loader){
+            loader.classList.add("hide");
+        }
+
+    }, 1500);
+
+});
+
+
+/* ---------------------------------------------------------
+   SCROLL REVEALS
+--------------------------------------------------------- */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+                revealObserver.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold:0.12
+    }
+);
+
+
+revealElements.forEach(function(element){
+
+    revealObserver.observe(element);
 
 });
 
