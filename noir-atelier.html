@@ -3,908 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Noir Atelier — Soveren</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#0b0b0a;
-    color:#f2eee6;
-    font-family:Inter,Arial,sans-serif;
-    font-weight:300;
-    overflow-x:hidden;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-/* LOADER */
-
-.loader{
-    position:fixed;
-    inset:0;
-    background:#0b0b0a;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:opacity .8s ease,visibility .8s ease;
-}
-
-.loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader-inner{
-    text-align:center;
-}
-
-.loader-logo{
-    font-family:"Cormorant Garamond",serif;
-    font-size:34px;
-    letter-spacing:.22em;
-    margin-left:.22em;
-}
-
-.loader-line{
-    width:90px;
-    height:1px;
-    background:#f2eee6;
-    margin:18px auto 0;
-    transform:scaleX(0);
-    transform-origin:left;
-    animation:loaderLine 1.5s ease forwards;
-}
-
-@keyframes loaderLine{
-    to{
-        transform:scaleX(1);
-    }
-}
-
-/* NAV */
-
-.nav{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    padding:28px 5vw;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:20;
-}
-
-.logo{
-    font-family:"Cormorant Garamond",serif;
-    font-size:28px;
-    letter-spacing:.18em;
-}
-
-.nav-right{
-    display:flex;
-    align-items:center;
-    gap:34px;
-    font-size:10px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-}
-
-.nav-right a{
-    opacity:.7;
-    transition:opacity .3s ease;
-}
-
-.nav-right a:hover{
-    opacity:1;
-}
-
-/* HERO */
-
-.hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    align-items:flex-end;
-    padding:0 5vw 7vh;
-    overflow:hidden;
-}
-
-.hero-image{
-    position:absolute;
-    inset:0;
-    z-index:0;
-}
-
-.hero-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:brightness(.55) saturate(.72);
-    transform:scale(1.02);
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:
-        linear-gradient(
-            to top,
-            rgba(11,11,10,.95) 0%,
-            rgba(11,11,10,.35) 48%,
-            rgba(11,11,10,.2) 100%
-        );
-    z-index:1;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    width:100%;
-}
-
-.hero-category{
-    font-size:10px;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    opacity:.65;
-    margin-bottom:24px;
-}
-
-.hero h1{
-    font-family:"Cormorant Garamond",serif;
-    font-weight:400;
-    font-size:clamp(75px,14vw,190px);
-    line-height:.78;
-    letter-spacing:-.05em;
-    max-width:1000px;
-}
-
-.hero-bottom{
-    margin-top:50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:40px;
-}
-
-.hero-description{
-    max-width:420px;
-    font-size:13px;
-    line-height:1.8;
-    color:rgba(242,238,230,.65);
-}
-
-.hero-number{
-    font-family:"Cormorant Garamond",serif;
-    font-size:22px;
-    opacity:.6;
-}
-
-/* INTRO */
-
-.intro{
-    padding:150px 5vw;
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:70px;
-    border-bottom:1px solid rgba(242,238,230,.12);
-}
-
-.intro-label{
-    font-size:10px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    opacity:.4;
-}
-
-.intro-content{
-    max-width:850px;
-}
-
-.intro-content h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(42px,6vw,82px);
-    line-height:.95;
-    font-weight:400;
-    margin-bottom:45px;
-}
-
-.intro-content p{
-    max-width:620px;
-    font-size:14px;
-    line-height:1.9;
-    color:rgba(242,238,230,.58);
-}
-
-/* PRODUCT */
-
-.products{
-    padding:150px 5vw;
-}
-
-.section-heading{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    margin-bottom:65px;
-}
-
-.section-heading h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(45px,6vw,80px);
-    font-weight:400;
-    line-height:.9;
-}
-
-.section-heading span{
-    font-size:10px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    opacity:.4;
-}
-
-.product-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:2px;
-}
-
-.product{
-    background:#141413;
-    overflow:hidden;
-}
-
-.product-image{
-    aspect-ratio:4/5;
-    overflow:hidden;
-}
-
-.product-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    filter:saturate(.7);
-    transition:
-        transform .8s cubic-bezier(.2,.7,.2,1),
-        filter .8s ease;
-}
-
-.product:hover .product-image img{
-    transform:scale(1.045);
-    filter:saturate(1);
-}
-
-.product-info{
-    padding:24px 22px 28px;
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.product-name{
-    font-family:"Cormorant Garamond",serif;
-    font-size:28px;
-}
-
-.product-price{
-    font-size:10px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    opacity:.45;
-    padding-top:7px;
-}
-
-/* EDITORIAL */
-
-.editorial{
-    padding:0 5vw 150px;
-}
-
-.editorial-image{
-    width:100%;
-    height:75vh;
-    overflow:hidden;
-}
-
-.editorial-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:saturate(.7);
-}
-
-.editorial-caption{
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-    padding-top:18px;
-    font-size:10px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    opacity:.38;
-}
-
-/* STATEMENT */
-
-.statement{
-    padding:140px 5vw;
-    border-top:1px solid rgba(242,238,230,.12);
-    border-bottom:1px solid rgba(242,238,230,.12);
-}
-
-.statement-inner{
-    max-width:1000px;
-}
-
-.statement h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(50px,8vw,115px);
-    line-height:.88;
-    font-weight:400;
-    letter-spacing:-.04em;
-}
-
-/* FOOTER */
-
-.footer{
-    padding:80px 5vw 35px;
-}
-
-.footer-top{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:50px;
-}
-
-.footer-brand{
-    font-family:"Cormorant Garamond",serif;
-    font-size:48px;
-    letter-spacing:.12em;
-}
-
-.footer-column{
-    display:flex;
-    flex-direction:column;
-    gap:13px;
-}
-
-.footer-column span{
-    font-size:9px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-    opacity:.35;
-    margin-bottom:7px;
-}
-
-.footer-column a{
-    font-size:12px;
-    color:rgba(242,238,230,.55);
-    transition:color .3s ease;
-}
-
-.footer-column a:hover{
-    color:#f2eee6;
-}
-
-.footer-bottom{
-    margin-top:100px;
-    padding-top:20px;
-    border-top:1px solid rgba(242,238,230,.1);
-    display:flex;
-    justify-content:space-between;
-    font-size:9px;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    opacity:.3;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-    .nav{
-        padding:23px 5vw;
-    }
-
-    .logo{
-        font-size:23px;
-    }
-
-    .nav-right{
-        gap:15px;
-        font-size:9px;
-    }
-
-    .hero{
-        min-height:88vh;
-        padding-bottom:8vh;
-    }
-
-    .hero h1{
-        font-size:22vw;
-        line-height:.82;
-    }
-
-    .hero-bottom{
-        flex-direction:column;
-        align-items:flex-start;
-        margin-top:40px;
-    }
-
-    .hero-description{
-        font-size:12px;
-    }
-
-    .intro{
-        padding:90px 5vw;
-        grid-template-columns:1fr;
-        gap:25px;
-    }
-
-    .intro-content h2{
-        font-size:49px;
-    }
-
-    .products{
-        padding:90px 5vw;
-    }
-
-    .section-heading{
-        margin-bottom:35px;
-    }
-
-    .section-heading h2{
-        font-size:49px;
-    }
-
-    .section-heading span{
-        display:none;
-    }
-
-    .product-grid{
-        grid-template-columns:1fr;
-    }
-
-    .editorial{
-        padding:0 5vw 90px;
-    }
-
-    .editorial-image{
-        height:58vh;
-    }
-
-    .editorial-caption{
-        flex-direction:column;
-        gap:8px;
-    }
-
-    .statement{
-        padding:90px 5vw;
-    }
-
-    .statement h2{
-        font-size:16vw;
-    }
-
-    .footer{
-        padding:65px 5vw 30px;
-    }
-
-    .footer-top{
-        grid-template-columns:1fr;
-        gap:45px;
-    }
-
-    .footer-bottom{
-        margin-top:60px;
-        flex-direction:column;
-        gap:10px;
-    }
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0b0b0a;color:#f2eee6;font-family:Inter,Arial,sans-serif;font-weight:300;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.loader{position:fixed;inset:0;background:#0b0b0a;z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease}
+.loader.hide{opacity:0;visibility:hidden}
+.loader-inner{text-align:center}
+.loader-logo{font-family:"Cormorant Garamond",serif;font-size:34px;letter-spacing:.22em;margin-left:.22em}
+.loader-line{width:90px;height:1px;background:#f2eee6;margin:18px auto 0;transform:scaleX(0);transform-origin:left;animation:loaderLine 1.5s ease forwards}
+@keyframes loaderLine{to{transform:scaleX(1)}}
+.nav{position:absolute;top:0;left:0;width:100%;padding:28px 5vw;display:flex;justify-content:space-between;align-items:center;z-index:20}
+.logo{font-family:"Cormorant Garamond",serif;font-size:28px;letter-spacing:.18em}
+.nav-right{display:flex;align-items:center;gap:34px;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.nav-right a{opacity:.7;transition:opacity .3s ease}.nav-right a:hover{opacity:1}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 5vw 7vh;overflow:hidden}
+.hero-image{position:absolute;inset:0;z-index:0}
+.hero-image img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.72);transform:scale(1.02)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,10,.95) 0%,rgba(11,11,10,.35) 48%,rgba(11,11,10,.2) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;width:100%}
+.hero-category{font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.65;margin-bottom:24px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(75px,14vw,190px);line-height:.78;letter-spacing:-.05em;max-width:1000px}
+.hero-bottom{margin-top:50px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.hero-description{max-width:420px;font-size:13px;line-height:1.8;color:rgba(242,238,230,.65)}
+.hero-number{font-family:"Cormorant Garamond",serif;font-size:22px;opacity:.6}
+.intro{padding:150px 5vw;display:grid;grid-template-columns:220px 1fr;gap:70px;border-bottom:1px solid rgba(242,238,230,.12)}
+.intro-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4}
+.intro-content{max-width:850px}
+.intro-content h2{font-family:"Cormorant Garamond",serif;font-size:clamp(42px,6vw,82px);line-height:.95;font-weight:400;margin-bottom:45px}
+.intro-content p{max-width:620px;font-size:14px;line-height:1.9;color:rgba(242,238,230,.58)}
+.products{padding:150px 5vw}
+.section-heading{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:65px}
+.section-heading h2{font-family:"Cormorant Garamond",serif;font-size:clamp(45px,6vw,80px);font-weight:400;line-height:.9}
+.section-heading span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.4}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.product{background:#141413;overflow:hidden}
+.product-image{aspect-ratio:4/5;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.7);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+.product:hover .product-image img{transform:scale(1.045);filter:saturate(1)}
+.product-info{padding:24px 22px 28px;display:flex;justify-content:space-between;gap:20px}
+.product-name{font-family:"Cormorant Garamond",serif;font-size:28px}
+.product-price{font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.45;padding-top:7px}
 </style>
 </head>
-
 <body>
-
-
-<!-- LOADER -->
-
-<div class="loader" id="loader">
-
-    <div class="loader-inner">
-
-        <div class="loader-logo">
-            NOIR ATELIER
-        </div>
-
-        <div class="loader-line"></div>
-
-    </div>
-
-</div>
-
-
-<!-- NAV -->
-
+<div class="loader" id="loader"><div class="loader-inner"><div class="loader-logo">NOIR ATELIER</div><div class="loader-line"></div></div></div>
 <nav class="nav">
-
-    <a href="templates.html" class="logo">
-        NOIR
-    </a>
-
-    <div class="nav-right">
-
-        <a href="templates.html">
-            Templates
-        </a>
-
-        <a href="index.html">
-            Soveren
-        </a>
-
-    </div>
-
+  <a href="templates.html" class="logo">NOIR</a>
+  <div class="nav-right"><a href="templates.html">Templates</a><a href="index.html" style="border:1px solid rgba(242,238,230,.3);padding:10px 18px;border-radius:100px;opacity:1">← BACK TO SOVEREN</a></div>
 </nav>
-
-
-<!-- HERO -->
-
 <section class="hero">
-
-    <div class="hero-image">
-
-        <img
-            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=90"
-            alt="Noir Atelier fashion editorial"
-        >
-
+  <div class="hero-image"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=90" alt="Noir Atelier fashion editorial"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-category">Noir Atelier · Collection 01 — A Soveren Template</div>
+    <h1>Quiet<br>Luxury.</h1>
+    <div class="hero-bottom">
+      <p class="hero-description">A fashion concept built around restraint, texture and timeless silhouettes. Designed for brands that believe luxury does not need to announce itself.</p>
+      <div class="hero-number">01 / 04</div>
     </div>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <div class="hero-category">
-            Noir Atelier · Collection 01
-        </div>
-
-        <h1>
-            Quiet<br>
-            Luxury.
-        </h1>
-
-        <div class="hero-bottom">
-
-            <p class="hero-description">
-                A fashion concept built around restraint,
-                texture and timeless silhouettes. Designed
-                for brands that believe luxury does not need
-                to announce itself.
-            </p>
-
-            <div class="hero-number">
-                01 / 04
-            </div>
-
-        </div>
-
-    </div>
-
+  </div>
 </section>
-
-
-<!-- INTRO -->
-
 <section class="intro">
-
-    <div class="intro-label">
-        The House
-    </div>
-
-    <div class="intro-content">
-
-        <h2>
-            Designed for<br>
-            the understated.
-        </h2>
-
-        <p>
-            Noir Atelier is a fictional contemporary fashion house
-            exploring the relationship between architecture,
-            material and clothing. Every detail is intentionally
-            reduced to create a slower, more considered digital
-            experience.
-        </p>
-
-    </div>
-
+  <div class="intro-label">The House</div>
+  <div class="intro-content"><h2>Designed for<br>the understated.</h2><p>Noir Atelier is a fictional contemporary fashion house exploring the relationship between architecture, material and clothing. Every detail is intentionally reduced to create a slower, more considered digital experience.</p></div>
 </section>
-
-
-<!-- PRODUCTS -->
-
 <section class="products">
-
-    <div class="section-heading">
-
-        <h2>
-            The Collection
-        </h2>
-
-        <span>
-            Objects / 2026
-        </span>
-
-    </div>
-
-
-    <div class="product-grid">
-
-
-        <article class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=85"
-                    alt="Noir Atelier collection"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-name">
-                    The Long Coat
-                </div>
-
-                <div class="product-price">
-                    €890
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=85"
-                    alt="Noir Atelier dress"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-name">
-                    No. 07 Dress
-                </div>
-
-                <div class="product-price">
-                    €640
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=85"
-                    alt="Noir Atelier tailoring"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-name">
-                    Atelier Trousers
-                </div>
-
-                <div class="product-price">
-                    €420
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <article class="product">
-
-            <div class="product-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=85"
-                    alt="Noir Atelier editorial piece"
-                >
-
-            </div>
-
-            <div class="product-info">
-
-                <div class="product-name">
-                    Silk No. 02
-                </div>
-
-                <div class="product-price">
-                    €510
-                </div>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
+  <div class="section-heading"><h2>The Collection</h2><span>Objects / 2026</span></div>
+  <div class="product-grid">
+    <article class="product"><div class="product-image"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=85" alt="Noir Atelier collection"></div><div class="product-info"><div class="product-name">The Long Coat</div><div class="product-price">€890</div></div></article>
+    <article class="product"><div class="product-image"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=85" alt="Noir Atelier dress"></div><div class="product-info"><div class="product-name">No. 07 Dress</div><div class="product-price">€640</div></div></article>
+    <article class="product"><div class="product-image"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=85" alt="Noir Atelier tailoring"></div><div class="product-info"><div class="product-name">Atelier Trousers</div><div class="product-price">€420</div></div></article>
+    <article class="product"><div class="product-image"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=85" alt="Noir Atelier editorial piece"></div><div class="product-info"><div class="product-name">Silk No. 02</div><div class="product-price">€510</div></div></article>
+  </div>
 </section>
-
-
-<!-- EDITORIAL -->
-
+<style>
+.editorial{padding:0 5vw 150px}
+.editorial-image{width:100%;height:75vh;overflow:hidden}
+.editorial-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.7)}
+.editorial-caption{display:flex;justify-content:space-between;gap:30px;padding-top:18px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.38}
+.statement{padding:140px 5vw;border-top:1px solid rgba(242,238,230,.12);border-bottom:1px solid rgba(242,238,230,.12)}
+.statement-inner{max-width:1000px}
+.statement h2{font-family:"Cormorant Garamond",serif;font-size:clamp(50px,8vw,115px);line-height:.88;font-weight:400;letter-spacing:-.04em}
+.footer{padding:80px 5vw 35px}
+.footer-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:50px}
+.footer-brand{font-family:"Cormorant Garamond",serif;font-size:48px;letter-spacing:.12em}
+.footer-column{display:flex;flex-direction:column;gap:13px}
+.footer-column span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.35;margin-bottom:7px}
+.footer-column a{font-size:12px;color:rgba(242,238,230,.55);transition:color .3s ease}
+.footer-column a:hover{color:#f2eee6}
+.footer-bottom{margin-top:100px;padding-top:20px;border-top:1px solid rgba(242,238,230,.1);display:flex;justify-content:space-between;font-size:9px;letter-spacing:.15em;text-transform:uppercase;opacity:.3}
+@media(max-width:700px){
+  .nav{padding:23px 5vw}.logo{font-size:23px}.nav-right{gap:15px;font-size:9px}
+  .hero{min-height:88vh;padding-bottom:8vh}.hero h1{font-size:22vw;line-height:.82}
+  .hero-bottom{flex-direction:column;align-items:flex-start;margin-top:40px}.hero-description{font-size:12px}
+  .intro{padding:90px 5vw;grid-template-columns:1fr;gap:25px}.intro-content h2{font-size:49px}
+  .products{padding:90px 5vw}.section-heading{margin-bottom:35px}.section-heading h2{font-size:49px}.section-heading span{display:none}
+  .product-grid{grid-template-columns:1fr}.editorial{padding:0 5vw 90px}.editorial-image{height:58vh}
+  .editorial-caption{flex-direction:column;gap:8px}.statement{padding:90px 5vw}.statement h2{font-size:16vw}
+  .footer{padding:65px 5vw 30px}.footer-top{grid-template-columns:1fr;gap:45px}.footer-bottom{margin-top:60px;flex-direction:column;gap:10px}
+}
+</style>
 <section class="editorial">
-
-    <div class="editorial-image">
-
-        <img
-            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90"
-            alt="Noir Atelier editorial"
-        >
-
-    </div>
-
-    <div class="editorial-caption">
-
-        <span>
-            Noir Atelier / Editorial 01
-        </span>
-
-        <span>
-            Paris — Milan — Worldwide
-        </span>
-
-    </div>
-
+  <div class="editorial-image"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90" alt="Noir Atelier editorial"></div>
+  <div class="editorial-caption"><span>Noir Atelier / Editorial 01</span><span>Paris — Milan — Worldwide</span></div>
 </section>
-
-
-<!-- STATEMENT -->
-
-<section class="statement">
-
-    <div class="statement-inner">
-
-        <h2>
-            Less noise.<br>
-            More presence.
-        </h2>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
+<section class="statement"><div class="statement-inner"><h2>Less noise.<br>More presence.</h2></div></section>
 <footer class="footer">
-
-    <div class="footer-top">
-
-        <div class="footer-brand">
-            NOIR
-        </div>
-
-
-        <div class="footer-column">
-
-            <span>
-                Explore
-            </span>
-
-            <a href="#">
-                Collection
-            </a>
-
-            <a href="#">
-                Journal
-            </a>
-
-            <a href="#">
-                About
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <span>
-                Information
-            </span>
-
-            <a href="#">
-                Contact
-            </a>
-
-            <a href="#">
-                Shipping
-            </a>
-
-            <a href="#">
-                Instagram
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            Noir Atelier — Fictional Concept
-        </span>
-
-        <span>
-            A Soveren Template
-        </span>
-
-    </div>
-
+  <div class="footer-top">
+    <div class="footer-brand">NOIR</div>
+    <div class="footer-column"><span>Explore</span><a href="#">Collection</a><a href="#">Journal</a><a href="#">About</a></div>
+    <div class="footer-column"><span>Information</span><a href="index.html">← Back to Soveren Studio</a><a href="templates.html">All Templates</a><a href="https://instagram.com/j_atin___" target="_blank">Instagram</a></div>
+  </div>
+  <div class="footer-bottom"><span>Noir Atelier — Fictional Concept</span><span>A Soveren Template — jatinvsyou@gmail.com</span></div>
 </footer>
-
-
 <script>
-
-window.addEventListener("load",function(){
-
-    setTimeout(function(){
-
-        document
-            .getElementById("loader")
-            .classList
-            .add("hide");
-
-    },1800);
-
-});
-
+window.addEventListener("load",function(){ setTimeout(function(){ document.getElementById("loader").classList.add("hide"); },1200); });
 </script>
-
-
 </body>
 </html>
