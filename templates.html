@@ -2,662 +2,718 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Soveren — Selected Concepts</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 *{
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  background:#0b0b0a;
-  color:#f3f0e8;
-  font-family:Arial,Helvetica,sans-serif;
+    background:#0b0b0a;
+    color:#f2eee6;
+    font-family:Inter,Arial,sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
 }
 
-/* LOADER */
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================
+   LOADER
+========================= */
 
 .loader{
-  position:fixed;
-  inset:0;
-  background:#0b0b0a;
-  z-index:99;
-  display:grid;
-  place-items:center;
-  animation:hideLoader .8s ease 2.2s forwards;
+    position:fixed;
+    inset:0;
+    background:#0b0b0a;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
 }
 
 .loader-inner{
-  width:min(360px,75vw);
-  text-align:center;
+    text-align:center;
 }
 
 .loader-logo{
-  font:700 20px Georgia,serif;
-  letter-spacing:7px;
-  margin-bottom:25px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+    letter-spacing:.22em;
+    margin-left:.22em;
 }
 
 .loader-line{
-  height:1px;
-  background:#555;
-  position:relative;
-  overflow:hidden;
+    width:90px;
+    height:1px;
+    background:#f2eee6;
+    margin:18px auto 0;
+    transform:scaleX(0);
+    transform-origin:left;
+    animation:loaderLine 1.5s ease forwards;
 }
 
-.loader-line:after{
-  content:"";
-  position:absolute;
-  left:-100%;
-  top:0;
-  width:100%;
-  height:100%;
-  background:#f3f0e8;
-  animation:load 1.8s cubic-bezier(.77,0,.18,1) forwards;
+@keyframes loaderLine{
+    to{
+        transform:scaleX(1);
+    }
 }
 
-@keyframes load{
-  to{
-    left:0;
-  }
+/* =========================
+   NAV
+========================= */
+
+.nav{
+    width:100%;
+    padding:28px 5vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(242,238,230,.12);
 }
 
-@keyframes hideLoader{
-  to{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-  }
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    letter-spacing:.18em;
 }
 
-
-/* MAIN */
-
-main{
-  max-width:1400px;
-  margin:auto;
-  padding:0 5vw;
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:34px;
+    font-size:11px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
 }
 
-
-/* HERO */
-
-header{
-  min-height:92vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  border-bottom:1px solid #292927;
+.nav-right a{
+    opacity:.65;
+    transition:opacity .3s ease;
 }
 
-.kicker{
-  font-size:10px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#999;
-  margin-bottom:30px;
+.nav-right a:hover{
+    opacity:1;
 }
 
-h1{
-  font:400 clamp(60px,10vw,150px)/.88 Georgia,serif;
-  letter-spacing:-6px;
-  margin:0;
-  max-width:1000px;
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:72vh;
+    padding:10vh 5vw 8vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
-h1 em{
-  font-style:italic;
+.eyebrow{
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    opacity:.5;
 }
 
-.intro{
-  max-width:560px;
-  color:#aaa;
-  font-size:16px;
-  line-height:1.8;
-  margin:45px 0 0;
+.hero h1{
+    max-width:1000px;
+    font-family:"Cormorant Garamond",serif;
+    font-weight:400;
+    font-size:clamp(64px,11vw,170px);
+    line-height:.83;
+    letter-spacing:-.045em;
 }
 
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-top:80px;
+}
 
-/* NOTICE */
+.hero-bottom p{
+    max-width:420px;
+    font-size:14px;
+    line-height:1.8;
+    color:rgba(242,238,230,.62);
+}
+
+.scroll-note{
+    font-size:10px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.45;
+}
+
+/* =========================
+   NOTICE
+========================= */
 
 .notice{
-  border:1px solid #333;
-  padding:22px;
-  margin:70px 0;
-  font-size:11px;
-  line-height:1.7;
-  color:#aaa;
-  letter-spacing:.4px;
+    margin:0 5vw;
+    padding:32px 0;
+    border-top:1px solid rgba(242,238,230,.14);
+    border-bottom:1px solid rgba(242,238,230,.14);
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:40px;
 }
 
-.notice strong{
-  color:#f3f0e8;
-  letter-spacing:2px;
+.notice-label{
+    font-size:10px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.45;
 }
 
+.notice p{
+    max-width:720px;
+    font-size:13px;
+    line-height:1.8;
+    color:rgba(242,238,230,.65);
+}
 
-/* SECTION */
+/* =========================
+   COLLECTION
+========================= */
 
-section{
-  padding:100px 0;
+.collection{
+    padding:140px 5vw 160px;
 }
 
 .section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  border-bottom:1px solid #292927;
-  padding-bottom:20px;
-  margin-bottom:35px;
-}
-
-.section-head span{
-  font-size:10px;
-  letter-spacing:3px;
-  color:#777;
-  text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:60px;
 }
 
 .section-head h2{
-  font:400 clamp(38px,6vw,80px)/1 Georgia,serif;
-  margin:0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(42px,6vw,80px);
+    font-weight:400;
+    line-height:.9;
 }
 
-
-/* TEMPLATE GRID */
+.section-head span{
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    opacity:.4;
+}
 
 .grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2px;
 }
 
 .card{
-  display:block;
-  text-decoration:none;
-  color:inherit;
-  border:1px solid #292927;
-  overflow:hidden;
-  background:#11110f;
-  transition:
-    transform .5s ease,
-    border-color .5s ease;
+    position:relative;
+    display:block;
+    overflow:hidden;
+    background:#141413;
 }
 
-.card:hover{
-  transform:translateY(-8px);
-  border-color:#777;
+.card-image{
+    width:100%;
+    aspect-ratio:16/11;
+    overflow:hidden;
 }
 
-
-/* VISUAL */
-
-.visual{
-  height:500px;
-  display:flex;
-  align-items:end;
-  padding:28px;
-  background:linear-gradient(145deg,#25231f,#0d0d0c);
-  position:relative;
-  overflow:hidden;
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(.72);
+    transition:transform .8s cubic-bezier(.2,.7,.2,1),
+               filter .8s ease;
 }
 
-.visual:before{
-  content:"";
-  position:absolute;
-  width:260px;
-  height:260px;
-  border-radius:50%;
-  right:-70px;
-  top:-60px;
-  background:#777;
-  opacity:.12;
+.card:hover .card-image img{
+    transform:scale(1.045);
+    filter:saturate(1);
 }
 
-.visual:after{
-  content:"";
-  position:absolute;
-  inset:35px;
-  border:1px solid #ffffff18;
+.card-info{
+    padding:25px 22px 28px;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
 }
 
-.v2{
-  background:linear-gradient(145deg,#e9e1d2,#81796d);
-  color:#111;
+.card-title{
+    font-family:"Cormorant Garamond",serif;
+    font-size:29px;
 }
 
-.v3{
-  background:linear-gradient(145deg,#151b24,#07090d);
+.card-meta{
+    text-align:right;
+    font-size:10px;
+    line-height:1.7;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    opacity:.4;
 }
 
-.v4{
-  background:linear-gradient(145deg,#241d18,#0d0b09);
+/* =========================
+   FEATURE
+========================= */
+
+.feature{
+    padding:0 5vw 160px;
 }
 
-
-/* MOCK WEBSITE */
-
-.mock{
-  position:relative;
-  z-index:1;
-  width:72%;
-  margin:auto;
-  padding:28px;
-  background:#f2eee5;
-  color:#111;
-  box-shadow:0 25px 70px #0008;
+.feature-image{
+    width:100%;
+    height:72vh;
+    overflow:hidden;
 }
 
-.mock.dark{
-  background:#101214;
-  color:#eee;
+.feature-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.7);
 }
 
-.mock-title{
-  font:400 35px Georgia,serif;
-  margin:40px 0 70px;
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    border-top:1px solid rgba(242,238,230,.13);
+    padding:55px 5vw 35px;
 }
 
-.mock-lines{
-  height:5px;
-  background:currentColor;
-  opacity:.15;
-  margin:10px 0;
-  width:80%;
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
 }
 
-
-/* CARD INFORMATION */
-
-.meta{
-  display:flex;
-  justify-content:space-between;
-  padding:22px;
+.footer-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:44px;
+    letter-spacing:.12em;
 }
 
-.meta small{
-  font-size:9px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#777;
+.footer-copy{
+    max-width:300px;
+    font-size:12px;
+    line-height:1.8;
+    color:rgba(242,238,230,.5);
 }
 
-.meta h3{
-  font:400 28px Georgia,serif;
-  margin:7px 0;
+.footer-bottom{
+    margin-top:90px;
+    display:flex;
+    justify-content:space-between;
+    padding-top:20px;
+    border-top:1px solid rgba(242,238,230,.1);
+    font-size:9px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    opacity:.35;
 }
 
-.arrow{
-  font-size:24px;
-}
-
-
-/* FOOTER */
-
-footer{
-  padding:70px 0;
-  border-top:1px solid #292927;
-  color:#777;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
-  .grid{
-    grid-template-columns:1fr;
-  }
+    .nav{
+        padding:23px 5vw;
+    }
 
-  .visual{
-    height:390px;
-  }
+    .logo{
+        font-size:23px;
+    }
 
-  h1{
-    letter-spacing:-3px;
-  }
+    .nav-right{
+        gap:15px;
+        font-size:9px;
+    }
 
-  .section-head{
-    display:block;
-  }
+    .nav-right a:first-child{
+        display:none;
+    }
 
-  .section-head span{
-    display:block;
-    margin-bottom:20px;
-  }
+    .hero{
+        min-height:67vh;
+        padding-top:8vh;
+    }
 
-  .mock{
-    width:82%;
-  }
+    .hero h1{
+        font-size:20vw;
+        line-height:.86;
+    }
 
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        margin-top:60px;
+    }
+
+    .hero-bottom p{
+        font-size:13px;
+    }
+
+    .notice{
+        grid-template-columns:1fr;
+        gap:16px;
+        margin:0 5vw;
+    }
+
+    .collection{
+        padding:90px 5vw 100px;
+    }
+
+    .section-head{
+        margin-bottom:35px;
+    }
+
+    .section-head h2{
+        font-size:48px;
+    }
+
+    .section-head span{
+        display:none;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .card-info{
+        padding:20px 16px 24px;
+    }
+
+    .card-title{
+        font-size:25px;
+    }
+
+    .feature{
+        padding:0 5vw 100px;
+    }
+
+    .feature-image{
+        height:55vh;
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
+
+    .footer-bottom{
+        margin-top:60px;
+        flex-direction:column;
+        gap:10px;
+    }
 }
 </style>
 </head>
 
-
 <body>
 
-
-<!-- LOADING SCREEN -->
-
-<div class="loader">
-
-  <div class="loader-inner">
-
-    <div class="loader-logo">
-      SOVEREN
+<!-- LOADER -->
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <div class="loader-logo">SOVEREN</div>
+        <div class="loader-line"></div>
     </div>
-
-    <div class="loader-line"></div>
-
-  </div>
-
 </div>
 
+<!-- NAV -->
+<nav class="nav">
 
+    <a href="index.html" class="logo">
+        SOVEREN
+    </a>
 
-<main>
+    <div class="nav-right">
+        <a href="index.html">Studio</a>
+        <a href="templates.html">Templates</a>
+    </div>
+
+</nav>
 
 
 <!-- HERO -->
+<section class="hero">
 
-<header>
+    <div class="eyebrow">
+        Soveren · Selected Concepts
+    </div>
 
-  <div class="kicker">
-    Soveren · Selected concepts
-  </div>
+    <h1>
+        Ideas<br>
+        made to<br>
+        feel real.
+    </h1>
 
-  <h1>
-    Ideas made<br>
-    to feel <em>real.</em>
-  </h1>
+    <div class="hero-bottom">
 
-  <p class="intro">
-    A collection of fictional website concepts created by
-    Soveren to demonstrate our approach to design,
-    interaction and digital presentation.
-  </p>
+        <p>
+            A collection of fictional digital concepts created by
+            Soveren to explore different industries, visual languages
+            and digital experiences.
+        </p>
 
-</header>
-
-
-
-<!-- DISCLAIMER -->
-
-<div class="notice">
-
-  <strong>
-    CONCEPT COLLECTION
-  </strong>
-
-  <br><br>
-
-  These websites are fictional concept projects created
-  by Soveren to showcase what we can design and build.
-  They are not active businesses or client websites.
-  Some interactions are intentionally non-functional and
-  exist for presentation purposes only.
-
-</div>
-
-
-
-<!-- TEMPLATES -->
-
-<section>
-
-  <div class="section-head">
-
-    <span>
-      01 / The collection
-    </span>
-
-    <h2>
-      Selected work
-    </h2>
-
-  </div>
-
-
-
-  <div class="grid">
-
-
-    <!-- FASHION -->
-
-    <a
-      class="card"
-      href="templates/fashion.html"
-    >
-
-      <div class="visual">
-
-        <div class="mock">
-
-          <small>
-            ATELIER / 01
-          </small>
-
-          <div class="mock-title">
-            A quieter<br>
-            kind of luxury.
-          </div>
-
-          <div class="mock-lines"></div>
-
-          <div class="mock-lines"></div>
-
+        <div class="scroll-note">
+            Scroll to explore
         </div>
 
-      </div>
-
-
-      <div class="meta">
-
-        <div>
-
-          <small>
-            Fashion / Editorial
-          </small>
-
-          <h3>
-            Atelier No. 01
-          </h3>
-
-        </div>
-
-        <div class="arrow">
-          ↗
-        </div>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- RESTAURANT -->
-
-    <a
-      class="card"
-      href="templates/restaurant.html"
-    >
-
-      <div class="visual v2">
-
-        <div class="mock">
-
-          <small>
-            MAISON / 02
-          </small>
-
-          <div class="mock-title">
-            Taste,<br>
-            elevated.
-          </div>
-
-          <div class="mock-lines"></div>
-
-          <div class="mock-lines"></div>
-
-        </div>
-
-      </div>
-
-
-      <div class="meta">
-
-        <div>
-
-          <small>
-            Restaurant / Hospitality
-          </small>
-
-          <h3>
-            Maison Noire
-          </h3>
-
-        </div>
-
-        <div class="arrow">
-          ↗
-        </div>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- GAMING -->
-
-    <a
-      class="card"
-      href="templates/gaming.html"
-    >
-
-      <div class="visual v3">
-
-        <div class="mock dark">
-
-          <small>
-            VOID / 03
-          </small>
-
-          <div class="mock-title">
-            Enter<br>
-            the unknown.
-          </div>
-
-          <div class="mock-lines"></div>
-
-          <div class="mock-lines"></div>
-
-        </div>
-
-      </div>
-
-
-      <div class="meta">
-
-        <div>
-
-          <small>
-            Gaming / Digital
-          </small>
-
-          <h3>
-            VOID Protocol
-          </h3>
-
-        </div>
-
-        <div class="arrow">
-          ↗
-        </div>
-
-      </div>
-
-    </a>
-
-
-
-    <!-- LUXURY -->
-
-    <a
-      class="card"
-      href="templates/luxury.html"
-    >
-
-      <div class="visual v4">
-
-        <div class="mock">
-
-          <small>
-            FORM / 04
-          </small>
-
-          <div class="mock-title">
-            Objects<br>
-            with presence.
-          </div>
-
-          <div class="mock-lines"></div>
-
-          <div class="mock-lines"></div>
-
-        </div>
-
-      </div>
-
-
-      <div class="meta">
-
-        <div>
-
-          <small>
-            Luxury / Product
-          </small>
-
-          <h3>
-            Form Objects
-          </h3>
-
-        </div>
-
-        <div class="arrow">
-          ↗
-        </div>
-
-      </div>
-
-    </a>
-
-
-  </div>
+    </div>
 
 </section>
 
 
+<!-- NOTICE -->
+<section class="notice">
 
-<footer>
+    <div class="notice-label">
+        Concept Collection
+    </div>
 
-  Soveren — Digital studio · India / Worldwide
+    <p>
+        These websites are fictional concept projects created by
+        Soveren to showcase what we can design and build. They are
+        not active businesses or client websites. Some interactions
+        are intentionally non-functional and exist for presentation
+        purposes only.
+    </p>
+
+</section>
+
+
+<!-- COLLECTION -->
+<section class="collection">
+
+    <div class="section-head">
+
+        <h2>
+            Selected<br>
+            Work
+        </h2>
+
+        <span>
+            04 Concepts
+        </span>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <!-- FASHION -->
+
+        <a href="fashion.html" class="card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85"
+                    alt="Fashion concept"
+                >
+
+            </div>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    Atelier No. 01
+                </div>
+
+                <div class="card-meta">
+                    Fashion<br>
+                    Editorial
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- RESTAURANT -->
+
+        <a href="restaurant.html" class="card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=85"
+                    alt="Restaurant concept"
+                >
+
+            </div>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    Maison Noire
+                </div>
+
+                <div class="card-meta">
+                    Restaurant<br>
+                    Hospitality
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- GAMING -->
+
+        <a href="gaming.html" class="card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=85"
+                    alt="Gaming concept"
+                >
+
+            </div>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    VOID Protocol
+                </div>
+
+                <div class="card-meta">
+                    Gaming<br>
+                    Digital
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- LUXURY PRODUCT -->
+
+        <a href="luxury.html" class="card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1800&q=85"
+                    alt="Luxury product concept"
+                >
+
+            </div>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    Form Objects
+                </div>
+
+                <div class="card-meta">
+                    Luxury<br>
+                    Product
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- FEATURE IMAGE -->
+<section class="feature">
+
+    <div class="feature-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=85"
+            alt="Soveren editorial concept"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-logo">
+            SOVEREN
+        </div>
+
+        <div class="footer-copy">
+            Digital experiences, websites and visual systems
+            designed with intention.
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            Soveren — Digital Studio
+        </span>
+
+        <span>
+            India / Worldwide
+        </span>
+
+    </div>
 
 </footer>
 
 
-</main>
+<script>
+
+window.addEventListener("load", function(){
+
+    setTimeout(function(){
+
+        document.getElementById("loader").classList.add("hide");
+
+    }, 1800);
+
+});
+
+</script>
 
 </body>
 </html>
