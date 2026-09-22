@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Noir Atelier — Fashion / Ecommerce Concept</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#11110f;
+    color:#eee9df;
+    font-family:Inter,Arial,sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    display:block;
+    width:100%;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#11110f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .9s ease,visibility .9s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:42px;
+    letter-spacing:.24em;
+    margin-left:.24em;
+}
+
+.loader-sub{
+    margin-top:12px;
+    font-size:8px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.loader-line{
+    width:100px;
+    height:1px;
+    background:#eee9df;
+    margin:22px auto 0;
+    transform:scaleX(0);
+    transform-origin:left;
+    animation:loadLine 1.7s ease forwards;
+}
+
+@keyframes loadLine{
+    to{
+        transform:scaleX(1);
+    }
+}
+
+
+/* =========================
+   CONCEPT BAR
+========================= */
+
+.concept-bar{
+    width:100%;
+    padding:9px 20px;
+    background:#eee9df;
+    color:#11110f;
+    text-align:center;
+    font-size:8px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+.nav{
+    position:absolute;
+    top:32px;
+    left:0;
+    width:100%;
+    z-index:50;
+    padding:28px 5vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    mix-blend-mode:difference;
+}
+
+.logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:27px;
+    letter-spacing:.2em;
+}
+
+.nav-links{
+    display:flex;
+    gap:34px;
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.nav-links a{
+    position:relative;
+    opacity:.75;
+    transition:opacity .3s ease;
+}
+
+.nav-links a:hover{
+    opacity:1;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+}
+
+.hero-image{
+    position:absolute;
+    inset:0;
+}
+
+.hero-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.7),
+            rgba(0,0,0,.08) 60%,
+            rgba(0,0,0,.2)
+        );
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.72) saturate(.72);
+    animation:heroZoom 2.4s cubic-bezier(.2,.7,.2,1) both;
+}
+
+@keyframes heroZoom{
+    from{
+        transform:scale(1.08);
+    }
+    to{
+        transform:scale(1);
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    padding:0 5vw 8vh;
+}
+
+.hero-label{
+    font-size:9px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    opacity:.6;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    max-width:1000px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(75px,13vw,190px);
+    line-height:.78;
+    font-weight:400;
+    letter-spacing:-.05em;
+}
+
+.hero-bottom{
+    margin-top:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.hero-description{
+    max-width:380px;
+    font-size:12px;
+    line-height:1.8;
+    color:rgba(238,233,223,.65);
+}
+
+.hero-number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:24px;
+    opacity:.6;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    padding:150px 5vw;
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:8vw;
+}
+
+.intro-label{
+    font-size:9px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.intro-text{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(38px,5vw,70px);
+    line-height:1.02;
+    font-weight:400;
+    letter-spacing:-.02em;
+}
+
+.intro-text span{
+    opacity:.38;
+}
+
+
+/* =========================
+   LARGE IMAGE
+========================= */
+
+.image-section{
+    padding:0 5vw 150px;
+}
+
+.large-image{
+    height:78vh;
+    overflow:hidden;
+}
+
+.large-image img{
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.65);
+    transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.large-image:hover img{
+    transform:scale(1.025);
+}
+
+
+/* =========================
+   COLLECTION
+========================= */
+
+.collection{
+    padding:0 5vw 170px;
+}
+
+.collection-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding-bottom:45px;
+    border-bottom:1px solid rgba(238,233,223,.16);
+    margin-bottom:2px;
+}
+
+.collection-head h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(50px,7vw,90px);
+    font-weight:400;
+    line-height:.85;
+}
+
+.collection-head span{
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+}
+
+.product{
+    background:#181815;
+    overflow:hidden;
+}
+
+.product-image{
+    aspect-ratio:3/4;
+    overflow:hidden;
+}
+
+.product-image img{
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.68);
+    transition:
+        transform .9s cubic-bezier(.2,.7,.2,1),
+        filter .8s ease;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.04);
+    filter:saturate(.95);
+}
+
+.product-info{
+    padding:22px 20px 27px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.product-name{
+    font-family:"Cormorant Garamond",serif;
+    font-size:24px;
+}
+
+.product-detail{
+    text-align:right;
+    font-size:8px;
+    line-height:1.8;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    opacity:.38;
+}
+
+
+/* =========================
+   STATEMENT
+========================= */
+
+.statement{
+    padding:150px 5vw;
+    border-top:1px solid rgba(238,233,223,.12);
+    border-bottom:1px solid rgba(238,233,223,.12);
+    text-align:center;
+}
+
+.statement p{
+    max-width:1000px;
+    margin:auto;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(45px,7vw,100px);
+    line-height:.92;
+    font-weight:400;
+    letter-spacing:-.035em;
+}
+
+
+/* =========================
+   EDITORIAL
+========================= */
+
+.editorial{
+    padding:150px 5vw;
+}
+
+.editorial-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:2px;
+    align-items:stretch;
+}
+
+.editorial-image{
+    min-height:750px;
+    overflow:hidden;
+}
+
+.editorial-image img{
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.65);
+}
+
+.editorial-copy{
+    background:#e7e0d4;
+    color:#151512;
+    padding:8vw 6vw;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.editorial-copy .small{
+    font-size:8px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.5;
+}
+
+.editorial-copy h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(50px,6vw,85px);
+    line-height:.86;
+    font-weight:400;
+}
+
+.editorial-copy p{
+    max-width:330px;
+    font-size:12px;
+    line-height:1.9;
+    opacity:.65;
+}
+
+
+/* =========================
+   PHILOSOPHY
+========================= */
+
+.philosophy{
+    padding:150px 5vw;
+}
+
+.philosophy-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:90px;
+}
+
+.philosophy-top span{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.philosophy-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:70px;
+}
+
+.philosophy-item{
+    border-top:1px solid rgba(238,233,223,.18);
+    padding-top:22px;
+}
+
+.philosophy-number{
+    font-size:9px;
+    opacity:.35;
+    margin-bottom:45px;
+}
+
+.philosophy-item h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:38px;
+    font-weight:400;
+    margin-bottom:22px;
+}
+
+.philosophy-item p{
+    font-size:11px;
+    line-height:1.9;
+    color:rgba(238,233,223,.52);
+}
+
+
+/* =========================
+   JOURNAL
+========================= */
+
+.journal{
+    padding:0 5vw 160px;
+}
+
+.journal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:55px;
+}
+
+.journal-head h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:75px;
+    font-weight:400;
+    line-height:.85;
+}
+
+.journal-head span{
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    opacity:.4;
+}
+
+.journal-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:35px;
+}
+
+.article{
+    border-top:1px solid rgba(238,233,223,.17);
+    padding-top:18px;
+}
+
+.article-meta{
+    font-size:8px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    opacity:.4;
+    margin-bottom:65px;
+}
+
+.article h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+    font-weight:400;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.article p{
+    font-size:10px;
+    line-height:1.8;
+    color:rgba(238,233,223,.48);
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    padding:160px 5vw;
+    text-align:center;
+    background:#e7e0d4;
+    color:#151512;
+}
+
+.cta-label{
+    font-size:9px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    opacity:.45;
+    margin-bottom:35px;
+}
+
+.cta h2{
+    max-width:1000px;
+    margin:auto;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(60px,9vw,125px);
+    line-height:.82;
+    font-weight:400;
+    letter-spacing:-.04em;
+}
+
+.cta-button{
+    display:inline-block;
+    margin-top:55px;
+    padding:17px 34px;
+    border:1px solid rgba(21,21,18,.4);
+    font-size:9px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    transition:
+        background .3s ease,
+        color .3s ease;
+}
+
+.cta-button:hover{
+    background:#151512;
+    color:#e7e0d4;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    padding:55px 5vw 35px;
+    background:#11110f;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.footer-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:45px;
+    letter-spacing:.13em;
+}
+
+.footer-copy{
+    max-width:330px;
+    font-size:11px;
+    line-height:1.9;
+    color:rgba(238,233,223,.45);
+}
+
+.footer-bottom{
+    margin-top:90px;
+    padding-top:20px;
+    border-top:1px solid rgba(238,233,223,.1);
+    display:flex;
+    justify-content:space-between;
+    font-size:8px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    opacity:.3;
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .nav{
+        top:27px;
+        padding:22px 5vw;
+    }
+
+    .nav-links{
+        gap:16px;
+        font-size:8px;
+    }
+
+    .hero{
+        min-height:88vh;
+    }
+
+    .hero h1{
+        font-size:21vw;
+    }
+
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .intro{
+        grid-template-columns:1fr;
+        gap:35px;
+        padding:100px 5vw;
+    }
+
+    .intro-text{
+        font-size:47px;
+    }
+
+    .large-image{
+        height:60vh;
+    }
+
+    .collection{
+        padding-bottom:100px;
+    }
+
+    .collection-head{
+        align-items:flex-start;
+        gap:30px;
+    }
+
+    .collection-head h2{
+        font-size:55px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .statement{
+        padding:100px 5vw;
+    }
+
+    .statement p{
+        font-size:52px;
+    }
+
+    .editorial{
+        padding:100px 5vw;
+    }
+
+    .editorial-grid{
+        grid-template-columns:1fr;
+    }
+
+    .editorial-image{
+        min-height:60vh;
+    }
+
+    .editorial-copy{
+        min-height:600px;
+        padding:55px 30px;
+    }
+
+    .philosophy{
+        padding:100px 5vw;
+    }
+
+    .philosophy-grid{
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .journal{
+        padding-bottom:100px;
+    }
+
+    .journal-head h2{
+        font-size:55px;
+    }
+
+    .journal-grid{
+        grid-template-columns:1fr;
+        gap:55px;
+    }
+
+    .cta{
+        padding:110px 5vw;
+    }
+
+    .cta h2{
+        font-size:67px;
+    }
+
+    .footer-top{
+        flex-direction:column;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- LOADER -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-logo">
+            NOIR ATELIER
+        </div>
+
+        <div class="loader-sub">
+            A Soveren Concept
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
+
+
+<!-- CONCEPT BAR -->
+
+<div class="concept-bar">
+    Fictional concept website · Designed by Soveren · Showcase purposes only
+</div>
+
+
+<!-- NAV -->
+
+<nav class="nav">
+
+    <a href="templates.html" class="logo">
+        NOIR
+    </a>
+
+    <div class="nav-links">
+
+        <a href="#collection">
+            Collection
+        </a>
+
+        <a href="#journal">
+            Journal
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=2200&q=90"
+            alt="Noir Atelier fashion editorial"
+        >
+
+    </div>
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            Autumn / Winter — 2026
+        </div>
+
+        <h1>
+            Quiet<br>
+            Forms.
+        </h1>
+
+        <div class="hero-bottom">
+
+            <p class="hero-description">
+                A study in restraint, silhouette and material.
+                Noir Atelier explores contemporary fashion through
+                precise forms and considered details.
+            </p>
+
+            <div class="hero-number">
+                01 / 08
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro reveal">
+
+    <div class="intro-label">
+        The Atelier
+    </div>
+
+    <div class="intro-text">
+
+        Designed without excess.
+        <span>
+            Every garment begins with proportion,
+            material and movement.
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- LARGE IMAGE -->
+
+<section class="image-section reveal">
+
+    <div class="large-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=2200&q=90"
+            alt="Noir Atelier editorial"
+        >
+
+    </div>
+
+</section>
+
+
+<!-- COLLECTION -->
+
+<section class="collection reveal" id="collection">
+
+    <div class="collection-head">
+
+        <h2>
+            The<br>
+            Collection
+        </h2>
+
+        <span>
+            Autumn / Winter 2026
+        </span>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir coat"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    The Long Coat
+                </div>
+
+                <div class="product-detail">
+                    Wool<br>
+                    01 / 08
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir silhouette"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Form No. 02
+                </div>
+
+                <div class="product-detail">
+                    Silk<br>
+                    02 / 08
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir Atelier garment"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    The Structure
+                </div>
+
+                <div class="product-detail">
+                    Cotton<br>
+                    03 / 08
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- STATEMENT -->
+
+<section class="statement reveal">
+
+    <p>
+        "Clothing should not
+        announce itself.
+        It should become
+        part of the person."
+    </p>
+
+</section>
+
+
+<!-- EDITORIAL -->
+
+<section class="editorial reveal">
+
+    <div class="editorial-grid">
+
+        <div class="editorial-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=90"
+                alt="Noir Atelier editorial portrait"
+            >
+
+        </div>
+
+        <div class="editorial-copy">
+
+            <div class="small">
+                Editorial / 01
+            </div>
+
+            <h2>
+                Between<br>
+                shadow<br>
+                & form.
+            </h2>
+
+            <p>
+                A visual exploration of the spaces between
+                structure and softness. Noir Atelier's
+                language is intentionally quiet, allowing
+                the wearer to complete the image.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PHILOSOPHY -->
+
+<section class="philosophy reveal">
+
+    <div class="philosophy-top">
+
+        <span>
+            Our Philosophy
+        </span>
+
+        <span>
+            03 Principles
+        </span>
+
+    </div>
+
+
+    <div class="philosophy-grid">
+
+
+        <div class="philosophy-item">
+
+            <div class="philosophy-number">
+                01
+            </div>
+
+            <h3>
+                Restraint
+            </h3>
+
+            <p>
+                Remove what does not need to be there.
+                The strongest silhouettes often begin
+                with simplicity.
+            </p>
+
+        </div>
+
+
+        <div class="philosophy-item">
+
+            <div class="philosophy-number">
+                02
+            </div>
+
+            <h3>
+                Material
+            </h3>
+
+            <p>
+                Texture, weight and movement define
+                the character of every piece before
+                decoration enters the conversation.
+            </p>
+
+        </div>
+
+
+        <div class="philosophy-item">
+
+            <div class="philosophy-number">
+                03
+            </div>
+
+            <h3>
+                Longevity
+            </h3>
+
+            <p>
+                Design should outlast the moment.
+                Each form is created to remain relevant
+                               Each form is created to remain relevant
+                beyond a single season.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JOURNAL -->
+
+<section class="journal reveal" id="journal">
+
+    <div class="journal-head">
+
+        <h2>
+            Journal
+        </h2>
+
+        <span>
+            Notes from the Atelier
+        </span>
+
+    </div>
+
+
+    <div class="journal-grid">
+
+
+        <article class="article">
+
+            <div class="article-meta">
+                01 — Material
+            </div>
+
+            <h3>
+                Why texture matters
+            </h3>
+
+            <p>
+                The surface of a garment changes how
+                light moves across the body. Material
+                becomes part of the visual language.
+            </p>
+
+        </article>
+
+
+        <article class="article">
+
+            <div class="article-meta">
+                02 — Form
+            </div>
+
+            <h3>
+                The architecture of clothing
+            </h3>
+
+            <p>
+                A silhouette is a structure. Proportion,
+                balance and negative space determine
+                how a garment exists in motion.
+            </p>
+
+        </article>
+
+
+        <article class="article">
+
+            <div class="article-meta">
+                03 — Process
+            </div>
+
+            <h3>
+                Behind the quiet
+            </h3>
+
+            <p>
+                Our process begins slowly. References,
+                materials and sketches are reduced until
+                only the essential idea remains.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta reveal" id="contact">
+
+    <div class="cta-label">
+        Noir Atelier
+    </div>
+
+    <h2>
+        Enter the<br>
+        collection.
+    </h2>
+
+    <a href="#" class="cta-button">
+        Explore Collection
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div class="footer-logo">
+            NOIR ATELIER
+        </div>
+
+        <div class="footer-copy">
+            A fictional fashion concept designed and developed
+            by Soveren as part of its digital template collection.
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            Noir Atelier · Fictional Concept
+        </span>
+
+        <span>
+            Designed by Soveren
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* LOADER */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        document
+            .getElementById("loader")
+            .classList
+            .add("hide");
+
+    },1900);
+
+});
+
+
+/* SCROLL REVEAL */
+
+const revealItems = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+                revealObserver.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.12
+    }
+
+);
+
+revealItems.forEach(function(item){
+
+    revealObserver.observe(item);
+
+});
+
+</script>
+
+</body>
+</html>
+
+
+    
