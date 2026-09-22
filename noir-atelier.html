@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Noir Atelier — Collection</title>
+<title>Noir Atelier — Soveren</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,9 +24,9 @@ html{
 }
 
 body{
-    background:#11100f;
-    color:#f1ede6;
-    font-family:"Inter",Arial,sans-serif;
+    background:#0b0b0a;
+    color:#f2eee6;
+    font-family:Inter,Arial,sans-serif;
     font-weight:300;
     overflow-x:hidden;
 }
@@ -36,36 +36,22 @@ a{
     text-decoration:none;
 }
 
-img{
-    width:100%;
-    display:block;
-}
-
-
-/* =========================================================
-   LOADER
-========================================================= */
+/* LOADER */
 
 .loader{
     position:fixed;
     inset:0;
+    background:#0b0b0a;
     z-index:9999;
-
-    background:#11100f;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    transition:
-        opacity .9s ease,
-        visibility .9s ease;
+    transition:opacity .8s ease,visibility .8s ease;
 }
 
 .loader.hide{
     opacity:0;
     visibility:hidden;
-    pointer-events:none;
 }
 
 .loader-inner{
@@ -74,22 +60,18 @@ img{
 
 .loader-logo{
     font-family:"Cormorant Garamond",serif;
-    font-size:32px;
-    letter-spacing:.25em;
-    margin-left:.25em;
+    font-size:34px;
+    letter-spacing:.22em;
+    margin-left:.22em;
 }
 
 .loader-line{
     width:90px;
     height:1px;
-
+    background:#f2eee6;
     margin:18px auto 0;
-
-    background:#f1ede6;
-
     transform:scaleX(0);
     transform-origin:left;
-
     animation:loaderLine 1.5s ease forwards;
 }
 
@@ -99,344 +81,197 @@ img{
     }
 }
 
-
-/* =========================================================
-   NAV
-========================================================= */
+/* NAV */
 
 .nav{
     position:absolute;
     top:0;
     left:0;
-
     width:100%;
-    z-index:50;
-
     padding:28px 5vw;
-
     display:flex;
-    align-items:center;
     justify-content:space-between;
-
-    color:#fff;
+    align-items:center;
+    z-index:20;
 }
 
 .logo{
     font-family:"Cormorant Garamond",serif;
-    font-size:27px;
+    font-size:28px;
     letter-spacing:.18em;
-}
-
-.nav-center{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-
-    display:flex;
-    gap:34px;
-
-    font-size:10px;
-    letter-spacing:.17em;
-    text-transform:uppercase;
-}
-
-.nav-center a{
-    opacity:.7;
-    transition:opacity .3s ease;
-}
-
-.nav-center a:hover{
-    opacity:1;
 }
 
 .nav-right{
     display:flex;
     align-items:center;
-    gap:18px;
-
+    gap:34px;
     font-size:10px;
-    letter-spacing:.15em;
+    letter-spacing:.16em;
     text-transform:uppercase;
 }
 
-.nav-icon{
-    width:30px;
-    height:30px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid rgba(255,255,255,.4);
-    border-radius:50%;
-
-    font-size:10px;
-
-    transition:
-        background .3s ease,
-        color .3s ease;
+.nav-right a{
+    opacity:.7;
+    transition:opacity .3s ease;
 }
 
-.nav-icon:hover{
-    background:#fff;
-    color:#11100f;
+.nav-right a:hover{
+    opacity:1;
 }
 
-
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     position:relative;
-
-    min-height:100svh;
-
+    min-height:100vh;
     display:flex;
     align-items:flex-end;
-
     padding:0 5vw 7vh;
-
     overflow:hidden;
 }
 
 .hero-image{
     position:absolute;
     inset:0;
-
     z-index:0;
 }
 
 .hero-image img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
-    filter:
-        brightness(.58)
-        saturate(.65);
-
-    transform:scale(1.03);
-
-    animation:heroImage 2s cubic-bezier(.2,.7,.2,1) forwards;
-}
-
-@keyframes heroImage{
-    to{
-        transform:scale(1);
-    }
+    filter:brightness(.55) saturate(.72);
+    transform:scale(1.02);
 }
 
 .hero-overlay{
     position:absolute;
     inset:0;
-
     background:
         linear-gradient(
             to top,
-            rgba(17,16,15,.82),
-            rgba(17,16,15,.05) 65%
+            rgba(11,11,10,.95) 0%,
+            rgba(11,11,10,.35) 48%,
+            rgba(11,11,10,.2) 100%
         );
+    z-index:1;
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-
     width:100%;
 }
 
-.hero-kicker{
-    margin-bottom:20px;
-
+.hero-category{
     font-size:10px;
-    letter-spacing:.25em;
+    letter-spacing:.22em;
     text-transform:uppercase;
-
-    opacity:.7;
+    opacity:.65;
+    margin-bottom:24px;
 }
 
 .hero h1{
-    max-width:1000px;
-
     font-family:"Cormorant Garamond",serif;
-    font-weight:300;
-
-    font-size:clamp(75px,12vw,180px);
-
+    font-weight:400;
+    font-size:clamp(75px,14vw,190px);
     line-height:.78;
-
-    letter-spacing:-.045em;
+    letter-spacing:-.05em;
+    max-width:1000px;
 }
 
 .hero-bottom{
-    margin-top:45px;
-
+    margin-top:50px;
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
+    gap:40px;
 }
 
 .hero-description{
-    max-width:390px;
-
+    max-width:420px;
     font-size:13px;
     line-height:1.8;
-
-    color:rgba(255,255,255,.7);
+    color:rgba(242,238,230,.65);
 }
 
-.hero-link{
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    font-size:10px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-
-    opacity:.75;
-
-    transition:opacity .3s ease;
+.hero-number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    opacity:.6;
 }
 
-.hero-link::after{
-    content:"→";
-
-    font-size:16px;
-
-    transition:transform .3s ease;
-}
-
-.hero-link:hover{
-    opacity:1;
-}
-
-.hero-link:hover::after{
-    transform:translateX(5px);
-}
-
-
-/* =========================================================
-   INTRO
-========================================================= */
+/* INTRO */
 
 .intro{
-    padding:150px 10vw;
-
+    padding:150px 5vw;
     display:grid;
-    grid-template-columns:1fr 1.5fr;
-
-    gap:100px;
+    grid-template-columns:220px 1fr;
+    gap:70px;
+    border-bottom:1px solid rgba(242,238,230,.12);
 }
 
 .intro-label{
     font-size:10px;
-    letter-spacing:.22em;
+    letter-spacing:.2em;
     text-transform:uppercase;
-
     opacity:.4;
 }
 
-.intro-copy{
-    max-width:720px;
+.intro-content{
+    max-width:850px;
 }
 
-.intro-copy h2{
+.intro-content h2{
     font-family:"Cormorant Garamond",serif;
-    font-size:clamp(42px,5vw,75px);
-    font-weight:400;
-
+    font-size:clamp(42px,6vw,82px);
     line-height:.95;
-
-    margin-bottom:40px;
+    font-weight:400;
+    margin-bottom:45px;
 }
 
-.intro-copy p{
-    max-width:580px;
-
+.intro-content p{
+    max-width:620px;
     font-size:14px;
     line-height:1.9;
-
-    color:rgba(241,237,230,.58);
+    color:rgba(242,238,230,.58);
 }
 
+/* PRODUCT */
 
-/* =========================================================
-   EDITORIAL IMAGE
-========================================================= */
-
-.editorial{
-    padding:0 5vw 160px;
+.products{
+    padding:150px 5vw;
 }
 
-.editorial-image{
-    height:80vh;
-    overflow:hidden;
-}
-
-.editorial-image img{
-    height:100%;
-    object-fit:cover;
-
-    filter:saturate(.7);
-
-    transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
-}
-
-.editorial-image:hover img{
-    transform:scale(1.025);
-}
-
-
-/* =========================================================
-   COLLECTION
-========================================================= */
-
-.collection{
-    padding:0 5vw 170px;
-}
-
-.collection-header{
+.section-heading{
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
-
-    margin-bottom:60px;
+    margin-bottom:65px;
 }
 
-.collection-header h2{
+.section-heading h2{
     font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(50px,7vw,100px);
-
+    font-size:clamp(45px,6vw,80px);
     font-weight:400;
-
-    line-height:.85;
+    line-height:.9;
 }
 
-.collection-header span{
+.section-heading span{
     font-size:10px;
     letter-spacing:.18em;
     text-transform:uppercase;
-
     opacity:.4;
 }
 
-.products{
+.product-grid{
     display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:3px;
+    grid-template-columns:repeat(2,1fr);
+    gap:2px;
 }
 
 .product{
-    position:relative;
-
-    background:#171615;
-
+    background:#141413;
     overflow:hidden;
 }
 
@@ -446,14 +281,14 @@ img{
 }
 
 .product-image img{
+    width:100%;
     height:100%;
     object-fit:cover;
-
+    display:block;
     filter:saturate(.7);
-
     transition:
         transform .8s cubic-bezier(.2,.7,.2,1),
-        filter .7s ease;
+        filter .8s ease;
 }
 
 .product:hover .product-image img{
@@ -462,174 +297,91 @@ img{
 }
 
 .product-info{
-    padding:20px 18px 25px;
-
+    padding:24px 22px 28px;
     display:flex;
     justify-content:space-between;
-
     gap:20px;
 }
 
 .product-name{
     font-family:"Cormorant Garamond",serif;
-    font-size:24px;
+    font-size:28px;
 }
 
 .product-price{
     font-size:10px;
     letter-spacing:.12em;
-
+    text-transform:uppercase;
     opacity:.45;
+    padding-top:7px;
 }
 
+/* EDITORIAL */
 
-/* =========================================================
-   STATEMENT
-========================================================= */
-
-.statement{
-    min-height:75vh;
-
-    padding:100px 10vw;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    border-top:1px solid rgba(241,237,230,.1);
-    border-bottom:1px solid rgba(241,237,230,.1);
+.editorial{
+    padding:0 5vw 150px;
 }
 
-.statement h2{
-    max-width:1100px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(48px,7vw,105px);
-
-    font-weight:300;
-
-    line-height:.92;
-
-    letter-spacing:-.035em;
-}
-
-
-/* =========================================================
-   SPLIT SECTION
-========================================================= */
-
-.split{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    min-height:85vh;
-}
-
-.split-image{
+.editorial-image{
+    width:100%;
+    height:75vh;
     overflow:hidden;
 }
 
-.split-image img{
+.editorial-image img{
+    width:100%;
     height:100%;
     object-fit:cover;
-
     filter:saturate(.7);
 }
 
-.split-content{
-    padding:10vw 8vw;
-
+.editorial-caption{
     display:flex;
-    flex-direction:column;
-    justify-content:center;
-
-    background:#151413;
-}
-
-.split-label{
-    margin-bottom:30px;
-
+    justify-content:space-between;
+    gap:30px;
+    padding-top:18px;
     font-size:10px;
-    letter-spacing:.22em;
+    letter-spacing:.12em;
     text-transform:uppercase;
-
-    opacity:.4;
+    opacity:.38;
 }
 
-.split-content h2{
+/* STATEMENT */
+
+.statement{
+    padding:140px 5vw;
+    border-top:1px solid rgba(242,238,230,.12);
+    border-bottom:1px solid rgba(242,238,230,.12);
+}
+
+.statement-inner{
+    max-width:1000px;
+}
+
+.statement h2{
     font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(50px,6vw,90px);
-
-    font-weight:400;
-
+    font-size:clamp(50px,8vw,115px);
     line-height:.88;
-
-    margin-bottom:35px;
+    font-weight:400;
+    letter-spacing:-.04em;
 }
 
-.split-content p{
-    max-width:430px;
-
-    font-size:13px;
-    line-height:1.9;
-
-    color:rgba(241,237,230,.55);
-}
-
-.text-link{
-    width:max-content;
-
-    margin-top:45px;
-
-    padding-bottom:8px;
-
-    border-bottom:1px solid rgba(241,237,230,.45);
-
-    font-size:10px;
-    letter-spacing:.18em;
-    text-transform:uppercase;
-
-    transition:border-color .3s ease;
-}
-
-.text-link:hover{
-    border-color:#fff;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 .footer{
     padding:80px 5vw 35px;
-
-    border-top:1px solid rgba(241,237,230,.12);
 }
 
-.footer-main{
-    display:flex;
-    justify-content:space-between;
-
+.footer-top{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
     gap:50px;
 }
 
 .footer-brand{
     font-family:"Cormorant Garamond",serif;
-
-    font-size:55px;
-
+    font-size:48px;
     letter-spacing:.12em;
-}
-
-.footer-nav{
-    display:flex;
-    gap:70px;
 }
 
 .footer-column{
@@ -639,211 +391,136 @@ img{
 }
 
 .footer-column span{
-    margin-bottom:8px;
-
     font-size:9px;
-    letter-spacing:.2em;
+    letter-spacing:.18em;
     text-transform:uppercase;
-
     opacity:.35;
+    margin-bottom:7px;
 }
 
 .footer-column a{
-    font-size:11px;
-
-    opacity:.55;
-
-    transition:opacity .3s ease;
+    font-size:12px;
+    color:rgba(242,238,230,.55);
+    transition:color .3s ease;
 }
 
 .footer-column a:hover{
-    opacity:1;
+    color:#f2eee6;
 }
 
 .footer-bottom{
     margin-top:100px;
-
     padding-top:20px;
-
-    border-top:1px solid rgba(241,237,230,.1);
-
+    border-top:1px solid rgba(242,238,230,.1);
     display:flex;
     justify-content:space-between;
-
     font-size:9px;
-
-    letter-spacing:.16em;
-
+    letter-spacing:.15em;
     text-transform:uppercase;
-
     opacity:.3;
 }
 
+/* MOBILE */
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:800px){
+@media(max-width:700px){
 
     .nav{
-        padding:22px 5vw;
+        padding:23px 5vw;
     }
 
     .logo{
-        font-size:22px;
-    }
-
-    .nav-center{
-        display:none;
+        font-size:23px;
     }
 
     .nav-right{
-        gap:10px;
+        gap:15px;
+        font-size:9px;
     }
 
-
     .hero{
-        min-height:92svh;
-
-        padding:0 5vw 7vh;
+        min-height:88vh;
+        padding-bottom:8vh;
     }
 
     .hero h1{
-        font-size:21vw;
+        font-size:22vw;
         line-height:.82;
     }
 
     .hero-bottom{
         flex-direction:column;
         align-items:flex-start;
-
-        gap:25px;
+        margin-top:40px;
     }
 
     .hero-description{
         font-size:12px;
     }
 
-
     .intro{
-        padding:100px 7vw;
-
+        padding:90px 5vw;
         grid-template-columns:1fr;
-
-        gap:40px;
+        gap:25px;
     }
 
-    .intro-copy h2{
-        font-size:48px;
-    }
-
-
-    .editorial{
-        padding:0 5vw 100px;
-    }
-
-    .editorial-image{
-        height:65vh;
-    }
-
-
-    .collection{
-        padding:0 5vw 110px;
-    }
-
-    .collection-header{
-        margin-bottom:35px;
-    }
-
-    .collection-header span{
-        display:none;
-    }
-
-    .collection-header h2{
-        font-size:55px;
+    .intro-content h2{
+        font-size:49px;
     }
 
     .products{
+        padding:90px 5vw;
+    }
+
+    .section-heading{
+        margin-bottom:35px;
+    }
+
+    .section-heading h2{
+        font-size:49px;
+    }
+
+    .section-heading span{
+        display:none;
+    }
+
+    .product-grid{
         grid-template-columns:1fr;
     }
 
-    .product-image{
-        aspect-ratio:4/5;
+    .editorial{
+        padding:0 5vw 90px;
     }
 
+    .editorial-image{
+        height:58vh;
+    }
+
+    .editorial-caption{
+        flex-direction:column;
+        gap:8px;
+    }
 
     .statement{
-        min-height:60vh;
-
-        padding:70px 7vw;
+        padding:90px 5vw;
     }
 
     .statement h2{
-        font-size:48px;
+        font-size:16vw;
     }
-
-
-    .split{
-        grid-template-columns:1fr;
-    }
-
-    .split-image{
-        height:65vh;
-    }
-
-    .split-content{
-        padding:90px 8vw;
-    }
-
-    .split-content h2{
-        font-size:55px;
-    }
-
 
     .footer{
         padding:65px 5vw 30px;
     }
 
-    .footer-main{
-        flex-direction:column;
-    }
-
-    .footer-brand{
-        font-size:42px;
-    }
-
-    .footer-nav{
+    .footer-top{
+        grid-template-columns:1fr;
         gap:45px;
     }
 
     .footer-bottom{
-        margin-top:65px;
-
+        margin-top:60px;
         flex-direction:column;
-
-        gap:12px;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    html{
-        scroll-behavior:auto;
-    }
-
-    *,
-    *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
+        gap:10px;
     }
 
 }
@@ -851,13 +528,10 @@ img{
 </style>
 </head>
 
-
 <body>
 
 
-<!-- =======================================================
-     LOADER
-======================================================= -->
+<!-- LOADER -->
 
 <div class="loader" id="loader">
 
@@ -874,40 +548,22 @@ img{
 </div>
 
 
-<!-- =======================================================
-     NAVIGATION
-======================================================= -->
+<!-- NAV -->
 
 <nav class="nav">
 
     <a href="templates.html" class="logo">
-        NOIR ATELIER
+        NOIR
     </a>
-
-    <div class="nav-center">
-
-        <a href="#collection">
-            Collection
-        </a>
-
-        <a href="#atelier">
-            Atelier
-        </a>
-
-        <a href="#story">
-            Story
-        </a>
-
-    </div>
 
     <div class="nav-right">
 
-        <a href="#">
-            Bag (0)
+        <a href="templates.html">
+            Templates
         </a>
 
-        <a href="#" class="nav-icon">
-            +
+        <a href="index.html">
+            Soveren
         </a>
 
     </div>
@@ -915,16 +571,14 @@ img{
 </nav>
 
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+<!-- HERO -->
 
 <section class="hero">
 
     <div class="hero-image">
 
         <img
-            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2400&q=90"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=90"
             alt="Noir Atelier fashion editorial"
         >
 
@@ -934,26 +588,27 @@ img{
 
     <div class="hero-content">
 
-        <div class="hero-kicker">
-            Autumn / Winter 2026
+        <div class="hero-category">
+            Noir Atelier · Collection 01
         </div>
 
         <h1>
-            Form<br>
-            in shadow.
+            Quiet<br>
+            Luxury.
         </h1>
 
         <div class="hero-bottom">
 
             <p class="hero-description">
-                A study in silhouette, texture and restraint.
-                Noir Atelier presents a quiet expression of
-                contemporary fashion.
+                A fashion concept built around restraint,
+                texture and timeless silhouettes. Designed
+                for brands that believe luxury does not need
+                to announce itself.
             </p>
 
-            <a href="#collection" class="hero-link">
-                Discover collection
-            </a>
+            <div class="hero-number">
+                01 / 04
+            </div>
 
         </div>
 
@@ -962,28 +617,27 @@ img{
 </section>
 
 
-<!-- =======================================================
-     INTRO
-======================================================= -->
+<!-- INTRO -->
 
-<section class="intro" id="story">
+<section class="intro">
 
     <div class="intro-label">
         The House
     </div>
 
-    <div class="intro-copy">
+    <div class="intro-content">
 
         <h2>
-            Designed quietly.<br>
-            Remembered deeply.
+            Designed for<br>
+            the understated.
         </h2>
 
         <p>
-            Noir Atelier explores the relationship between
-            architecture and clothing. Each piece is considered
-            as an object — reduced to its essential shape,
-            material and movement.
+            Noir Atelier is a fictional contemporary fashion house
+            exploring the relationship between architecture,
+            material and clothing. Every detail is intentionally
+            reduced to create a slower, more considered digital
+            experience.
         </p>
 
     </div>
@@ -991,55 +645,33 @@ img{
 </section>
 
 
-<!-- =======================================================
-     EDITORIAL
-======================================================= -->
+<!-- PRODUCTS -->
 
-<section class="editorial">
+<section class="products">
 
-    <div class="editorial-image">
-
-        <img
-            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2400&q=90"
-            alt="Noir Atelier editorial campaign"
-            loading="lazy"
-        >
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     COLLECTION
-======================================================= -->
-
-<section class="collection" id="collection">
-
-    <div class="collection-header">
+    <div class="section-heading">
 
         <h2>
             The Collection
         </h2>
 
         <span>
-            Autumn / Winter 2026
+            Objects / 2026
         </span>
 
     </div>
 
 
-    <div class="products">
+    <div class="product-grid">
 
 
-        <a href="#" class="product">
+        <article class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1200&q=85"
-                    alt="Structured black garment"
-                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir Atelier collection"
                 >
 
             </div>
@@ -1047,26 +679,25 @@ img{
             <div class="product-info">
 
                 <div class="product-name">
-                    The Structured Coat
+                    The Long Coat
                 </div>
 
                 <div class="product-price">
-                    €680
+                    €890
                 </div>
 
             </div>
 
-        </a>
+        </article>
 
 
-        <a href="#" class="product">
+        <article class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=1200&q=85"
-                    alt="Leather handbag"
-                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir Atelier dress"
                 >
 
             </div>
@@ -1074,7 +705,33 @@ img{
             <div class="product-info">
 
                 <div class="product-name">
-                    No. 07 Bag
+                    No. 07 Dress
+                </div>
+
+                <div class="product-price">
+                    €640
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir Atelier tailoring"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    Atelier Trousers
                 </div>
 
                 <div class="product-price">
@@ -1083,17 +740,16 @@ img{
 
             </div>
 
-        </a>
+        </article>
 
 
-        <a href="#" class="product">
+        <article class="product">
 
             <div class="product-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1200&q=85"
-                    alt="Minimal leather jacket"
-                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1400&q=85"
+                    alt="Noir Atelier editorial piece"
                 >
 
             </div>
@@ -1101,16 +757,16 @@ img{
             <div class="product-info">
 
                 <div class="product-name">
-                    Atelier Jacket
+                    Silk No. 02
                 </div>
 
                 <div class="product-price">
-                    €590
+                    €510
                 </div>
 
             </div>
 
-        </a>
+        </article>
 
 
     </div>
@@ -1118,582 +774,137 @@ img{
 </section>
 
 
-<!-- =======================================================
-     STATEMENT
-======================================================= -->
+<!-- EDITORIAL -->
 
-<section class="statement">
+<section class="editorial">
 
-    <h2>
-        “Elegance begins where excess ends.”
-    </h2>
-
-</section>
-
-
-<!-- =======================================================
-     ATELIER
-======================================================= -->
-
-<section class="split" id="atelier">
-
-    <div class="split-image">
+    <div class="editorial-image">
 
         <img
-            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=90"
-            alt="Noir Atelier studio"
-            loading="lazy"
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=90"
+            alt="Noir Atelier editorial"
         >
 
     </div>
 
-    <div class="split-content">
+    <div class="editorial-caption">
 
-        <div class="split-label">
-            The Atelier
-        </div>
+        <span>
+            Noir Atelier / Editorial 01
+        </span>
 
-        <h2>
-            Made<br>
-            with intention.
-        </h2>
-
-        <p>
-            Every Noir Atelier piece begins with material.
-            Natural textures, precise construction and
-            considered proportions come together in a process
-            that values patience over production.
-        </p>
-
-        <a href="#" class="text-link">
-            Enter the atelier
-        </a>
+        <span>
+            Paris — Milan — Worldwide
+        </span>
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     FOOTER
-======================================================= -->
+<!-- STATEMENT -->
+
+<section class="statement">
+
+    <div class="statement-inner">
+
+        <h2>
+            Less noise.<br>
+            More presence.
+        </h2>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer class="footer">
 
-    <div class="footer-main">
+    <div class="footer-top">
 
         <div class="footer-brand">
-            NOIR ATELIER
+            NOIR
         </div>
 
 
-        <div class="footer-nav">
+        <div class="footer-column">
 
-            <div class="footer-column">
+            <span>
+                Explore
+            </span>
 
-                <span>
-                    Explore
-                </span>
+            <a href="#">
+                Collection
+            </a>
 
-                <a href="#collection">
-                    Collection
-                </a>
+            <a href="#">
+                Journal
+            </a>
 
-                <a href="#atelier">
-                    Atelier
-                </a>
+            <a href="#">
+                About
+            </a>
 
-                <a href="#story">
-                    Story
-                </a>
-
-            </div>
+        </div>
 
 
-            <div class="footer-column">
+        <div class="footer-column">
 
-                <span>
-                    Information
-                </span>
+            <span>
+                Information
+            </span>
 
-                <a href="#">
-                    Contact
-                </a>
+            <a href="#">
+                Contact
+            </a>
 
-                <a href="#">
-                    Shipping
-                </a>
+            <a href="#">
+                Shipping
+            </a>
 
-                <a href="#">
-                    Instagram
-                    </a>
+            <a href="#">
+                Instagram
+            </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<div class="footer-bottom">
 
-    <span>
-        © 2026 Noir Atelier
-    </span>
+    <div class="footer-bottom">
 
-    <span>
-        Designed by Soveren
-    </span>
+        <span>
+            Noir Atelier — Fictional Concept
+        </span>
 
-</div>
+        <span>
+            A Soveren Template
+        </span>
+
+    </div>
 
 </footer>
 
 
-<!-- =========================
-     CART PANEL
-========================= -->
-
-<div class="cart-overlay" id="cartOverlay"></div>
-
-<div class="cart-panel" id="cartPanel">
-
-    <div class="cart-header">
-
-        <span>
-            Your Selection
-        </span>
-
-        <button id="closeCart">
-            Close
-        </button>
-
-    </div>
-
-    <div class="cart-items" id="cartItems">
-
-        <p class="empty-cart">
-            Your selection is currently empty.
-        </p>
-
-    </div>
-
-    <div class="cart-bottom">
-
-        <div class="cart-total">
-
-            <span>
-                Total
-            </span>
-
-            <span id="cartTotal">
-                €0
-            </span>
-
-        </div>
-
-        <button class="checkout-btn" id="checkoutBtn">
-            Checkout
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     PRODUCT QUICK VIEW
-========================= -->
-
-<div class="quick-view" id="quickView">
-
-    <div class="quick-view-inner">
-
-        <button class="quick-close" id="quickClose">
-            ×
-        </button>
-
-        <div class="quick-image">
-
-            <img id="quickImage" src="" alt="">
-
-        </div>
-
-        <div class="quick-content">
-
-            <span class="quick-category" id="quickCategory">
-                Collection
-            </span>
-
-            <h3 id="quickTitle">
-                Product
-            </h3>
-
-            <p id="quickDescription">
-                A considered piece from the Noir Atelier collection.
-            </p>
-
-            <div class="quick-price" id="quickPrice">
-                €0
-            </div>
-
-            <button class="quick-add" id="quickAdd">
-                Add to Selection
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     SCRIPT
-========================= -->
-
 <script>
 
-document.addEventListener("DOMContentLoaded", function(){
-
-    /* =========================
-       LOADER
-    ========================= */
-
-    const loader = document.getElementById("loader");
+window.addEventListener("load",function(){
 
     setTimeout(function(){
 
-        if(loader){
-            loader.classList.add("hide");
-        }
-
-    }, 1800);
-
-
-    /* =========================
-       CART
-    ========================= */
-
-    const cartPanel = document.getElementById("cartPanel");
-    const cartOverlay = document.getElementById("cartOverlay");
-    const closeCart = document.getElementById("closeCart");
-    const cartItems = document.getElementById("cartItems");
-    const cartTotal = document.getElementById("cartTotal");
-
-    let cart = [];
-
-
-    function openCart(){
-
-        cartPanel.classList.add("active");
-        cartOverlay.classList.add("active");
-
-        document.body.style.overflow = "hidden";
-
-    }
-
-
-    function closeCartPanel(){
-
-        cartPanel.classList.remove("active");
-        cartOverlay.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-    }
-
-
-    if(closeCart){
-
-        closeCart.addEventListener("click", closeCartPanel);
-
-    }
-
-
-    if(cartOverlay){
-
-        cartOverlay.addEventListener("click", closeCartPanel);
-
-    }
-
-
-    function renderCart(){
-
-        if(!cartItems){
-            return;
-        }
-
-        if(cart.length === 0){
-
-            cartItems.innerHTML = `
-                <p class="empty-cart">
-                    Your selection is currently empty.
-                </p>
-            `;
-
-            cartTotal.textContent = "€0";
-
-            return;
-
-        }
-
-
-        cartItems.innerHTML = "";
-
-        let total = 0;
-
-
-        cart.forEach(function(item, index){
-
-            total += item.price;
-
-
-            const itemElement = document.createElement("div");
-
-            itemElement.className = "cart-item";
-
-
-            itemElement.innerHTML = `
-
-                <div class="cart-item-image">
-
-                    <img
-                        src="${item.image}"
-                        alt="${item.title}"
-                    >
-
-                </div>
-
-                <div class="cart-item-info">
-
-                    <span>
-                        ${item.category}
-                    </span>
-
-                    <h4>
-                        ${item.title}
-                    </h4>
-
-                    <p>
-                        €${item.price}
-                    </p>
-
-                    <button
-                        class="remove-item"
-                        data-index="${index}"
-                    >
-                        Remove
-                    </button>
-
-                </div>
-
-            `;
-
-
-            cartItems.appendChild(itemElement);
-
-        });
-
-
-        cartTotal.textContent = "€" + total;
-
-
-        document.querySelectorAll(".remove-item").forEach(function(button){
-
-            button.addEventListener("click", function(){
-
-                const index = Number(this.dataset.index);
-
-                cart.splice(index, 1);
-
-                renderCart();
-
-            });
-
-        });
-
-    }
-
-
-    /* =========================
-       CART BUTTONS
-    ========================= */
-
-    document.querySelectorAll("[data-cart]").forEach(function(button){
-
-        button.addEventListener("click", function(){
-
-            openCart();
-
-        });
-
-    });
-
-
-    /* =========================
-       PRODUCT QUICK VIEW
-    ========================= */
-
-    const quickView = document.getElementById("quickView");
-    const quickClose = document.getElementById("quickClose");
-
-    const quickImage = document.getElementById("quickImage");
-    const quickCategory = document.getElementById("quickCategory");
-    const quickTitle = document.getElementById("quickTitle");
-    const quickDescription = document.getElementById("quickDescription");
-    const quickPrice = document.getElementById("quickPrice");
-    const quickAdd = document.getElementById("quickAdd");
-
-
-    let selectedProduct = null;
-
-
-    function openQuickView(product){
-
-        selectedProduct = product;
-
-        quickImage.src = product.image;
-        quickImage.alt = product.title;
-
-        quickCategory.textContent = product.category;
-        quickTitle.textContent = product.title;
-        quickDescription.textContent = product.description;
-        quickPrice.textContent = "€" + product.price;
-
-        quickView.classList.add("active");
-
-        document.body.style.overflow = "hidden";
-
-    }
-
-
-    function closeQuickView(){
-
-        quickView.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-    }
-
-
-    if(quickClose){
-
-        quickClose.addEventListener("click", closeQuickView);
-
-    }
-
-
-    /* =========================
-       PRODUCT CARDS
-    ========================= */
-
-    document.querySelectorAll("[data-product]").forEach(function(card){
-
-        card.addEventListener("click", function(){
-
-            const product = {
-
-                title: this.dataset.title || "Noir Atelier",
-                
-                category: this.dataset.category || "Collection",
-
-                price: Number(this.dataset.price || 0),
-
-                image: this.dataset.image || "",
-
-                description:
-                    this.dataset.description ||
-                    "A considered piece from the Noir Atelier collection."
-
-            };
-
-
-            openQuickView(product);
-
-        });
-
-    });
-
-
-    /* =========================
-       ADD TO CART
-    ========================= */
-
-    if(quickAdd){
-
-        quickAdd.addEventListener("click", function(){
-
-            if(!selectedProduct){
-                return;
-            }
-
-            cart.push(selectedProduct);
-
-            renderCart();
-
-            closeQuickView();
-
-            openCart();
-
-        });
-
-    }
-
-
-    /* =========================
-       ESCAPE KEY
-    ========================= */
-
-    document.addEventListener("keydown", function(event){
-
-        if(event.key === "Escape"){
-
-            closeQuickView();
-
-            closeCartPanel();
-
-        }
-
-    });
-
-
-    /* =========================
-       SMOOTH INTERNAL LINKS
-    ========================= */
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(link){
-
-        link.addEventListener("click", function(event){
-
-            const targetId = this.getAttribute("href");
-
-            if(targetId === "#"){
-                event.preventDefault();
-                return;
-            }
-
-            const target = document.querySelector(targetId);
-
-            if(target){
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior:"smooth"
-                });
-
-            }
-
-        });
-
-    });
-
-
-    renderCart();
+        document
+            .getElementById("loader")
+            .classList
+            .add("hide");
+
+    },1800);
 
 });
 
 </script>
 
+
 </body>
 </html>
-
- 
