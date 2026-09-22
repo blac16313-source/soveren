@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Soveren — Selected Concepts</title>
+<title>Soveren — Templates</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +34,7 @@ a{
     text-decoration:none;
 }
 
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 .loader{
     position:fixed;
@@ -81,9 +79,7 @@ a{
     }
 }
 
-/* =========================
-   NAV
-========================= */
+/* NAV */
 
 .nav{
     width:100%;
@@ -118,9 +114,7 @@ a{
     opacity:1;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
     min-height:72vh;
@@ -168,9 +162,7 @@ a{
     opacity:.45;
 }
 
-/* =========================
-   NOTICE
-========================= */
+/* NOTICE */
 
 .notice{
     margin:0 5vw;
@@ -196,11 +188,9 @@ a{
     color:rgba(242,238,230,.65);
 }
 
-/* =========================
-   COLLECTION
-========================= */
+/* TEMPLATES */
 
-.collection{
+.templates{
     padding:140px 5vw 160px;
 }
 
@@ -236,6 +226,7 @@ a{
     display:block;
     overflow:hidden;
     background:#141413;
+    cursor:pointer;
 }
 
 .card-image{
@@ -250,8 +241,9 @@ a{
     object-fit:cover;
     display:block;
     filter:saturate(.72);
-    transition:transform .8s cubic-bezier(.2,.7,.2,1),
-               filter .8s ease;
+    transition:
+        transform .8s cubic-bezier(.2,.7,.2,1),
+        filter .8s ease;
 }
 
 .card:hover .card-image img{
@@ -280,9 +272,7 @@ a{
     opacity:.4;
 }
 
-/* =========================
-   FEATURE
-========================= */
+/* FEATURE */
 
 .feature{
     padding:0 5vw 160px;
@@ -301,9 +291,7 @@ a{
     filter:saturate(.7);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
     border-top:1px solid rgba(242,238,230,.13);
@@ -342,9 +330,7 @@ a{
     opacity:.35;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -391,7 +377,7 @@ a{
         margin:0 5vw;
     }
 
-    .collection{
+    .templates{
         padding:90px 5vw 100px;
     }
 
@@ -443,14 +429,24 @@ a{
 <body>
 
 <!-- LOADER -->
+
 <div class="loader" id="loader">
+
     <div class="loader-inner">
-        <div class="loader-logo">SOVEREN</div>
+
+        <div class="loader-logo">
+            SOVEREN
+        </div>
+
         <div class="loader-line"></div>
+
     </div>
+
 </div>
 
+
 <!-- NAV -->
+
 <nav class="nav">
 
     <a href="index.html" class="logo">
@@ -458,36 +454,44 @@ a{
     </a>
 
     <div class="nav-right">
-        <a href="index.html">Studio</a>
-        <a href="templates.html">Templates</a>
+
+        <a href="index.html">
+            Studio
+        </a>
+
+        <a href="templates.html">
+            Templates
+        </a>
+
     </div>
 
 </nav>
 
 
 <!-- HERO -->
+
 <section class="hero">
 
     <div class="eyebrow">
-        Soveren · Selected Concepts
+        Soveren · Selected Templates
     </div>
 
     <h1>
-        Ideas<br>
-        made to<br>
-        feel real.
+        Digital<br>
+        worlds,<br>
+        carefully made.
     </h1>
 
     <div class="hero-bottom">
 
         <p>
-            A collection of fictional digital concepts created by
-            Soveren to explore different industries, visual languages
-            and digital experiences.
+            A collection of fictional website concepts created by
+            Soveren to demonstrate different visual directions,
+            industries and digital experiences.
         </p>
 
         <div class="scroll-note">
-            Scroll to explore
+            Explore the collection
         </div>
 
     </div>
@@ -496,6 +500,7 @@ a{
 
 
 <!-- NOTICE -->
+
 <section class="notice">
 
     <div class="notice-label">
@@ -504,27 +509,28 @@ a{
 
     <p>
         These websites are fictional concept projects created by
-        Soveren to showcase what we can design and build. They are
-        not active businesses or client websites. Some interactions
-        are intentionally non-functional and exist for presentation
-        purposes only.
+        Soveren to showcase our design and development capabilities.
+        They are not active businesses or client websites. Some
+        interactions are intentionally non-functional and exist
+        purely for presentation purposes.
     </p>
 
 </section>
 
 
-<!-- COLLECTION -->
-<section class="collection">
+<!-- TEMPLATES -->
+
+<section class="templates">
 
     <div class="section-head">
 
         <h2>
             Selected<br>
-            Work
+            Templates
         </h2>
 
         <span>
-            04 Concepts
+            Soveren Collection
         </span>
 
     </div>
@@ -533,15 +539,15 @@ a{
     <div class="grid">
 
 
-        <!-- FASHION -->
+        <!-- NOIR ATELIER -->
 
-        <a href="fashion.html" class="card">
+        <a href="noir-atelier.html" class="card">
 
             <div class="card-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85"
-                    alt="Fashion concept"
+                    alt="Noir Atelier fashion concept"
                 >
 
             </div>
@@ -549,12 +555,12 @@ a{
             <div class="card-info">
 
                 <div class="card-title">
-                    Atelier No. 01
+                    Noir Atelier
                 </div>
 
                 <div class="card-meta">
                     Fashion<br>
-                    Editorial
+                    Ecommerce
                 </div>
 
             </div>
@@ -562,15 +568,15 @@ a{
         </a>
 
 
-        <!-- RESTAURANT -->
+        <!-- MAISON HORLOGERIE -->
 
-        <a href="restaurant.html" class="card">
+        <a href="maison-horlogerie.html" class="card">
 
             <div class="card-image">
 
                 <img
-                    src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=85"
-                    alt="Restaurant concept"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1800&q=85"
+                    alt="Maison Horlogerie luxury watch concept"
                 >
 
             </div>
@@ -578,11 +584,40 @@ a{
             <div class="card-info">
 
                 <div class="card-title">
-                    Maison Noire
+                    Maison Horlogerie
                 </div>
 
                 <div class="card-meta">
-                    Restaurant<br>
+                    Watches<br>
+                    Luxury
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <!-- MAISON ESCAPE -->
+
+        <a href="maison-escape.html" class="card">
+
+            <div class="card-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85"
+                    alt="Maison Escape travel concept"
+                >
+
+            </div>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    Maison Escape
+                </div>
+
+                <div class="card-meta">
+                    Travel<br>
                     Hospitality
                 </div>
 
@@ -591,44 +626,15 @@ a{
         </a>
 
 
-        <!-- GAMING -->
+        <!-- FORM OBJECTS -->
 
-        <a href="gaming.html" class="card">
-
-            <div class="card-image">
-
-                <img
-                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1800&q=85"
-                    alt="Gaming concept"
-                >
-
-            </div>
-
-            <div class="card-info">
-
-                <div class="card-title">
-                    VOID Protocol
-                </div>
-
-                <div class="card-meta">
-                    Gaming<br>
-                    Digital
-                </div>
-
-            </div>
-
-        </a>
-
-
-        <!-- LUXURY PRODUCT -->
-
-        <a href="luxury.html" class="card">
+        <a href="form-objects.html" class="card">
 
             <div class="card-image">
 
                 <img
                     src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1800&q=85"
-                    alt="Luxury product concept"
+                    alt="Form Objects luxury product concept"
                 >
 
             </div>
@@ -640,8 +646,8 @@ a{
                 </div>
 
                 <div class="card-meta">
-                    Luxury<br>
-                    Product
+                    Product<br>
+                    Luxury
                 </div>
 
             </div>
@@ -655,13 +661,14 @@ a{
 
 
 <!-- FEATURE IMAGE -->
+
 <section class="feature">
 
     <div class="feature-image">
 
         <img
             src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2200&q=85"
-            alt="Soveren editorial concept"
+            alt="Soveren editorial"
         >
 
     </div>
@@ -670,6 +677,7 @@ a{
 
 
 <!-- FOOTER -->
+
 <footer class="footer">
 
     <div class="footer-top">
@@ -684,7 +692,6 @@ a{
         </div>
 
     </div>
-
 
     <div class="footer-bottom">
 
@@ -707,7 +714,10 @@ window.addEventListener("load", function(){
 
     setTimeout(function(){
 
-        document.getElementById("loader").classList.add("hide");
+        document
+            .getElementById("loader")
+            .classList
+            .add("hide");
 
     }, 1800);
 
