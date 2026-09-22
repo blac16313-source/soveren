@@ -53,6 +53,22 @@ img{max-width:100%}a{color:inherit;text-decoration:none}
 .card-title{font-family:"Cormorant Garamond",serif;font-size:29px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
 .card-meta{text-align:right;font-size:10px;line-height:1.7;letter-spacing:.1em;text-transform:uppercase;opacity:.4}
 .card:hover .card-title{transform:translateX(5px)}
+.cta{padding:150px 5vw 160px;border-top:1px solid rgba(242,238,230,.14);text-align:center}
+.cta h2{max-width:900px;margin:0 auto;font-family:"Cormorant Garamond",serif;font-size:clamp(50px,7.5vw,108px);font-weight:400;line-height:.9;letter-spacing:-.04em}
+.cta p{max-width:460px;margin:35px auto 45px;font-size:14px;line-height:1.8;color:rgba(242,238,230,.6)}
+.cta-btn{display:inline-flex;align-items:center;gap:14px;padding:16px 28px;border:1px solid rgba(242,238,230,.22);border-radius:100px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;transition:all .35s ease}
+.cta-btn:hover{background:#f2eee6;color:#0b0b0a;transform:translateY(-2px)}
+.footer{padding:70px 5vw 35px;border-top:1px solid rgba(242,238,230,.12);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.4;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.footer a{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:900px){
+  .nav-right a:not(.active):first-child{display:none}
+  .templates{padding:90px 5vw 110px}
+  .hero{min-height:58vh;padding:6vh 5vw}.hero h1{font-size:20vw;line-height:.84}
+  .hero-bottom{flex-direction:column;align-items:flex-start;margin-top:45px}
+  .notice{grid-template-columns:1fr;gap:15px;margin:0 5vw}
+  .grid{grid-template-columns:1fr}.section-head h2{font-size:49px}.section-head span{display:none}
+  .cta{padding:110px 5vw}.cta h2{font-size:14vw}
+}
 </style>
 </head>
 <body>
@@ -71,47 +87,29 @@ img{max-width:100%}a{color:inherit;text-decoration:none}
 </section>
 <section class="notice reveal">
   <div class="notice-label">Concept Collection</div>
-  <p>These websites are fictional concept projects created by Soveren to showcase our design and development capabilities. All templates now open correctly — Noir Atelier is live, other 3 are coming soon and currently show Noir as preview to avoid 404.</p>
+  <p>These websites are fictional concept projects created by Soveren to showcase our design and development capabilities. All 4 templates are now live and open to their own pages.</p>
 </section>
 <section class="templates">
-  <div class="section-head reveal"><h2>Selected<br>Templates</h2><span>Soveren Collection</span></div>
+  <div class="section-head reveal"><h2>Selected<br>Templates</h2><span>Soveren Collection — 4 LIVE</span></div>
   <div class="grid">
     <a href="noir-atelier.html" class="card reveal">
       <div class="card-image"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85" alt="Noir Atelier fashion concept" loading="lazy"></div>
       <div class="card-info"><div class="card-title">Noir Atelier</div><div class="card-meta">Fashion<br>Ecommerce — LIVE</div></div>
     </a>
-    <a href="noir-atelier.html" class="card reveal">
+    <a href="maison-horlogerie.html" class="card reveal">
       <div class="card-image"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1800&q=85" alt="Maison Horlogerie luxury watch concept" loading="lazy"></div>
-      <div class="card-info"><div class="card-title">Maison Horlogerie</div><div class="card-meta">Luxury<br>Watches — PREVIEW</div></div>
+      <div class="card-info"><div class="card-title">Maison Horlogerie</div><div class="card-meta">Luxury<br>Watches — LIVE</div></div>
     </a>
-    <a href="noir-atelier.html" class="card reveal">
+    <a href="maison-escape.html" class="card reveal">
       <div class="card-image"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85" alt="Maison Escape travel concept" loading="lazy"></div>
-      <div class="card-info"><div class="card-title">Maison Escape</div><div class="card-meta">Travel<br>Lifestyle — PREVIEW</div></div>
+      <div class="card-info"><div class="card-title">Maison Escape</div><div class="card-meta">Travel<br>Lifestyle — LIVE</div></div>
     </a>
-    <a href="noir-atelier.html" class="card reveal">
+    <a href="forma-objects.html" class="card reveal">
       <div class="card-image"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1800&q=85" alt="Forma Objects design concept" loading="lazy"></div>
-      <div class="card-info"><div class="card-title">Forma Objects</div><div class="card-meta">Design<br>Technology — PREVIEW</div></div>
+      <div class="card-info"><div class="card-title">Forma Objects</div><div class="card-meta">Design<br>Technology — LIVE</div></div>
     </a>
   </div>
 </section>
-<style>
-.cta{padding:150px 5vw 160px;border-top:1px solid rgba(242,238,230,.14);text-align:center}
-.cta h2{max-width:900px;margin:0 auto;font-family:"Cormorant Garamond",serif;font-size:clamp(50px,7.5vw,108px);font-weight:400;line-height:.9;letter-spacing:-.04em}
-.cta p{max-width:460px;margin:35px auto 45px;font-size:14px;line-height:1.8;color:rgba(242,238,230,.6)}
-.cta-btn{display:inline-flex;align-items:center;gap:14px;padding:16px 28px;border:1px solid rgba(242,238,230,.22);border-radius:100px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;transition:all .35s ease}
-.cta-btn:hover{background:#f2eee6;color:#0b0b0a;transform:translateY(-2px)}
-.footer{padding:70px 5vw 35px;border-top:1px solid rgba(242,238,230,.12);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.4;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-.footer a{text-decoration:underline;text-underline-offset:4px}
-@media(max-width:900px){
-  .nav-right a:not(.active):first-child{display:none}
-  .templates{padding:90px 5vw 110px}
-  .hero{min-height:58vh;padding:6vh 5vw}.hero h1{font-size:20vw;line-height:.84}
-  .hero-bottom{flex-direction:column;align-items:flex-start;margin-top:45px}
-  .notice{grid-template-columns:1fr;gap:15px;margin:0 5vw}
-  .grid{grid-template-columns:1fr}.section-head h2{font-size:49px}.section-head span{display:none}
-  .cta{padding:110px 5vw}.cta h2{font-size:14vw}
-}
-</style>
 <section class="cta reveal">
   <h2>Have an idea<br>worth building?</h2>
   <p>Whether it's fashion, luxury, travel, technology or food — Soveren creates digital experiences that feel intentional.</p>
