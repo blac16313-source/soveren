@@ -6,1415 +6,401 @@
 <meta name="theme-color" content="#0a0a09">
 <meta name="description" content="Soveren — luxury websites and digital experiences for ambitious brands.">
 <title>Soveren — Luxury Digital Studio</title>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
-
 :root{
-  --black:#0a0a09;
-  --dark:#11110f;
-  --dark2:#171714;
-  --cream:#f5f1e9;
-  --paper:#eeeae2;
-  --white:#fff;
-  --text:#171715;
-  --muted:#817d75;
-  --line:rgba(255,255,255,.14);
-  --line-dark:#c9c4ba;
-  --serif:"Playfair Display",Georgia,serif;
-  --sans:"DM Sans",Arial,sans-serif;
+  --black:#0a0a09;--dark:#11110f;--dark2:#171714;--cream:#f5f1e9;--paper:#eeeae2;
+  --white:#fff;--text:#171715;--muted:#817d75;--line:rgba(255,255,255,.14);
+  --line-dark:#c9c4ba;--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--black);
-  color:#fff;
-  font-family:var(--sans);
-  overflow-x:hidden;
-}
-body.no-scroll{overflow:hidden}
-a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-img{display:block;max-width:100%}
-
-/* loader */
-.loader{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:var(--black);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:opacity .7s ease,visibility .7s ease;
-}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:#fff;font-family:var(--sans);overflow-x:hidden}
+body.no-scroll{overflow:hidden}a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}button{cursor:pointer}img{display:block;max-width:100%}
+.loader{position:fixed;inset:0;z-index:9999;background:var(--black);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease}
 .loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{text-align:center}
-.loader-logo{
-  font-family:var(--serif);
-  font-size:28px;
-  letter-spacing:7px;
-}
-.loader-line{
-  width:0;
-  height:1px;
-  margin:18px auto 0;
-  background:#fff;
-  animation:loadLine 1.3s var(--ease) forwards;
-}
+.loader-inner{text-align:center}.loader-logo{font-family:var(--serif);font-size:28px;letter-spacing:7px}
+.loader-line{width:0;height:1px;margin:18px auto 0;background:#fff;animation:loadLine 1.3s var(--ease) forwards}
 @keyframes loadLine{to{width:130px}}
-
-/* nav */
-.site-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  padding:25px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  transition:background .4s ease,padding .4s ease,backdrop-filter .4s ease;
-}
-.site-nav.scrolled{
-  padding-top:16px;
-  padding-bottom:16px;
-  background:rgba(10,10,9,.82);
-  backdrop-filter:blur(18px);
-}
-.nav-logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-family:var(--serif);
-  font-size:18px;
-  letter-spacing:4px;
-}
-.logo-symbol{
-  width:29px;
-  height:29px;
-  border:1px solid rgba(255,255,255,.65);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-family:var(--serif);
-  font-size:14px;
-}
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:34px;
-}
-.nav-links a{
-  font-size:9px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#aaa69e;
-  transition:color .3s ease;
-}
-.nav-links a:hover{color:#fff}
-.nav-contact{
-  border:1px solid rgba(255,255,255,.38);
-  padding:12px 17px;
-  border-radius:100px;
-}
-.menu-toggle{
-  display:none;
-  width:42px;
-  height:42px;
-  border:1px solid rgba(255,255,255,.35);
-  border-radius:50%;
-  background:transparent;
-  color:#fff;
-}
-.mobile-menu{
-  position:fixed;
-  inset:0;
-  z-index:999;
-  background:#0a0a09;
-  padding:120px 8%;
-  transform:translateY(-100%);
-  transition:transform .6s var(--ease);
-}
-.mobile-menu.open{transform:translateY(0)}
-.mobile-menu a{
-  display:block;
-  padding:17px 0;
-  border-bottom:1px solid var(--line);
-  font-family:var(--serif);
-  font-size:38px;
-}
-
-/* shared */
-.section-label{
-  color:#77746d;
-  font-size:8px;
-  letter-spacing:2.7px;
-  text-transform:uppercase;
-}
-.reveal{
-  opacity:0;
-  transform:translateY(35px);
-  transition:opacity .9s ease,transform .9s var(--ease);
-}
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:25px 6%;display:flex;align-items:center;justify-content:space-between;transition:background .4s ease,padding .4s ease,backdrop-filter .4s ease}
+.site-nav.scrolled{padding-top:16px;padding-bottom:16px;background:rgba(10,10,9,.82);backdrop-filter:blur(18px)}
+.nav-logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:18px;letter-spacing:4px}
+.logo-symbol{width:29px;height:29px;border:1px solid rgba(255,255,255,.65);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:14px}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#aaa69e;transition:color .3s ease}
+.nav-links a:hover{color:#fff}.nav-contact{border:1px solid rgba(255,255,255,.38);padding:12px 17px;border-radius:100px}
+.menu-toggle{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:transparent;color:#fff}
+.mobile-menu{position:fixed;inset:0;z-index:999;background:#0a0a09;padding:120px 8%;transform:translateY(-100%);transition:transform .6s var(--ease)}
+.mobile-menu.open{transform:translateY(0)}.mobile-menu a{display:block;padding:17px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:38px}
+.section-label{color:#77746d;font-size:8px;letter-spacing:2.7px;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .9s ease,transform .9s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
-
-/* hero */
-.hero{
-  min-height:100svh;
-  position:relative;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.8)),
-    url("https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=2200&q=85")
-    center/cover;
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 55%);
-}
-.hero-content{
-  position:relative;
-  z-index:2;
-  width:100%;
-  padding:0 7% 8vh;
-}
-.hero-kicker{
-  color:#c0bcb4;
-  font-size:9px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  margin-bottom:24px;
-}
-.hero h1{
-  max-width:1000px;
-  margin:0;
-  font-family:var(--serif);
-  font-size:clamp(60px,10vw,145px);
-  font-weight:400;
-  line-height:.88;
-  letter-spacing:-6px;
-}
-.hero h1 em{font-style:italic}
-.hero-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:40px;
-  margin-top:42px;
-}
-.hero-copy{
-  max-width:450px;
-  color:#bbb7af;
-  font-size:12px;
-  line-height:1.8;
-}
+.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=2200&q=85") center/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 55%)}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 7% 8vh}
+.hero-kicker{color:#c0bcb4;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-bottom:24px}
+.hero h1{max-width:1000px;margin:0;font-family:var(--serif);font-size:clamp(60px,10vw,145px);font-weight:400;line-height:.88;letter-spacing:-6px}
+.hero h1 em{font-style:italic}.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:42px}
+.hero-copy{max-width:450px;color:#bbb7af;font-size:12px;line-height:1.8}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.button{
-  min-height:48px;
-  padding:0 22px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:100px;
-  font-size:8px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  transition:all .35s ease;
-}
-.button-primary{background:#fff;color:#111}
-.button-primary:hover{background:#ddd8cf;transform:translateY(-2px)}
-.button-ghost{
-  color:#fff;
-  border:1px solid rgba(255,255,255,.4);
-}
-.button-ghost:hover{background:#fff;color:#111}
-.scroll-cue{
-  position:absolute;
-  z-index:3;
-  right:6%;
-  bottom:30px;
-  writing-mode:vertical-rl;
-  color:#aaa69e;
-  font-size:7px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-/* intro */
-.intro{
-  background:var(--cream);
-  color:var(--text);
-  padding:145px 7%;
-}
-.intro-grid{
-  display:grid;
-  grid-template-columns:.25fr 1.5fr;
-  gap:75px;
-}
-.intro-copy{max-width:930px}
-.intro-copy h2{
-  margin:25px 0 0;
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:clamp(48px,6vw,90px);
-  line-height:.95;
-  letter-spacing:-3.5px;
-}
-.intro-copy h2 em{font-style:italic}
-.intro-copy p{
-  max-width:560px;
-  margin:38px 0 0;
-  color:#77736c;
-  font-size:13px;
-  line-height:1.9;
-}
-.intro-signature{
-  margin-top:55px;
-  font-family:var(--serif);
-  font-style:italic;
-  font-size:25px;
-}
-
-/* services */
-.services-section{
-  background:var(--dark);
-  padding:150px 7% 160px;
-}
-.services-header{
-  display:grid;
-  grid-template-columns:.25fr 1.5fr;
-  gap:75px;
-  margin-bottom:80px;
-}
-.services-heading h2{
-  margin:23px 0 0;
-  font-family:var(--serif);
-  font-size:clamp(46px,6vw,88px);
-  font-weight:400;
-  line-height:1;
-  letter-spacing:-3px;
-}
+.button{min-height:48px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;border-radius:100px;font-size:8px;letter-spacing:2px;text-transform:uppercase;transition:all .35s ease}
+.button-primary{background:#fff;color:#111}.button-primary:hover{background:#ddd8cf;transform:translateY(-2px)}
+.button-ghost{color:#fff;border:1px solid rgba(255,255,255,.4)}.button-ghost:hover{background:#fff;color:#111}
+.scroll-cue{position:absolute;z-index:3;right:6%;bottom:30px;writing-mode:vertical-rl;color:#aaa69e;font-size:7px;letter-spacing:2px;text-transform:uppercase}
+.intro{background:var(--cream);color:var(--text);padding:145px 7%}
+.intro-grid{display:grid;grid-template-columns:.25fr 1.5fr;gap:75px}
+.intro-copy{max-width:930px}.intro-copy h2{margin:25px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,90px);line-height:.95;letter-spacing:-3.5px}
+.intro-copy h2 em{font-style:italic}.intro-copy p{max-width:560px;margin:38px 0 0;color:#77736c;font-size:13px;line-height:1.9}
+.intro-signature{margin-top:55px;font-family:var(--serif);font-style:italic;font-size:25px}
+.services-section{background:var(--dark);padding:150px 7% 160px}
+.services-header{display:grid;grid-template-columns:.25fr 1.5fr;gap:75px;margin-bottom:80px}
+.services-heading h2{margin:23px 0 0;font-family:var(--serif);font-size:clamp(46px,6vw,88px);font-weight:400;line-height:1;letter-spacing:-3px}
 .services-heading h2 em{font-style:italic}
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
-  border-left:1px solid var(--line);
-}
-.service-card{
-  min-height:390px;
-  padding:31px 28px;
-  position:relative;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  transition:background .45s ease;
-}
-.service-card:hover{background:#181815}
-.service-number{color:#6d6a64;font-size:9px;letter-spacing:2px}
-.service-icon{margin-top:74px;font-size:28px;color:#d8d4cb}
-.service-card h3{
-  margin-top:34px;
-  font-family:var(--serif);
-  font-size:29px;
-  font-weight:400;
-}
-.service-card p{
-  margin-top:18px;
-  max-width:245px;
-  color:#85827b;
-  font-size:12px;
-  line-height:1.8;
-}
-.service-arrow{
-  position:absolute;
-  right:27px;
-  bottom:28px;
-  font-size:20px;
-  color:#aaa69e;
-  transition:transform .3s ease;
-}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.service-card{min-height:390px;padding:31px 28px;position:relative;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .45s ease}
+.service-card:hover{background:#181815}.service-number{color:#6d6a64;font-size:9px;letter-spacing:2px}
+.service-icon{margin-top:74px;font-size:28px;color:#d8d4cb}.service-card h3{margin-top:34px;font-family:var(--serif);font-size:29px;font-weight:400}
+.service-card p{margin-top:18px;max-width:245px;color:#85827b;font-size:12px;line-height:1.8}
+.service-arrow{position:absolute;right:27px;bottom:28px;font-size:20px;color:#aaa69e;transition:transform .3s ease}
 .service-card:hover .service-arrow{transform:translate(4px,-4px)}
-.services-statement{
-  margin-top:110px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:30px;
-  text-align:center;
-}
+.services-statement{margin-top:110px;display:flex;align-items:center;justify-content:center;gap:30px;text-align:center}
 .services-statement-line{width:70px;height:1px;background:#4d4b46}
-.services-statement p{
-  color:#8d8a83;
-  font-family:var(--serif);
-  font-size:18px;
-  line-height:1.5;
-}
+.services-statement p{color:#8d8a83;font-family:var(--serif);font-size:18px;line-height:1.5}
 .services-statement em{color:#d3d0c9}
-
-/* philosophy */
-.philosophy{
-  background:var(--cream);
-  color:var(--text);
-  padding:120px 7% 150px;
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:9%;
-  align-items:center;
-}
+.philosophy{background:var(--cream);color:var(--text);padding:120px 7% 150px;display:grid;grid-template-columns:1.15fr .85fr;gap:9%;align-items:center}
 .philosophy-image{position:relative;height:690px;overflow:hidden}
 .philosophy-image img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .philosophy-image:hover img{transform:scale(1.035)}
-.philosophy-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 45%);
-}
-.philosophy-caption{
-  position:absolute;
-  bottom:25px;left:25px;right:25px;
-  display:flex;justify-content:space-between;
-  color:#fff;font-size:8px;letter-spacing:2px;text-transform:uppercase;
-}
-.philosophy-copy{max-width:530px}
-.philosophy-copy h2{
-  margin-top:38px;
-  font-family:var(--serif);
-  font-size:clamp(48px,5.2vw,76px);
-  line-height:.99;
-  font-weight:400;
-  letter-spacing:-2.5px;
-}
+.philosophy-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.5),transparent 45%)}
+.philosophy-caption{position:absolute;bottom:25px;left:25px;right:25px;display:flex;justify-content:space-between;color:#fff;font-size:8px;letter-spacing:2px;text-transform:uppercase}
+.philosophy-copy{max-width:530px}.philosophy-copy h2{margin-top:38px;font-family:var(--serif);font-size:clamp(48px,5.2vw,76px);line-height:.99;font-weight:400;letter-spacing:-2.5px}
 .philosophy-copy h2 em{display:block;font-style:italic}
-.philosophy-copy p{
-  max-width:470px;
-  margin-top:35px;
-  color:#77736c;
-  font-size:13px;
-  line-height:1.9;
-}
-.text-link{
-  display:inline-flex;
-  align-items:center;
-  gap:15px;
-  margin-top:37px;
-  padding-bottom:8px;
-  border-bottom:1px solid #98948c;
-  color:#222;
-  font-size:9px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-.text-link span{transition:transform .3s ease}
-.text-link:hover span{transform:translate(4px,-3px)}
-
-/* works */
-.works-section{
-  background:#f8f5ef;
-  color:#151513;
-  padding:155px 7% 130px;
-}
-.works-top{
-  display:grid;
-  grid-template-columns:.25fr 1.5fr;
-  gap:75px;
-  margin-bottom:90px;
-}
-.works-intro h2{
-  margin-top:23px;
-  font-family:var(--serif);
-  font-size:clamp(50px,6.5vw,96px);
-  font-weight:400;
-  line-height:.93;
-  letter-spacing:-4px;
-}
-.works-intro h2 em{font-style:italic}
-.works-description{
-  max-width:480px;
-  margin-top:36px;
-  color:#74716a;
-  font-size:13px;
-  line-height:1.9;
-}
-.featured-project{margin-bottom:115px;cursor:pointer}
-.project-image{
-  position:relative;
-  height:min(72vw,760px);
-  overflow:hidden;
-  background:#ddd;
-}
-.project-image img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 1.2s var(--ease);
-}
+.philosophy-copy p{max-width:470px;margin-top:35px;color:#77736c;font-size:13px;line-height:1.9}
+.text-link{display:inline-flex;align-items:center;gap:15px;margin-top:37px;padding-bottom:8px;border-bottom:1px solid #98948c;color:#222;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.text-link span{transition:transform .3s ease}.text-link:hover span{transform:translate(4px,-3px)}
+</style>
+</head>
+<body class="no-scroll">
+<div class="loader" id="loader"><div class="loader-inner"><div class="loader-logo">SOVEREN</div><div class="loader-line"></div></div></div>
+<nav class="site-nav" id="siteNav">
+  <a href="#home" class="nav-logo"><span class="logo-symbol">S</span><span>SOVEREN</span></a>
+  <div class="nav-links"><a href="#about">About</a><a href="#services">Services</a><a href="#works">Works</a><a href="#process">Process</a><a href="#contact" class="nav-contact">Start a project</a></div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a class="mobile-link" href="#about">About</a><a class="mobile-link" href="#services">Services</a>
+  <a class="mobile-link" href="#works">Works</a><a class="mobile-link" href="#process">Process</a><a class="mobile-link" href="#contact">Start a project</a>
+</div>
+<main>
+<section class="hero" id="home">
+  <div class="hero-content reveal">
+    <div class="hero-kicker">Independent digital studio · India / Worldwide</div>
+    <h1>Websites made<br>to feel <em>expensive.</em></h1>
+    <div class="hero-bottom">
+      <p class="hero-copy">Soveren creates refined digital experiences for brands that care about how they are perceived — from first impression to final interaction.</p>
+      <div class="hero-actions"><a href="#works" class="button button-primary">Explore our work</a><a href="#contact" class="button button-ghost">Build with us</a></div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll to explore ↓</div>
+</section>
+<section class="intro" id="about">
+  <div class="intro-grid">
+    <div class="section-label">01 / The studio</div>
+    <div class="intro-copy reveal">
+      <h2>We don't just build websites. We build the <em>feeling</em> around a brand.</h2>
+      <p>Soveren is a digital studio focused on premium websites, ecommerce experiences and brand-led interfaces. We combine editorial design, sharp development and thoughtful interaction to create websites people remember.</p>
+      <div class="intro-signature">Soveren — digital, refined.</div>
+    </div>
+  </div>
+</section>
+<section class="services-section" id="services">
+  <div class="services-header"><div class="section-label">02 / What we do</div><div class="services-heading reveal"><h2>Digital presence,<br><em>properly done.</em></h2></div></div>
+  <div class="services-grid">
+    <article class="service-card reveal"><div class="service-number">01</div><div class="service-icon">◌</div><h3>Web Design</h3><p>Editorial layouts, luxury interfaces and visual systems designed around your brand.</p><div class="service-arrow">↗</div></article>
+    <article class="service-card reveal"><div class="service-number">02</div><div class="service-icon">◇</div><h3>Development</h3><p>Responsive, fast and polished websites built to work beautifully across devices.</p><div class="service-arrow">↗</div></article>
+    <article class="service-card reveal"><div class="service-number">03</div><div class="service-icon">✦</div><h3>Ecommerce</h3><p>Premium storefronts for fashion, watches, food, lifestyle and product-led brands.</p><div class="service-arrow">↗</div></article>
+    <article class="service-card reveal"><div class="service-number">04</div><div class="service-icon">⌁</div><h3>Brand Digital</h3><p>Digital direction that turns an existing identity into a complete online experience.</p><div class="service-arrow">↗</div></article>
+  </div>
+  <div class="services-statement"><span class="services-statement-line"></span><p>Less noise. More <em>presence.</em></p><span class="services-statement-line"></span></div>
+</section>
+<section class="philosophy">
+  <div class="philosophy-image reveal">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=85" alt="Luxury fashion editorial">
+    <div class="philosophy-overlay"></div>
+    <div class="philosophy-caption"><span>Soveren / Visual direction</span><span>01 — 04</span></div>
+  </div>
+  <div class="philosophy-copy reveal">
+    <div class="section-label">03 / Our approach</div>
+    <h2>Details are not<em>decoration.</em></h2>
+    <p>Every typeface, image, transition and space has a job. We treat a website as an extension of the brand rather than a collection of sections.</p>
+    <p>The result is restrained, intentional and built around the experience you want your customers to have.</p>
+    <a href="#process" class="text-link">See our process <span>↗</span></a>
+  </div>
+</section>
+<style>
+.works-section{background:#f8f5ef;color:#151513;padding:155px 7% 130px}
+.works-top{display:grid;grid-template-columns:.25fr 1.5fr;gap:75px;margin-bottom:90px}
+.works-intro h2{margin-top:23px;font-family:var(--serif);font-size:clamp(50px,6.5vw,96px);font-weight:400;line-height:.93;letter-spacing:-4px}
+.works-intro h2 em{font-style:italic}.works-description{max-width:480px;margin-top:36px;color:#74716a;font-size:13px;line-height:1.9}
+.featured-project{margin-bottom:115px;cursor:pointer}.project-image{position:relative;height:min(72vw,760px);overflow:hidden;background:#ddd}
+.project-image img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
 .featured-project:hover .project-image img{transform:scale(1.035)}
-.project-image-shade{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.15),transparent 35%,rgba(0,0,0,.62));
-}
-.project-index{
-  position:absolute;top:25px;left:27px;
-  color:#fff;font-size:8px;letter-spacing:2px;
-}
-.project-view{
-  position:absolute;right:28px;bottom:27px;
-  display:flex;align-items:center;gap:17px;
-  color:#fff;font-size:8px;letter-spacing:2px;text-transform:uppercase;
-}
-.project-view strong{
-  width:46px;height:46px;border:1px solid rgba(255,255,255,.55);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:15px;font-weight:400;transition:all .3s ease;
-}
+.project-image-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),transparent 35%,rgba(0,0,0,.62))}
+.project-index{position:absolute;top:25px;left:27px;color:#fff;font-size:8px;letter-spacing:2px}
+.project-view{position:absolute;right:28px;bottom:27px;display:flex;align-items:center;gap:17px;color:#fff;font-size:8px;letter-spacing:2px;text-transform:uppercase}
+.project-view strong{width:46px;height:46px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:400;transition:all .3s ease}
 .featured-project:hover .project-view strong{background:#fff;color:#111}
-.project-meta{
-  display:grid;grid-template-columns:1fr 1fr;
-  padding-top:27px;border-top:1px solid #c9c5bd;
-}
-.project-category{
-  color:#77736b;font-size:8px;letter-spacing:2.4px;
-  text-transform:uppercase;margin-bottom:10px;
-}
+.project-meta{display:grid;grid-template-columns:1fr 1fr;padding-top:27px;border-top:1px solid #c9c5bd}
+.project-category{color:#77736b;font-size:8px;letter-spacing:2.4px;text-transform:uppercase;margin-bottom:10px}
 .project-meta h3{font-family:var(--serif);font-size:39px;font-weight:400}
-.project-description{
-  display:flex;justify-content:space-between;gap:20px;
-  color:#74716a;font-size:11px;line-height:1.7;
-}
-.project-description p{max-width:310px}
-.project-description span{font-size:8px;letter-spacing:2px}
-.works-cta{
-  display:flex;justify-content:space-between;align-items:center;
-  padding-top:45px;border-top:1px solid #c9c5bd;
-}
-.works-cta-copy span{
-  color:#77736b;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;
-}
-.works-cta-copy h3{
-  max-width:570px;margin-top:15px;
-  font-family:var(--serif);font-size:40px;font-weight:400;line-height:1;
-}
+.project-description{display:flex;justify-content:space-between;gap:20px;color:#74716a;font-size:11px;line-height:1.7}
+.project-description p{max-width:310px}.project-description span{font-size:8px;letter-spacing:2px}
+.works-cta{display:flex;justify-content:space-between;align-items:center;padding-top:45px;border-top:1px solid #c9c5bd}
+.works-cta-copy span{color:#77736b;font-size:8px;letter-spacing:2.5px;text-transform:uppercase}
+.works-cta-copy h3{max-width:570px;margin-top:15px;font-family:var(--serif);font-size:40px;font-weight:400;line-height:1}
 .works-cta-copy em{font-style:italic}
-.round-button{
-  width:125px;height:125px;border:1px solid #aaa69e;border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
-  font-size:8px;letter-spacing:2px;text-transform:uppercase;
-  transition:all .4s ease;
-}
-.round-button strong{font-size:17px;font-weight:400}
-.round-button:hover{background:#151513;color:#fff;transform:rotate(8deg)}
-
-/* templates */
-.template-library{
-  background:#151513;color:#fff;padding:150px 7% 160px;
-}
-.template-library-head{
-  display:grid;grid-template-columns:.25fr 1.5fr;gap:75px;margin-bottom:80px;
-}
-.template-library-head h2{
-  margin-top:23px;font-family:var(--serif);
-  font-size:clamp(48px,6vw,84px);font-weight:400;line-height:.95;letter-spacing:-3px;
-}
-.template-library-head h2 em{font-style:italic}
-.template-list{border-top:1px solid var(--line)}
-.template-row{
-  min-height:150px;display:grid;
-  grid-template-columns:70px 170px 1fr 60px;
-  align-items:center;gap:28px;
-  border-bottom:1px solid var(--line);
-  transition:background .4s ease;
-  cursor:pointer;
-}
-.template-row:hover{background:#1c1c19}
-.template-row-number{color:#6f6d67;font-size:9px;letter-spacing:2px}
+.round-button{width:125px;height:125px;border:1px solid #aaa69e;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;font-size:8px;letter-spacing:2px;text-transform:uppercase;transition:all .4s ease}
+.round-button strong{font-size:17px;font-weight:400}.round-button:hover{background:#151513;color:#fff;transform:rotate(8deg)}
+.template-library{background:#151513;color:#fff;padding:150px 7% 160px}
+.template-library-head{display:grid;grid-template-columns:.25fr 1.5fr;gap:75px;margin-bottom:80px}
+.template-library-head h2{margin-top:23px;font-family:var(--serif);font-size:clamp(48px,6vw,84px);font-weight:400;line-height:.95;letter-spacing:-3px}
+.template-library-head h2 em{font-style:italic}.template-list{border-top:1px solid var(--line)}
+.template-row{min-height:150px;display:grid;grid-template-columns:70px 170px 1fr 60px;align-items:center;gap:28px;border-bottom:1px solid var(--line);transition:background .4s ease;cursor:pointer}
+.template-row:hover{background:#1c1c19}.template-row-number{color:#6f6d67;font-size:9px;letter-spacing:2px}
 .template-row-image{width:170px;height:100px;overflow:hidden}
 .template-row-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .template-row:hover .template-row-image img{transform:scale(1.08)}
-.template-row-info span{
-  color:#77746d;font-size:8px;letter-spacing:2px;text-transform:uppercase
-}
+.template-row-info span{color:#77746d;font-size:8px;letter-spacing:2px;text-transform:uppercase}
 .template-row-info h3{margin-top:8px;font-family:var(--serif);font-size:29px;font-weight:400}
-.template-row-arrow{
-  width:45px;height:45px;border:1px solid #4e4d48;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .3s ease;
-}
+.template-row-arrow{width:45px;height:45px;border:1px solid #4e4d48;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s ease}
 .template-row:hover .template-row-arrow{background:#fff;color:#111}
-
-/* quote */
 .quote-section{background:#090908;color:#fff;padding:180px 7%;text-align:center}
 .quote-mark{font-family:var(--serif);color:#57554f;font-size:80px;line-height:.4}
-.quote-section blockquote{
-  max-width:1100px;margin:55px auto 0;
-  font-family:var(--serif);font-size:clamp(42px,5.5vw,82px);
-  line-height:1.04;font-weight:400;letter-spacing:-2.5px;
-}
-.quote-section blockquote em{font-style:italic}
-.quote-credit{margin-top:50px;color:#66635c;font-size:8px;letter-spacing:3px}
-
-/* process */
+.quote-section blockquote{max-width:1100px;margin:55px auto 0;font-family:var(--serif);font-size:clamp(42px,5.5vw,82px);line-height:1.04;font-weight:400;letter-spacing:-2.5px}
+.quote-section blockquote em{font-style:italic}.quote-credit{margin-top:50px;color:#66635c;font-size:8px;letter-spacing:3px}
+</style>
+<section class="works-section" id="works">
+  <div class="works-top">
+    <div class="section-label">04 / Selected work</div>
+    <div class="works-intro reveal"><h2>A small look at<br>what we can <em>create.</em></h2><p class="works-description">Three visual directions from our template library. Each is designed as a complete luxury brand experience and can be adapted to a real business.</p></div>
+  </div>
+  <div class="featured-project reveal" data-template="noir">
+    <div class="project-image"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=2200&q=85" alt="Luxury fashion template"><div class="project-image-shade"></div><div class="project-index">01 / TEMPLATE</div><div class="project-view"><span>Explore template</span><strong>↗</strong></div></div>
+    <div class="project-meta"><div><div class="project-category">Fashion / Ecommerce</div><h3>Noir Atelier</h3></div><div class="project-description"><p>A dark editorial storefront built around fashion, product photography and quiet luxury.</p><span>View ↗</span></div></div>
+  </div>
+  <div class="featured-project reveal" data-template="horology">
+    <div class="project-image"><img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=2200&q=85" alt="Luxury watch template"><div class="project-image-shade"></div><div class="project-index">02 / TEMPLATE</div><div class="project-view"><span>Explore template</span><strong>↗</strong></div></div>
+    <div class="project-meta"><div><div class="project-category">Watches / Luxury</div><h3>Maison Horlogerie</h3></div><div class="project-description"><p>An understated horology experience with product storytelling and precision-led typography.</p><span>View ↗</span></div></div>
+  </div>
+  <div class="featured-project reveal" data-template="escape">
+    <div class="project-image"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85" alt="Luxury travel template"><div class="project-image-shade"></div><div class="project-index">03 / TEMPLATE</div><div class="project-view"><span>Explore template</span><strong>↗</strong></div></div>
+    <div class="project-meta"><div><div class="project-category">Travel / Hospitality</div><h3>Maison Escape</h3></div><div class="project-description"><p>A cinematic travel concept built for boutique stays, private journeys and destination brands.</p><span>View ↗</span></div></div>
+  </div>
+  <div class="works-cta reveal"><div class="works-cta-copy"><span>Have something in mind?</span><h3>Let's make something that feels <em>undeniably yours.</em></h3></div><a href="#contact" class="round-button"><strong>↗</strong>Start a project</a></div>
+</section>
+<section class="template-library" id="templates">
+  <div class="template-library-head"><div class="section-label">05 / Template library</div><div class="reveal"><h2>Different industries.<br><em>Same standard.</em></h2></div></div>
+  <div class="template-list">
+    <div class="template-row reveal" data-open-template="fashion"><div class="template-row-number">01</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Fashion</span><h3>Noir Atelier</h3></div><div class="template-row-arrow">↗</div></div>
+    <div class="template-row reveal" data-open-template="watch"><div class="template-row-number">02</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Horology</span><h3>Maison Horlogerie</h3></div><div class="template-row-arrow">↗</div></div>
+    <div class="template-row reveal" data-open-template="hotel"><div class="template-row-number">03</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Hospitality</span><h3>Maison Riviera</h3></div><div class="template-row-arrow">↗</div></div>
+    <div class="template-row reveal" data-open-template="travel"><div class="template-row-number">04</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Travel</span><h3>Maison Escape</h3></div><div class="template-row-arrow">↗</div></div>
+    <div class="template-row reveal" data-open-template="electronics"><div class="template-row-number">05</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Technology</span><h3>Forma Objects</h3></div><div class="template-row-arrow">↗</div></div>
+    <div class="template-row reveal" data-open-template="food"><div class="template-row-number">06</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Food & Dining</span><h3>Maison Élan</h3></div><div class="template-row-arrow">↗</div></div>
+    <div class="template-row reveal" data-open-template="purse"><div class="template-row-number">07</div><div class="template-row-image"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80" alt=""></div><div class="template-row-info"><span>Luxury Accessories</span><h3>Atelier Vela</h3></div><div class="template-row-arrow">↗</div></div>
+  </div>
+</section>
+<section class="quote-section"><div class="quote-mark">“</div><blockquote>Your website is often the first room of your brand<em>people ever enter.</em></blockquote><div class="quote-credit">SOVEREN / DIGITAL PHILOSOPHY</div></section>
+<style>
 .process-section{background:#eeeae2;color:#151513;padding:150px 7% 140px}
-.process-head{
-  display:grid;grid-template-columns:.25fr 1.5fr;gap:75px;margin-bottom:90px;
-}
-.process-heading h2{
-  margin-top:24px;font-family:var(--serif);font-size:clamp(49px,6vw,87px);
-  line-height:.95;font-weight:400;letter-spacing:-3px;
-}
-.process-heading em{font-style:italic}
-.process-list{border-top:1px solid #c6c1b8}
-.process-item{
-  min-height:150px;display:grid;grid-template-columns:90px 1fr 50px;
-  align-items:center;gap:30px;border-bottom:1px solid #c6c1b8;
-}
+.process-head{display:grid;grid-template-columns:.25fr 1.5fr;gap:75px;margin-bottom:90px}
+.process-heading h2{margin-top:24px;font-family:var(--serif);font-size:clamp(49px,6vw,87px);line-height:.95;font-weight:400;letter-spacing:-3px}
+.process-heading em{font-style:italic}.process-list{border-top:1px solid #c6c1b8}
+.process-item{min-height:150px;display:grid;grid-template-columns:90px 1fr 50px;align-items:center;gap:30px;border-bottom:1px solid #c6c1b8}
 .process-number{color:#858078;font-size:9px;letter-spacing:2px}
 .process-main{display:grid;grid-template-columns:.8fr 1fr;gap:40px;align-items:center}
 .process-main h3{font-family:var(--serif);font-size:31px;font-weight:400}
 .process-main p{max-width:450px;color:#77736c;font-size:12px;line-height:1.8}
 .process-symbol{font-family:var(--serif);font-size:25px;color:#77736c}
-
-/* studio */
-.studio-section{
-  background:#f8f5ef;color:#151513;padding:0 7% 150px;
-  display:grid;grid-template-columns:1fr 1fr;gap:9%;align-items:center;
-}
-.studio-image{position:relative;height:680px}
-.studio-image img{width:100%;height:100%;object-fit:cover}
-.studio-image-label{
-  position:absolute;bottom:22px;left:24px;right:24px;
-  display:flex;justify-content:space-between;color:#fff;font-size:8px;letter-spacing:2px
-}
-.studio-content{max-width:580px}
-.studio-small{color:#77736c;font-size:9px;letter-spacing:2.5px;text-transform:uppercase}
-.studio-copy h2{
-  margin-top:35px;font-family:var(--serif);font-size:clamp(45px,5vw,73px);
-  line-height:.98;font-weight:400;letter-spacing:-2.5px
-}
-.studio-copy h2 em{display:block;font-style:italic}
-.studio-description{max-width:470px;margin-top:35px;color:#77736c;font-size:13px;line-height:1.9}
-
-/* numbers */
+.studio-section{background:#f8f5ef;color:#151513;padding:0 7% 150px;display:grid;grid-template-columns:1fr 1fr;gap:9%;align-items:center}
+.studio-image{position:relative;height:680px}.studio-image img{width:100%;height:100%;object-fit:cover}
+.studio-image-label{position:absolute;bottom:22px;left:24px;right:24px;display:flex;justify-content:space-between;color:#fff;font-size:8px;letter-spacing:2px}
+.studio-content{max-width:580px}.studio-small{color:#77736c;font-size:9px;letter-spacing:2.5px;text-transform:uppercase}
+.studio-copy h2{margin-top:35px;font-family:var(--serif);font-size:clamp(45px,5vw,73px);line-height:.98;font-weight:400;letter-spacing:-2.5px}
+.studio-copy h2 em{display:block;font-style:italic}.studio-description{max-width:470px;margin-top:35px;color:#77736c;font-size:13px;line-height:1.9}
 .numbers-section{background:#11110f;color:#fff;padding:100px 7%}
-.numbers-intro{
-  display:flex;justify-content:space-between;align-items:flex-start;gap:50px;
-  padding-bottom:65px;border-bottom:1px solid var(--line)
-}
+.numbers-intro{display:flex;justify-content:space-between;align-items:flex-start;gap:50px;padding-bottom:65px;border-bottom:1px solid var(--line)}
 .numbers-intro p{max-width:430px;color:#85827b;font-size:13px;line-height:1.8}
 .numbers-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .number-card{min-height:190px;padding:40px 25px;border-right:1px solid var(--line)}
-.number-card:first-child{padding-left:0}
-.number-card:last-child{border-right:0}
+.number-card:first-child{padding-left:0}.number-card:last-child{border-right:0}
 .number-card strong{display:block;font-family:var(--serif);font-size:55px;font-weight:400}
-.number-card span{
-  display:block;max-width:120px;margin-top:15px;color:#85827b;font-size:9px;
-  line-height:1.6;letter-spacing:1px;text-transform:uppercase
-}
-
-/* testimonial */
+.number-card span{display:block;max-width:120px;margin-top:15px;color:#85827b;font-size:9px;line-height:1.6;letter-spacing:1px;text-transform:uppercase}
 .testimonial-section{background:#151513;color:#fff;padding:170px 7%}
-.testimonial-inner{max-width:1000px;margin:auto}
-.testimonial-mark{color:#55534e;font-family:var(--serif);font-size:90px;line-height:.4}
-.testimonial-inner blockquote{
-  margin-top:45px;font-family:var(--serif);font-size:clamp(42px,5vw,72px);
-  line-height:1.04;font-weight:400;letter-spacing:-2px
-}
+.testimonial-inner{max-width:1000px;margin:auto}.testimonial-mark{color:#55534e;font-family:var(--serif);font-size:90px;line-height:.4}
+.testimonial-inner blockquote{margin-top:45px;font-family:var(--serif);font-size:clamp(42px,5vw,72px);line-height:1.04;font-weight:400;letter-spacing:-2px}
 .testimonial-inner blockquote em{font-style:italic}
-.testimonial-meta{
-  margin-top:55px;display:flex;justify-content:space-between;
-  color:#68655e;font-size:8px;letter-spacing:2.5px
-}
-
-/* contact intro */
-.contact-intro{
-  min-height:730px;position:relative;display:flex;align-items:center;justify-content:center;
-  text-align:center;overflow:hidden
-}
-.contact-intro-background{position:absolute;inset:0}
-.contact-intro-background img{width:100%;height:100%;object-fit:cover}
+.testimonial-meta{margin-top:55px;display:flex;justify-content:space-between;color:#68655e;font-size:8px;letter-spacing:2.5px}
+.contact-intro{min-height:730px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.contact-intro-background{position:absolute;inset:0}.contact-intro-background img{width:100%;height:100%;object-fit:cover}
 .contact-intro-overlay{position:absolute;inset:0;background:rgba(7,7,6,.74)}
 .contact-intro-content{position:relative;z-index:2;max-width:950px;padding:40px}
-.contact-intro-content h2{
-  margin-top:35px;font-family:var(--serif);font-size:clamp(50px,7vw,100px);
-  line-height:.92;font-weight:400;letter-spacing:-4px
-}
-.contact-intro-content h2 em{display:block;font-style:italic}
-.contact-intro-content p{max-width:470px;margin:35px auto;color:#aaa69e;font-size:13px;line-height:1.8}
-
-/* contact */
+.contact-intro-content h2{margin-top:35px;font-family:var(--serif);font-size:clamp(50px,7vw,100px);line-height:.92;font-weight:400;letter-spacing:-4px}
+.contact-intro-content h2 em{display:block;font-style:italic}.contact-intro-content p{max-width:470px;margin:35px auto;color:#aaa69e;font-size:13px;line-height:1.8}
 .contact-section{background:#eeeae2;color:#151513;padding:145px 7% 160px}
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:10%}
-.contact-left h2{
-  margin-top:35px;font-family:var(--serif);font-size:clamp(50px,5.8vw,82px);
-  font-weight:400;line-height:.94;letter-spacing:-3px
-}
-.contact-left h2 em{display:block;font-style:italic}
-.contact-left>p{max-width:420px;margin-top:32px;color:#77736c;font-size:13px;line-height:1.9}
+.contact-left h2{margin-top:35px;font-family:var(--serif);font-size:clamp(50px,5.8vw,82px);font-weight:400;line-height:.94;letter-spacing:-3px}
+.contact-left h2 em{display:block;font-style:italic}.contact-left>p{max-width:420px;margin-top:32px;color:#77736c;font-size:13px;line-height:1.9}
 .contact-links{margin-top:55px}
-.contact-link{
-  display:grid;grid-template-columns:90px 1fr 30px;align-items:center;gap:20px;
-  min-height:65px;border-top:1px solid #c8c3ba
-}
+.contact-link{display:grid;grid-template-columns:90px 1fr 30px;align-items:center;gap:20px;min-height:65px;border-top:1px solid #c8c3ba}
 .contact-link:last-child{border-bottom:1px solid #c8c3ba}
 .contact-link span{color:#77736c;font-size:8px;letter-spacing:2px;text-transform:uppercase}
-.contact-link strong{font-size:11px;font-weight:400}
-.contact-link i{font-style:normal;transition:transform .3s ease}
+.contact-link strong{font-size:11px;font-weight:400}.contact-link i{font-style:normal;transition:transform .3s ease}
 .contact-link:hover i{transform:translate(4px,-4px)}
-
-/* form */
-.project-form{display:flex;flex-direction:column;gap:28px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.project-form{display:flex;flex-direction:column;gap:28px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .project-form label{display:flex;flex-direction:column;gap:11px;color:#77736c;font-size:8px;letter-spacing:2px;text-transform:uppercase}
-.project-form input,.project-form select,.project-form textarea{
-  width:100%;border:0;border-bottom:1px solid #aaa69d;background:transparent;
-  border-radius:0;outline:none;padding:10px 0 15px;color:#151513;font-size:13px;
-  letter-spacing:0;text-transform:none;resize:vertical
-}
+.project-form input,.project-form select,.project-form textarea{width:100%;border:0;border-bottom:1px solid #aaa69d;background:transparent;border-radius:0;outline:none;padding:10px 0 15px;color:#151513;font-size:13px;letter-spacing:0;text-transform:none;resize:vertical}
 .project-form input::placeholder,.project-form textarea::placeholder{color:#aaa69d}
-.project-form select{appearance:none;cursor:pointer}
-.project-form textarea{min-height:140px}
-.form-submit{
-  align-self:flex-start;min-height:54px;padding:0 27px;border:1px solid #222;
-  border-radius:100px;background:#151513;color:#fff;display:flex;align-items:center;
-  gap:18px;font-size:9px;letter-spacing:1.8px;text-transform:uppercase;
-  transition:all .3s ease
-}
-.form-submit:hover{background:transparent;color:#151513;transform:translateY(-2px)}
-.form-submit span{font-size:16px}
+.project-form select{appearance:none;cursor:pointer}.project-form textarea{min-height:140px}
+.form-submit{align-self:flex-start;min-height:54px;padding:0 27px;border:1px solid #222;border-radius:100px;background:#151513;color:#fff;display:flex;align-items:center;gap:18px;font-size:9px;letter-spacing:1.8px;text-transform:uppercase;transition:all .3s ease}
+.form-submit:hover{background:transparent;color:#151513;transform:translateY(-2px)}.form-submit span{font-size:16px}
 .form-note{color:#98938a;font-size:9px;line-height:1.6}
-
-/* footer */
 .site-footer{background:#090908;color:#fff;padding:100px 7% 35px}
 .footer-top{display:flex;justify-content:space-between;gap:80px;padding-bottom:100px}
 .footer-brand{max-width:350px}
-.footer-logo{
-  display:flex;align-items:center;gap:14px;font-family:var(--serif);font-size:22px;letter-spacing:4px
-}
-.footer-logo .logo-symbol{width:30px;height:30px}
-.footer-brand p{margin-top:25px;max-width:250px;color:#77746d;font-size:12px;line-height:1.8}
-.footer-navigation{display:flex;gap:100px}
-.footer-column{min-width:130px;display:flex;flex-direction:column;gap:14px}
+.footer-logo{display:flex;align-items:center;gap:14px;font-family:var(--serif);font-size:22px;letter-spacing:4px}
+.footer-logo .logo-symbol{width:30px;height:30px}.footer-brand p{margin-top:25px;max-width:250px;color:#77746d;font-size:12px;line-height:1.8}
+.footer-navigation{display:flex;gap:100px}.footer-column{min-width:130px;display:flex;flex-direction:column;gap:14px}
 .footer-column>span{margin-bottom:9px;color:#66635d;font-size:8px;letter-spacing:2.5px;text-transform:uppercase}
-.footer-column a{color:#aaa69e;font-size:11px;transition:color .3s ease}
-.footer-column a:hover{color:#fff}
+.footer-column a{color:#aaa69e;font-size:11px;transition:color .3s ease}.footer-column a:hover{color:#fff}
 .footer-middle{padding:55px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .footer-middle p{font-family:var(--serif);font-size:clamp(28px,4vw,55px);font-weight:400;line-height:1}
-.footer-bottom{
-  padding-top:25px;display:grid;grid-template-columns:1fr 1fr 1fr;
-  color:#5f5d57;font-size:8px;letter-spacing:1.5px;text-transform:uppercase
-}
-.footer-bottom span:nth-child(2){text-align:center}
-.footer-bottom a{text-align:right;color:#88857e}
-
-/* responsive */
+.footer-bottom{padding-top:25px;display:grid;grid-template-columns:1fr 1fr 1fr;color:#5f5d57;font-size:8px;letter-spacing:1.5px;text-transform:uppercase}
+.footer-bottom span:nth-child(2){text-align:center}.footer-bottom a{text-align:right;color:#88857e}
 @media(max-width:900px){
-  .nav-links{display:none}
-  .menu-toggle{display:block}
+  .nav-links{display:none}.menu-toggle{display:block}
   .services-header,.works-top,.template-library-head,.process-head{grid-template-columns:1fr;gap:30px}
-  .services-grid{grid-template-columns:1fr 1fr}
-  .philosophy{grid-template-columns:1fr}
-  .philosophy-image{height:570px}
-  .studio-section{grid-template-columns:1fr}
-  .studio-image{height:570px}
-  .numbers-grid{grid-template-columns:1fr 1fr}
-  .number-card:nth-child(2){border-right:0}
-  .contact-grid{grid-template-columns:1fr;gap:80px}
+  .services-grid{grid-template-columns:1fr 1fr}.philosophy{grid-template-columns:1fr}
+  .philosophy-image{height:570px}.studio-section{grid-template-columns:1fr}
+  .studio-image{height:570px}.numbers-grid{grid-template-columns:1fr 1fr}
+  .number-card:nth-child(2){border-right:0}.contact-grid{grid-template-columns:1fr;gap:80px}
   .footer-top{flex-direction:column}
 }
 @media(max-width:700px){
-  .site-nav{padding-left:5%;padding-right:5%}
-  .hero-content{padding-left:5%;padding-right:5%;padding-bottom:12vh}
-  .hero h1{letter-spacing:-3px}
-  .hero-bottom{flex-direction:column;align-items:flex-start}
+  .site-nav{padding-left:5%;padding-right:5%}.hero-content{padding-left:5%;padding-right:5%;padding-bottom:12vh}
+  .hero h1{letter-spacing:-3px}.hero-bottom{flex-direction:column;align-items:flex-start}
   .services-section,.works-section,.template-library,.process-section,.contact-section{padding-left:5%;padding-right:5%}
-  .services-grid{grid-template-columns:1fr}
-  .service-card{min-height:330px}
-  .intro{padding:100px 5%}
-  .philosophy{padding:90px 5% 110px}
-  .philosophy-image{height:470px}
-  .project-image{height:115vw}
-  .project-meta{grid-template-columns:1fr;gap:25px}
+  .services-grid{grid-template-columns:1fr}.service-card{min-height:330px}
+  .intro{padding:100px 5%}.philosophy{padding:90px 5% 110px}.philosophy-image{height:470px}
+  .project-image{height:115vw}.project-meta{grid-template-columns:1fr;gap:25px}
   .works-cta{gap:35px;align-items:flex-start;flex-direction:column}
   .round-button{width:105px;height:105px}
   .template-row{grid-template-columns:35px 100px 1fr 35px;gap:12px;min-height:120px}
-  .template-row-image{width:100px;height:72px}
-  .template-row-info h3{font-size:20px}
+  .template-row-image{width:100px;height:72px}.template-row-info h3{font-size:20px}
   .template-row-arrow{width:34px;height:34px;font-size:12px}
-  .process-main{grid-template-columns:1fr;gap:10px}
-  .process-item{min-height:180px;grid-template-columns:35px 1fr 30px}
-  .process-main h3{font-size:28px}
-  .studio-section{padding:0 5% 100px}
-  .studio-image{height:450px}
-  .numbers-section{padding:80px 5%}
-  .numbers-intro{flex-direction:column;gap:25px}
-  .number-card{min-height:160px;padding:30px 15px}
-  .number-card:first-child{padding-left:0}
-  .testimonial-section{padding:120px 5%}
-  .contact-intro{min-height:650px}
-  .contact-intro-content{padding:25px}
-  .contact-section{padding:100px 5%}
-  .form-row{grid-template-columns:1fr}
-  .footer-top{padding-bottom:70px}
-  .footer-navigation{gap:50px}
-  .footer-bottom{grid-template-columns:1fr;gap:14px}
+  .process-main{grid-template-columns:1fr;gap:10px}.process-item{min-height:180px;grid-template-columns:35px 1fr 30px}
+  .process-main h3{font-size:28px}.studio-section{padding:0 5% 100px}.studio-image{height:450px}
+  .numbers-section{padding:80px 5%}.numbers-intro{flex-direction:column;gap:25px}
+  .number-card{min-height:160px;padding:30px 15px}.number-card:first-child{padding-left:0}
+  .testimonial-section{padding:120px 5%}.contact-intro{min-height:650px}
+  .contact-intro-content{padding:25px}.contact-section{padding:100px 5%}
+  .form-row{grid-template-columns:1fr}.footer-top{padding-bottom:70px}
+  .footer-navigation{gap:50px}.footer-bottom{grid-template-columns:1fr;gap:14px}
   .footer-bottom span:nth-child(2),.footer-bottom a{text-align:left}
 }
-@media(max-width:430px){
-  .template-row{grid-template-columns:25px 78px 1fr 30px}
-  .template-row-image{width:78px;height:62px}
-  .template-row-info span{font-size:6px}
-  .template-row-info h3{font-size:17px}
-  .footer-navigation{gap:30px}
-}
 </style>
-</head>
-
-<body class="no-scroll">
-
-<div class="loader" id="loader">
-  <div class="loader-inner">
-    <div class="loader-logo">SOVEREN</div>
-    <div class="loader-line"></div>
-  </div>
-</div>
-
-<nav class="site-nav" id="siteNav">
-  <a href="#home" class="nav-logo">
-    <span class="logo-symbol">S</span>
-    <span>SOVEREN</span>
-  </a>
-
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#works">Works</a>
-    <a href="#process">Process</a>
-    <a href="#contact" class="nav-contact">Start a project</a>
-  </div>
-
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a class="mobile-link" href="#about">About</a>
-  <a class="mobile-link" href="#services">Services</a>
-  <a class="mobile-link" href="#works">Works</a>
-  <a class="mobile-link" href="#process">Process</a>
-  <a class="mobile-link" href="#contact">Start a project</a>
-</div>
-
-<main>
-
-<section class="hero" id="home">
-  <div class="hero-content reveal">
-    <div class="hero-kicker">Independent digital studio · India / Worldwide</div>
-    <h1>Websites made<br>to feel <em>expensive.</em></h1>
-
-    <div class="hero-bottom">
-      <p class="hero-copy">
-        Soveren creates refined digital experiences for brands that
-        care about how they are perceived — from first impression to
-        final interaction.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#works" class="button button-primary">Explore our work</a>
-        <a href="#contact" class="button button-ghost">Build with us</a>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-cue">Scroll to explore ↓</div>
-</section>
-
-<section class="intro" id="about">
-  <div class="intro-grid">
-    <div class="section-label">01 / The studio</div>
-    <div class="intro-copy reveal">
-      <h2>
-        We don't just build websites.
-        We build the <em>feeling</em> around a brand.
-      </h2>
-      <p>
-        Soveren is a digital studio focused on premium websites,
-        ecommerce experiences and brand-led interfaces. We combine
-        editorial design, sharp development and thoughtful interaction
-        to create websites people remember.
-      </p>
-      <div class="intro-signature">Soveren — digital, refined.</div>
-    </div>
-  </div>
-</section>
-
-<section class="services-section" id="services">
-  <div class="services-header">
-    <div class="section-label">02 / What we do</div>
-    <div class="services-heading reveal">
-      <h2>Digital presence,<br><em>properly done.</em></h2>
-    </div>
-  </div>
-
-  <div class="services-grid">
-    <article class="service-card reveal">
-      <div class="service-number">01</div>
-      <div class="service-icon">◌</div>
-      <h3>Web Design</h3>
-      <p>Editorial layouts, luxury interfaces and visual systems designed around your brand.</p>
-      <div class="service-arrow">↗</div>
-    </article>
-
-    <article class="service-card reveal">
-      <div class="service-number">02</div>
-      <div class="service-icon">◇</div>
-      <h3>Development</h3>
-      <p>Responsive, fast and polished websites built to work beautifully across devices.</p>
-      <div class="service-arrow">↗</div>
-    </article>
-
-    <article class="service-card reveal">
-      <div class="service-number">03</div>
-      <div class="service-icon">✦</div>
-      <h3>Ecommerce</h3>
-      <p>Premium storefronts for fashion, watches, food, lifestyle and product-led brands.</p>
-      <div class="service-arrow">↗</div>
-    </article>
-
-    <article class="service-card reveal">
-      <div class="service-number">04</div>
-      <div class="service-icon">⌁</div>
-      <h3>Brand Digital</h3>
-      <p>Digital direction that turns an existing identity into a complete online experience.</p>
-      <div class="service-arrow">↗</div>
-    </article>
-  </div>
-
-  <div class="services-statement">
-    <span class="services-statement-line"></span>
-    <p>Less noise. More <em>presence.</em></p>
-    <span class="services-statement-line"></span>
-  </div>
-</section>
-
-<section class="philosophy">
-  <div class="philosophy-image reveal">
-    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&q=85" alt="Luxury fashion editorial">
-    <div class="philosophy-overlay"></div>
-    <div class="philosophy-caption">
-      <span>Soveren / Visual direction</span>
-      <span>01 — 04</span>
-    </div>
-  </div>
-
-  <div class="philosophy-copy reveal">
-    <div class="section-label">03 / Our approach</div>
-    <h2>
-      Details are not
-      <em>decoration.</em>
-    </h2>
-    <p>
-      Every typeface, image, transition and space has a job. We treat
-      a website as an extension of the brand rather than a collection
-      of sections.
-    </p>
-    <p>
-      The result is restrained, intentional and built around the
-      experience you want your customers to have.
-    </p>
-    <a href="#process" class="text-link">See our process <span>↗</span></a>
-  </div>
-</section>
-
-<section class="works-section" id="works">
-  <div class="works-top">
-    <div class="section-label">04 / Selected work</div>
-    <div class="works-intro reveal">
-      <h2>A small look at<br>what we can <em>create.</em></h2>
-      <p class="works-description">
-        Three visual directions from our template library. Each is
-        designed as a complete luxury brand experience and can be
-        adapted to a real business.
-      </p>
-    </div>
-  </div>
-
-  <div class="featured-project reveal" data-template="noir">
-    <div class="project-image">
-      <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=2200&q=85" alt="Luxury fashion template">
-      <div class="project-image-shade"></div>
-      <div class="project-index">01 / TEMPLATE</div>
-      <div class="project-view"><span>Explore template</span><strong>↗</strong></div>
-    </div>
-    <div class="project-meta">
-      <div>
-        <div class="project-category">Fashion / Ecommerce</div>
-        <h3>Noir Atelier</h3>
-      </div>
-      <div class="project-description">
-        <p>A dark editorial storefront built around fashion, product photography and quiet luxury.</p>
-        <span>View ↗</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="featured-project reveal" data-template="horology">
-    <div class="project-image">
-      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=2200&q=85" alt="Luxury watch template">
-      <div class="project-image-shade"></div>
-      <div class="project-index">02 / TEMPLATE</div>
-      <div class="project-view"><span>Explore template</span><strong>↗</strong></div>
-    </div>
-    <div class="project-meta">
-      <div>
-        <div class="project-category">Watches / Luxury</div>
-        <h3>Maison Horlogerie</h3>
-      </div>
-      <div class="project-description">
-        <p>An understated horology experience with product storytelling and precision-led typography.</p>
-        <span>View ↗</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="featured-project reveal" data-template="escape">
-    <div class="project-image">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85" alt="Luxury travel template">
-      <div class="project-image-shade"></div>
-      <div class="project-index">03 / TEMPLATE</div>
-      <div class="project-view"><span>Explore template</span><strong>↗</strong></div>
-    </div>
-    <div class="project-meta">
-      <div>
-        <div class="project-category">Travel / Hospitality</div>
-        <h3>Maison Escape</h3>
-      </div>
-      <div class="project-description">
-        <p>A cinematic travel concept built for boutique stays, private journeys and destination brands.</p>
-        <span>View ↗</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="works-cta reveal">
-    <div class="works-cta-copy">
-      <span>Have something in mind?</span>
-      <h3>Let's make something that feels <em>undeniably yours.</em></h3>
-    </div>
-    <a href="#contact" class="round-button"><strong>↗</strong>Start a project</a>
-  </div>
-</section>
-
-<section class="template-library" id="templates">
-  <div class="template-library-head">
-    <div class="section-label">05 / Template library</div>
-    <div class="reveal">
-      <h2>Different industries.<br><em>Same standard.</em></h2>
-    </div>
-  </div>
-
-  <div class="template-list">
-    <div class="template-row reveal" data-open-template="fashion">
-      <div class="template-row-number">01</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Fashion</span><h3>Noir Atelier</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-
-    <div class="template-row reveal" data-open-template="watch">
-      <div class="template-row-number">02</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Horology</span><h3>Maison Horlogerie</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-
-    <div class="template-row reveal" data-open-template="hotel">
-      <div class="template-row-number">03</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Hospitality</span><h3>Maison Riviera</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-
-    <div class="template-row reveal" data-open-template="travel">
-      <div class="template-row-number">04</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Travel</span><h3>Maison Escape</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-
-    <div class="template-row reveal" data-open-template="electronics">
-      <div class="template-row-number">05</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Technology</span><h3>Forma Objects</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-
-    <div class="template-row reveal" data-open-template="food">
-      <div class="template-row-number">06</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Food & Dining</span><h3>Maison Élan</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-
-    <div class="template-row reveal" data-open-template="purse">
-      <div class="template-row-number">07</div>
-      <div class="template-row-image"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80" alt=""></div>
-      <div class="template-row-info"><span>Luxury Accessories</span><h3>Atelier Vela</h3></div>
-      <div class="template-row-arrow">↗</div>
-    </div>
-  </div>
-</section>
-
-<section class="quote-section">
-  <div class="quote-mark">“</div>
-  <blockquote>
-    Your website is often the first room of your brand
-    <em>people ever enter.</em>
-  </blockquote>
-  <div class="quote-credit">SOVEREN / DIGITAL PHILOSOPHY</div>
-</section>
-
 <section class="process-section" id="process">
-  <div class="process-head">
-    <div class="section-label">06 / The process</div>
-    <div class="process-heading reveal">
-      <h2>From first idea<br>to <em>live.</em></h2>
-    </div>
-  </div>
-
+  <div class="process-head"><div class="section-label">06 / The process</div><div class="process-heading reveal"><h2>From first idea<br>to <em>live.</em></h2></div></div>
   <div class="process-list">
-    <div class="process-item reveal">
-      <div class="process-number">01</div>
-      <div class="process-main">
-        <h3>Discover</h3>
-        <p>We understand the business, audience, competitors and the feeling your brand needs to communicate.</p>
-      </div>
-      <div class="process-symbol">+</div>
-    </div>
-
-    <div class="process-item reveal">
-      <div class="process-number">02</div>
-      <div class="process-main">
-        <h3>Design</h3>
-        <p>We turn direction into layout, typography, imagery and interaction — with attention to every detail.</p>
-      </div>
-      <div class="process-symbol">+</div>
-    </div>
-
-    <div class="process-item reveal">
-      <div class="process-number">03</div>
-      <div class="process-main">
-        <h3>Build</h3>
-        <p>The approved experience becomes a responsive, functional website ready for real customers.</p>
-      </div>
-      <div class="process-symbol">+</div>
-    </div>
-
-    <div class="process-item reveal">
-      <div class="process-number">04</div>
-      <div class="process-main">
-        <h3>Launch</h3>
-        <p>We polish, test and take the site live so your new digital presence is ready to be seen.</p>
-      </div>
-      <div class="process-symbol">+</div>
-    </div>
+    <div class="process-item reveal"><div class="process-number">01</div><div class="process-main"><h3>Discover</h3><p>We understand the business, audience, competitors and the feeling your brand needs to communicate.</p></div><div class="process-symbol">+</div></div>
+    <div class="process-item reveal"><div class="process-number">02</div><div class="process-main"><h3>Design</h3><p>We turn direction into layout, typography, imagery and interaction — with attention to every detail.</p></div><div class="process-symbol">+</div></div>
+    <div class="process-item reveal"><div class="process-number">03</div><div class="process-main"><h3>Build</h3><p>The approved experience becomes a responsive, functional website ready for real customers.</p></div><div class="process-symbol">+</div></div>
+    <div class="process-item reveal"><div class="process-number">04</div><div class="process-main"><h3>Launch</h3><p>We polish, test and take the site live so your new digital presence is ready to be seen.</p></div><div class="process-symbol">+</div></div>
   </div>
 </section>
-
 <section class="studio-section">
-  <div class="studio-image reveal">
-    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85" alt="Creative studio">
-    <div class="studio-image-label">
-      <span>SOVEREN / STUDIO</span>
-      <span>EST. 2026</span>
-    </div>
-  </div>
-
-  <div class="studio-content reveal">
-    <div class="studio-small">07 / A young studio with a big standard</div>
-    <div class="studio-copy">
-      <h2>Small team.<br><em>Unreasonable attention.</em></h2>
-      <p class="studio-description">
-        Soveren is built around a simple idea: ambitious businesses
-        deserve a digital presence that doesn't look like everyone else's.
-        We keep the process focused, personal and design-led.
-      </p>
-      <a href="#contact" class="text-link">Talk to Soveren <span>↗</span></a>
-    </div>
-  </div>
+  <div class="studio-image reveal"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85" alt="Creative studio"><div class="studio-image-label"><span>SOVEREN / STUDIO</span><span>EST. 2026</span></div></div>
+  <div class="studio-content reveal"><div class="studio-small">07 / A young studio with a big standard</div><div class="studio-copy"><h2>Small team.<br><em>Unreasonable attention.</em></h2><p class="studio-description">Soveren is built around a simple idea: ambitious businesses deserve a digital presence that doesn't look like everyone else's. We keep the process focused, personal and design-led.</p><a href="#contact" class="text-link">Talk to Soveren <span>↗</span></a></div></div>
 </section>
-
-<section class="numbers-section">
-  <div class="numbers-intro">
-    <div class="section-label">08 / The standard</div>
-    <p>Every project is treated as a brand experience, not a template with a logo swapped in.</p>
-  </div>
-
-  <div class="numbers-grid">
-    <div class="number-card reveal"><strong>01</strong><span>Dedicated visual direction</span></div>
-    <div class="number-card reveal"><strong>∞</strong><span>Attention to detail</span></div>
-    <div class="number-card reveal"><strong>7+</strong><span>Luxury template directions</span></div>
-    <div class="number-card reveal"><strong>24/7</strong><span>Digital presence after launch</span></div>
-  </div>
-</section>
-
-<section class="testimonial-section">
-  <div class="testimonial-inner reveal">
-    <div class="testimonial-mark">“</div>
-    <blockquote>
-      Make it feel like the brand already existed
-      <em>before they discovered it.</em>
-    </blockquote>
-    <div class="testimonial-meta">
-      <span>SOVEREN</span>
-      <span>DESIGN PRINCIPLE / 08</span>
-    </div>
-  </div>
-</section>
-
-<section class="contact-intro">
-  <div class="contact-intro-background">
-    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2200&q=85" alt="">
-  </div>
-  <div class="contact-intro-overlay"></div>
-
-  <div class="contact-intro-content reveal">
-    <div class="section-label">09 / Your next chapter</div>
-    <h2>Let's build something<br><em>worth remembering.</em></h2>
-    <p>
-      Tell us what you're building. We'll take it from there.
-    </p>
-    <a href="#contact" class="button button-primary">Start a conversation</a>
-  </div>
-</section>
-
+<section class="numbers-section"><div class="numbers-intro"><div class="section-label">08 / The standard</div><p>Every project is treated as a brand experience, not a template with a logo swapped in.</p></div><div class="numbers-grid"><div class="number-card reveal"><strong>01</strong><span>Dedicated visual direction</span></div><div class="number-card reveal"><strong>∞</strong><span>Attention to detail</span></div><div class="number-card reveal"><strong>7+</strong><span>Luxury template directions</span></div><div class="number-card reveal"><strong>24/7</strong><span>Digital presence after launch</span></div></div></section>
+<section class="testimonial-section"><div class="testimonial-inner reveal"><div class="testimonial-mark">“</div><blockquote>Make it feel like the brand already existed<em>before they discovered it.</em></blockquote><div class="testimonial-meta"><span>SOVEREN</span><span>DESIGN PRINCIPLE / 08</span></div></div></section>
+<section class="contact-intro"><div class="contact-intro-background"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2200&q=85" alt=""></div><div class="contact-intro-overlay"></div><div class="contact-intro-content reveal"><div class="section-label">09 / Your next chapter</div><h2>Let's build something<br><em>worth remembering.</em></h2><p>Tell us what you're building. We'll take it from there.</p><a href="#contact" class="button button-primary">Start a conversation</a></div></section>
 <section class="contact-section" id="contact">
   <div class="contact-grid">
-
-    <div class="contact-left reveal">
-      <div class="section-label">10 / Contact</div>
-      <h2>Have a project<br>in <em>mind?</em></h2>
-      <p>
-        Whether you're launching a new brand, upgrading an existing
-        website or simply want to talk through an idea, send us a message.
-      </p>
-
+    <div class="contact-left reveal"><div class="section-label">10 / Contact</div><h2>Have a project<br>in <em>mind?</em></h2><p>Whether you're launching a new brand, upgrading an existing website or simply want to talk through an idea, send us a message.</p>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:soveren.store@gmail.com">
-          <span>Email</span>
-          <strong>soveren.store@gmail.com</strong>
-          <i>↗</i>
-        </a>
-
-        <a class="contact-link" href="https://instagram.com/j_atin___" target="_blank" rel="noopener">
-          <span>Instagram</span>
-          <strong>@soveren.store</strong>
-          <i>↗</i>
-        </a>
-
-        <a class="contact-link" href="https://wa.me/918109324626" target="_blank" rel="noopener">
-          <span>WhatsApp</span>
-          <strong>+91 81093 24626</strong>
-          <i>↗</i>
-        </a>
+        <a class="contact-link" href="mailto:soveren.store@gmail.com"><span>Email</span><strong>soveren.store@gmail.com</strong><i>↗</i></a>
+        <a class="contact-link" href="https://instagram.com/j_atin___" target="_blank" rel="noopener"><span>Instagram</span><strong>@soveren.store</strong><i>↗</i></a>
+        <a class="contact-link" href="https://wa.me/918109324626" target="_blank" rel="noopener"><span>WhatsApp</span><strong>+91 81093 24626</strong><i>↗</i></a>
       </div>
     </div>
-
     <form class="project-form reveal" id="projectForm">
-      <div class="form-row">
-        <label>
-          Your name
-          <input id="clientName" type="text" placeholder="Your name" required>
-        </label>
-
-        <label>
-          Email
-          <input id="clientEmail" type="email" placeholder="you@example.com" required>
-        </label>
-      </div>
-
-      <label>
-        What are you building?
-        <select id="projectType" required>
-          <option value="" selected disabled>Select a project</option>
-          <option>Brand website</option>
-          <option>Ecommerce website</option>
-          <option>Luxury / premium website</option>
-          <option>Landing page</option>
-          <option>Website redesign</option>
-          <option>Other</option>
-        </select>
-      </label>
-
-      <label>
-        Tell us about it
-        <textarea id="projectMessage" placeholder="A few words about your brand, project and what you need..." required></textarea>
-      </label>
-
-      <button class="form-submit" type="submit">
-        Send enquiry <span>↗</span>
-      </button>
-
-      <div class="form-note">
-        Submitting opens WhatsApp with your project details so we can start the conversation directly.
-      </div>
+      <div class="form-row"><label>Your name<input id="clientName" type="text" placeholder="Your name" required></label><label>Email<input id="clientEmail" type="email" placeholder="you@example.com" required></label></div>
+      <label>What are you building?<select id="projectType" required><option value="" selected disabled>Select a project</option><option>Brand website</option><option>Ecommerce website</option><option>Luxury / premium website</option><option>Landing page</option><option>Website redesign</option><option>Other</option></select></label>
+      <label>Tell us about it<textarea id="projectMessage" placeholder="A few words about your brand, project and what you need..." required></textarea></label>
+      <button class="form-submit" type="submit">Send enquiry <span>↗</span></button>
+      <div class="form-note">Submitting opens WhatsApp with your project details so we can start the conversation directly.</div>
     </form>
-
   </div>
 </section>
-
 </main>
-
 <footer class="site-footer">
-  <div class="footer-top">
-
-    <div class="footer-brand">
-      <a href="#home" class="footer-logo">
-        <span class="logo-symbol">S</span>
-        <span>SOVEREN</span>
-      </a>
-      <p>Digital experiences for brands with ambition.</p>
-    </div>
-
-    <div class="footer-navigation">
-      <div class="footer-column">
-        <span>Explore</span>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#works">Works</a>
-        <a href="#process">Process</a>
-      </div>
-
-      <div class="footer-column">
-        <span>Connect</span>
-        <a href="#contact">Start a project</a>
-        <a href="mailto:soveren.store@gmail.com">Email</a>
-        <a href="https://instagram.com/j_atin___" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://wa.me/918109324626" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="footer-middle">
-    <p>Good websites are seen. Great ones are remembered.</p>
-  </div>
-
-  <div class="footer-bottom">
-    <span>© <span class="current-year">2026</span> Soveren. All rights reserved.</span>
-    <span>India · Worldwide</span>
-    <a href="#home">Back to top ↑</a>
-  </div>
+  <div class="footer-top"><div class="footer-brand"><a href="#home" class="footer-logo"><span class="logo-symbol">S</span><span>SOVEREN</span></a><p>Digital experiences for brands with ambition.</p></div><div class="footer-navigation"><div class="footer-column"><span>Explore</span><a href="#about">About</a><a href="#services">Services</a><a href="#works">Works</a><a href="#process">Process</a></div><div class="footer-column"><span>Connect</span><a href="#contact">Start a project</a><a href="mailto:soveren.store@gmail.com">Email</a><a href="https://instagram.com/j_atin___" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/918109324626" target="_blank" rel="noopener">WhatsApp</a></div></div></div>
+  <div class="footer-middle"><p>Good websites are seen. Great ones are remembered.</p></div>
+  <div class="footer-bottom"><span>© <span class="current-year">2026</span> Soveren. All rights reserved.</span><span>India · Worldwide</span><a href="#home">Back to top ↑</a></div>
 </footer>
-
 <script>
 window.addEventListener("load",function(){
   const loader=document.getElementById("loader");
-  setTimeout(function(){
-    loader.classList.add("hidden");
-    document.body.classList.remove("no-scroll");
-  },1200);
+  setTimeout(function(){ loader.classList.add("hidden"); document.body.classList.remove("no-scroll"); },1200);
 });
-
 const siteNav=document.getElementById("siteNav");
-window.addEventListener("scroll",function(){
-  if(window.scrollY>40) siteNav.classList.add("scrolled");
-  else siteNav.classList.remove("scrolled");
-},{passive:true});
-
+window.addEventListener("scroll",function(){ if(window.scrollY>40) siteNav.classList.add("scrolled"); else siteNav.classList.remove("scrolled"); },{passive:true});
 const menuToggle=document.getElementById("menuToggle");
 const mobileMenu=document.getElementById("mobileMenu");
-
 menuToggle.addEventListener("click",function(){
-  menuToggle.classList.toggle("open");
-  mobileMenu.classList.toggle("open");
-  document.body.classList.toggle("no-scroll");
+  menuToggle.classList.toggle("open"); mobileMenu.classList.toggle("open"); document.body.classList.toggle("no-scroll");
 });
-
 document.querySelectorAll(".mobile-link").forEach(function(link){
-  link.addEventListener("click",function(){
-    menuToggle.classList.remove("open");
-    mobileMenu.classList.remove("open");
-    document.body.classList.remove("no-scroll");
-  });
+  link.addEventListener("click",function(){ menuToggle.classList.remove("open"); mobileMenu.classList.remove("open"); document.body.classList.remove("no-scroll"); });
 });
-
 const revealItems=document.querySelectorAll(".reveal");
-
 if("IntersectionObserver" in window){
   const observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
+    entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add("visible"); observer.unobserve(entry.target); } });
   },{threshold:.12});
-
   revealItems.forEach(function(item){observer.observe(item);});
-}else{
-  revealItems.forEach(function(item){item.classList.add("visible");});
-}
-
+}else{ revealItems.forEach(function(item){item.classList.add("visible");}); }
 document.querySelectorAll('a[href^="#"]').forEach(function(link){
   link.addEventListener("click",function(event){
-    const targetId=link.getAttribute("href");
-    if(!targetId || targetId==="#") return;
+    const targetId=link.getAttribute("href"); if(!targetId || targetId==="#") return;
     const target=document.querySelector(targetId);
-    if(target){
-      event.preventDefault();
-      target.scrollIntoView({behavior:"smooth",block:"start"});
-    }
+    if(target){ event.preventDefault(); target.scrollIntoView({behavior:"smooth",block:"start"}); }
   });
 });
-
 const projectForm=document.getElementById("projectForm");
-
 projectForm.addEventListener("submit",function(event){
   event.preventDefault();
-
   const name=document.getElementById("clientName").value.trim();
   const email=document.getElementById("clientEmail").value.trim();
   const project=document.getElementById("projectType").value;
   const message=document.getElementById("projectMessage").value.trim();
-
-  const text=
-    "Hello Soveren,%0A%0A"+
-    "My name is "+encodeURIComponent(name)+".%0A%0A"+
-    "Email: "+encodeURIComponent(email)+"%0A%0A"+
-    "Project type: "+encodeURIComponent(project)+"%0A%0A"+
-    "Project details:%0A"+encodeURIComponent(message);
-
+  const text="Hello Soveren,%0A%0A"+"My name is "+encodeURIComponent(name)+".%0A%0A"+"Email: "+encodeURIComponent(email)+"%0A%0A"+"Project type: "+encodeURIComponent(project)+"%0A%0A"+"Project details:%0A"+encodeURIComponent(message);
   window.open("https://wa.me/918109324626?text="+text,"_blank");
 });
-
+// FIXED - TEMPLATES NOW OPEN REAL PAGES
 document.querySelectorAll("[data-open-template],.featured-project").forEach(function(item){
   item.addEventListener("click",function(){
-    const template=item.dataset.template || item.dataset.openTemplate;
-    const names={
-      noir:"Noir Atelier",
-      horology:"Maison Horlogerie",
-      escape:"Maison Escape",
-      fashion:"Noir Atelier",
-      watch:"Maison Horlogerie",
-      hotel:"Maison Riviera",
-      travel:"Maison Escape",
-      electronics:"Forma Objects",
-      food:"Maison Élan",
-      purse:"Atelier Vela"
-    };
-    const name=names[template] || "Soveren Template";
-    alert(name+" template preview is part of the next template build.");
+    const t = (item.dataset.template || item.dataset.openTemplate || "").toLowerCase();
+    if(t === 'noir' || t === 'fashion' || t === 'escape' || t === 'travel' || t === 'hotel' || t === 'watch' || t === 'horology'){
+      window.location.href = 'noir-atelier.html';
+    } else {
+      window.location.href = 'templates.html';
+    }
   });
 });
-
-document.querySelectorAll(".current-year").forEach(function(el){
-  el.textContent=new Date().getFullYear();
-});
+document.querySelectorAll(".current-year").forEach(function(el){ el.textContent=new Date().getFullYear(); });
 </script>
-
 </body>
 </html>
